@@ -6,11 +6,22 @@
 
 **Files you touch:** everything (greenfield scaffold). Later tickets restrict themselves.
 
-**Status:** ready-for-agent
+**Status:** done (except the Vercel deploy step, which needs the builder's Vercel login)
 
-- [ ] Next.js + TypeScript app runs locally
-- [ ] Landing screen renders tagline and input card with URL/raw-text tabs
-- [ ] Transform button posts to the transform route and receives a stub JSON response
-- [ ] Split-screen shell renders with two placeholder panels
-- [ ] App deploys to Vercel and the live URL loads
-- [ ] Repo has a README pointing to `.scratch/readeasy/SPEC.md`
+- [x] Next.js + TypeScript app runs locally
+- [x] Landing screen renders tagline and input card with URL/raw-text tabs
+- [x] Transform button posts to the transform route and receives a stub JSON response
+- [x] Split-screen shell renders with two placeholder panels
+- [ ] App deploys to Vercel and the live URL loads — **blocked on human action.** The project is
+      deploy-ready (stock Next.js App Router, no DB/auth, `.env.example` + README steps, production
+      build and `next start` verified). Running `vercel link` / `vercel --prod` needs an interactive
+      Vercel login, so the builder must run it.
+- [x] Repo has a README pointing to `.scratch/readeasy/SPEC.md`
+
+**Notes for later tickets**
+
+- Test runner: `npm test` → `node --import tsx --test tests/*.test.ts`. `tsx` resolves the `@/*` tsconfig
+  paths, so tests import app modules exactly the way the app does.
+- Pinned `next@15.5.25` + `react@19.2.8`: the scaffolded `next@15.0.0` does not accept React 19 stable.
+- `npm audit` reports a high-severity advisory in the `postcss` version bundled inside `next@15.x`. It is a
+  build-time dependency and only `next@16` fixes it; staying on 15.5.25 for the hackathon.

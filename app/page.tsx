@@ -1,23 +1,17 @@
-import InputCard from "@/components/InputCard";
+import Workspace from "@/components/Workspace";
 
 export default function Home() {
   return (
     <main className="page">
-      <section className="hero">
+      <header className="hero">
         <h1>ReadEasy</h1>
-        <p>The web, made readable for every reader.</p>
-      </section>
-      <InputCard />
-      <section className="split">
-        <div className="panel">
-          <h2>Original</h2>
-          <p>Cleaned source text will appear here.</p>
-        </div>
-        <div className="panel">
-          <h2>ReadEasy</h2>
-          <p>Accessible formats will appear here.</p>
-        </div>
-      </section>
+        <p className="tagline">ReadEasy — the web, made readable for every reader.</p>
+        <p className="lede">
+          Paste a page link, or the page text itself. ReadEasy clears away the clutter and rewrites what is
+          left in plain language, with deadlines pulled out into a simple checklist.
+        </p>
+      </header>
+      <Workspace />
     </main>
   );
 }
