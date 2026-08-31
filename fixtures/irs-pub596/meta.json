@@ -1,0 +1,11 @@
+{
+  "slug": "irs-pub596",
+  "label": "IRS — Publication 596, Earned Income Credit (long-form backup)",
+  "url": "https://www.irs.gov/publications/p596",
+  "role": "backup",
+  "capturedAt": "2026-08-31T23:17:56.713Z",
+  "rawHtmlBytes": 1150452,
+  "cleanedTitle": "Publication 596 (2025), Earned Income Credit (EIC) | Internal Revenue Service",
+  "cleanedWordCount": 35965,
+  "screenshot": "/fixtures/irs-pub596.png"
+}

@@ -1,0 +1,11 @@
+{
+  "slug": "usagov-visas",
+  "label": "USA.gov — Immigrant visas (backup)",
+  "url": "https://www.usa.gov/visas",
+  "role": "backup",
+  "capturedAt": "2026-08-31T23:16:29.619Z",
+  "rawHtmlBytes": 38624,
+  "cleanedTitle": "Apply for an immigrant visa | USAGov",
+  "cleanedWordCount": 26,
+  "screenshot": "/fixtures/usagov-visas.png"
+}

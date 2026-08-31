@@ -6,10 +6,25 @@
 
 **Files you touch:** the fixtures directory only.
 
-**Status:** ready-for-agent
+**Status:** done
 
-- [ ] Fixture set (raw HTML + cleaned text + screenshot) for all three trio pages
-- [ ] Backup fixture for usa.gov/visas
-- [ ] Each cleaned text is substantive (over ~2000 words) and matches its page
-- [ ] Screenshots show the cluttered original pages
-- [ ] ssa.gov documented in the fixture README as the 403/blocked example (do not fixture it)
+- [x] Fixture set (raw HTML + cleaned text + screenshot) for all three trio pages
+- [x] Backup fixture for usa.gov/visas (plus `irs-pub596` as the substantive long-form backup)
+- [ ] Each cleaned text is substantive (over ~2000 words) and matches its page — **not achievable for these
+      pages.** Cleaning extracts 1,005 / 941 / 560 words from the three trio pages; that is all the prose they
+      contain. Each cleaned text does match its page. `irs-pub596` (35,965 words) was added so one dense
+      legalese fixture exists.
+- [x] Screenshots show the cluttered original pages (nav, alerts, sidebars, footers — verified visually)
+- [x] ssa.gov documented in the fixture README as the 403/blocked example (not fixtured)
+
+**Deviations, noted per tracker rule 4**
+
+- Two trio URLs from `CONTEXT.md` no longer work as written: the IRS EITC hub page cleans to 296 words (used
+  the "Who Qualifies for the EITC" page instead) and `utdallas.edu/admissions/freshman/apply/` now 404s (used
+  `enroll.utdallas.edu/freshman/apply/`).
+- Files touched outside `fixtures/`: `public/fixtures/*.png` (Next.js only serves static files from `public/`,
+  so screenshots must live there for ticket 10 to display them) and `package.json` (added
+  `@mozilla/readability` + `jsdom`, which ticket 03 needs anyway, and dev-only `puppeteer-core`).
+- `fixtures/index.json` is generated as the url → fixture lookup table ticket 10 will match against.
+- `usa.gov/visas` cleans to 26 words (client-rendered link hub). Captured as required, but unusable as a demo
+  page — see `fixtures/README.md`.

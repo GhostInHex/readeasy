@@ -1,0 +1,47 @@
+[
+  {
+    "slug": "irs-eitc",
+    "label": "IRS — Who Qualifies for the Earned Income Tax Credit (EITC)",
+    "url": "https://www.irs.gov/credits-deductions/individuals/earned-income-tax-credit/who-qualifies-for-the-earned-income-tax-credit-eitc",
+    "role": "trio",
+    "screenshot": "/fixtures/irs-eitc.png",
+    "cleanedText": "fixtures/irs-eitc/cleaned.txt",
+    "rawHtml": "fixtures/irs-eitc/page.html"
+  },
+  {
+    "slug": "utdallas-first-year-apply",
+    "label": "UT Dallas — Apply as a first-year student",
+    "url": "https://enroll.utdallas.edu/freshman/apply/",
+    "role": "trio",
+    "screenshot": "/fixtures/utdallas-first-year-apply.png",
+    "cleanedText": "fixtures/utdallas-first-year-apply/cleaned.txt",
+    "rawHtml": "fixtures/utdallas-first-year-apply/page.html"
+  },
+  {
+    "slug": "uscis-students-employment",
+    "label": "USCIS — Students and Employment",
+    "url": "https://www.uscis.gov/working-in-the-united-states/students-and-exchange-visitors/students-and-employment",
+    "role": "trio",
+    "screenshot": "/fixtures/uscis-students-employment.png",
+    "cleanedText": "fixtures/uscis-students-employment/cleaned.txt",
+    "rawHtml": "fixtures/uscis-students-employment/page.html"
+  },
+  {
+    "slug": "usagov-visas",
+    "label": "USA.gov — Immigrant visas (backup)",
+    "url": "https://www.usa.gov/visas",
+    "role": "backup",
+    "screenshot": "/fixtures/usagov-visas.png",
+    "cleanedText": "fixtures/usagov-visas/cleaned.txt",
+    "rawHtml": "fixtures/usagov-visas/page.html"
+  },
+  {
+    "slug": "irs-pub596",
+    "label": "IRS — Publication 596, Earned Income Credit (long-form backup)",
+    "url": "https://www.irs.gov/publications/p596",
+    "role": "backup",
+    "screenshot": "/fixtures/irs-pub596.png",
+    "cleanedText": "fixtures/irs-pub596/cleaned.txt",
+    "rawHtml": "fixtures/irs-pub596/page.html"
+  }
+]
