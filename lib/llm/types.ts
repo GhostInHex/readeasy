@@ -8,6 +8,8 @@ export interface RestructureInput {
   /** Title recovered by Cleaning, when the page had one. */
   title?: string;
   variant: RestructureVariant;
+  /** Set on the single retry: the unusable answer from the first attempt. */
+  previousAttempt?: string;
 }
 
 /**

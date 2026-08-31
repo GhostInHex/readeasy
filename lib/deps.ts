@@ -1,4 +1,5 @@
 import { fetchPageHtml } from "@/lib/fetch-page";
+import { createOpenRouterClient } from "@/lib/llm/openrouter";
 import { createStubLlmClient } from "@/lib/llm/stub";
 import type { LlmClient } from "@/lib/llm/types";
 import type { TransformDeps } from "@/lib/transform";
@@ -6,11 +7,21 @@ import type { TransformDeps } from "@/lib/transform";
 let overrides: Partial<TransformDeps> | null = null;
 
 /**
- * Chooses the Restructure implementation. Ticket 04 adds the OpenRouter client here; until
- * then, and whenever no key is configured, the canned stub keeps the app usable.
+ * Chooses the Restructure implementation: OpenRouter when a key is configured, otherwise the
+ * canned stub so the app still runs (and so tests never need a key).
  */
-function defaultLlmClient(): LlmClient {
-  return createStubLlmClient();
+export function defaultLlmClient(): LlmClient {
+  const apiKey = process.env.OPENROUTER_API_KEY?.trim();
+
+  if (process.env.READEASY_LLM_MODE === "stub" || !apiKey) {
+    return createStubLlmClient();
+  }
+
+  return createOpenRouterClient({
+    apiKey,
+    model: process.env.OPENROUTER_MODEL,
+    appUrl: process.env.NEXT_PUBLIC_APP_URL
+  });
 }
 
 export function resolveTransformDeps(): TransformDeps {

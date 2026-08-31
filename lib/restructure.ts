@@ -10,14 +10,9 @@ export function truncateForModel(text: string): string {
   return text.length > MAX_RESTRUCTURE_CHARS ? `${text.slice(0, MAX_RESTRUCTURE_CHARS)}…` : text;
 }
 
-/**
- * Run the Restructure step: call the model, then parse and validate its JSON.
- * Malformed output surfaces as the error contract (ticket 04 adds the single retry).
- */
-export async function restructure(input: RestructureInput, llm: LlmClient): Promise<Restructured> {
-  let raw: string;
+async function callModel(input: RestructureInput, llm: LlmClient): Promise<string> {
   try {
-    raw = await llm.complete({ ...input, text: truncateForModel(input.text) });
+    return await llm.complete(input);
   } catch (error) {
     if (error instanceof TransformFailure) throw error;
     throw new TransformFailure({
@@ -26,6 +21,23 @@ export async function restructure(input: RestructureInput, llm: LlmClient): Prom
       hint: "Try Transform again in a moment. If it keeps failing, paste a shorter section of the page."
     });
   }
+}
 
-  return validateRestructured(parseRestructureJson(raw));
+/**
+ * Run the Restructure step: call the model, parse and validate its JSON, and on malformed
+ * output retry exactly once before falling through to the error contract.
+ */
+export async function restructure(input: RestructureInput, llm: LlmClient): Promise<Restructured> {
+  const request: RestructureInput = { ...input, text: truncateForModel(input.text) };
+
+  const first = await callModel(request, llm);
+  try {
+    return validateRestructured(parseRestructureJson(first));
+  } catch (error) {
+    if (!(error instanceof TransformFailure) || error.code !== "invalid_restructure") throw error;
+  }
+
+  // Exactly one retry, telling the model what was wrong with its first answer.
+  const second = await callModel({ ...request, previousAttempt: first }, llm);
+  return validateRestructured(parseRestructureJson(second));
 }

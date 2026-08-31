@@ -7,6 +7,7 @@ import { readFileSync } from "node:fs";
 import { after, afterEach, test } from "node:test";
 import { POST } from "@/app/api/transform/route";
 import { setTransformDepsForTests } from "@/lib/deps";
+import { TransformFailure } from "@/lib/errors";
 import { createStubLlmClient } from "@/lib/llm/stub";
 import type { LlmClient, RestructureInput } from "@/lib/llm/types";
 import type { TransformResponse } from "@/lib/types";
@@ -172,6 +173,65 @@ test("malformed Restructure output follows the error contract", async () => {
   assert.equal(status, 422);
   assert.ok("error" in payload);
   assert.equal(payload.error.code, "invalid_restructure");
+});
+
+test("malformed JSON triggers exactly one retry, and the retry's answer is used", async () => {
+  const good = JSON.stringify({
+    title: "Second try",
+    summary: "The retry answered with valid JSON.",
+    readingTimeMinutes: 3,
+    actionItems: [],
+    sections: [{ heading: "One", simplifiedText: "Plain text.", keyTakeaway: "It worked." }]
+  });
+
+  const { client, calls } = recordingLlm((input) => (input.previousAttempt ? good : "```not json```"));
+  setTransformDepsForTests({ fetchHtml: async () => IRS_FIXTURE_HTML, llm: client });
+
+  const { status, payload } = await postTransform({ url: IRS_URL });
+
+  assert.equal(status, 200);
+  assert.ok(!("error" in payload));
+  assert.equal(payload.restructured.title, "Second try");
+  assert.equal(calls.length, 2, "one call plus exactly one retry");
+  assert.equal(calls[0].previousAttempt, undefined);
+  assert.match(calls[1].previousAttempt ?? "", /not json/);
+});
+
+test("malformed JSON twice stops after the single retry and returns the error contract", async () => {
+  const { client, calls } = recordingLlm(() => "still not json");
+  setTransformDepsForTests({ fetchHtml: async () => IRS_FIXTURE_HTML, llm: client });
+
+  const { status, payload } = await postTransform({ url: IRS_URL });
+
+  assert.equal(status, 422);
+  assert.ok("error" in payload);
+  assert.equal(payload.error.code, "invalid_restructure");
+  assert.equal(calls.length, 2, "exactly one retry, then the error contract");
+});
+
+test("a failing Restructure service is not retried and reports its own error", async () => {
+  let calls = 0;
+  setTransformDepsForTests({
+    fetchHtml: async () => IRS_FIXTURE_HTML,
+    llm: {
+      name: "unauthorized",
+      async complete() {
+        calls += 1;
+        throw new TransformFailure({
+          code: "restructure_unauthorized",
+          message: "The rewriting service rejected ReadEasy's credentials.",
+          hint: "Check OPENROUTER_API_KEY."
+        });
+      }
+    }
+  });
+
+  const { status, payload } = await postTransform({ url: IRS_URL });
+
+  assert.notEqual(status, 500);
+  assert.ok("error" in payload);
+  assert.equal(payload.error.code, "restructure_unauthorized");
+  assert.equal(calls, 1, "credential failures are not retried");
 });
 
 test("schema-violating Restructure output follows the error contract", async () => {

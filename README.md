@@ -17,6 +17,7 @@ npm run dev        # http://localhost:3000
 npm run typecheck  # tsc --noEmit
 npm test           # node:test suites in tests/
 npm run build      # production build
+npm run verify:trio  # live-transform the Demo trio and schema-check every answer
 ```
 
 ## How it works

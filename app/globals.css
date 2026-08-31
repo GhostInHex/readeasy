@@ -223,3 +223,63 @@ button:disabled {
   padding: 0.6rem 0.8rem;
   margin: 0.75rem 0 0;
 }
+
+.actions-preview {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.75rem 1rem 1rem;
+  margin-bottom: 1.25rem;
+  background: #fbfbfd;
+}
+
+.actions-preview h4 {
+  margin: 0 0 0.5rem;
+}
+
+.actions-preview ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.actions-preview li {
+  display: flex;
+  gap: 0.5rem;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+
+.badge {
+  border-radius: 999px;
+  padding: 0.1rem 0.55rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border: 1px solid;
+  flex: none;
+}
+
+.badge-high {
+  background: #fdecea;
+  border-color: #e2a49a;
+  color: #8c2415;
+}
+
+.badge-medium {
+  background: #fff6e0;
+  border-color: #dfbe7c;
+  color: #7a5410;
+}
+
+.badge-low {
+  background: #eef6ee;
+  border-color: #a8c9ac;
+  color: #2c5731;
+}
+
+.deadline {
+  color: #8c2415;
+}
