@@ -283,3 +283,82 @@ button:disabled {
 .deadline {
   color: #8c2415;
 }
+
+/* --- Mode framework --- */
+
+.mode-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+}
+
+.mode-description {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin: 0.5rem 0 1rem;
+}
+
+.mode-body {
+  min-height: 8rem;
+}
+
+button.secondary {
+  background: var(--panel);
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 0.65rem 1.1rem;
+  border-radius: 0.5rem;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.coming-soon {
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  color: var(--muted);
+}
+
+.coming-soon p {
+  margin: 0.2rem 0;
+}
+
+/* --- Focus mode --- */
+
+.focus-step {
+  margin: 0 0 0.4rem;
+  font-weight: 600;
+}
+
+.progress-track {
+  background: var(--border);
+  border-radius: 999px;
+  height: 0.5rem;
+  overflow: hidden;
+}
+
+.progress-fill {
+  background: var(--accent);
+  height: 100%;
+  transition: width 150ms ease-out;
+}
+
+.focus-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  margin: 1rem 0;
+}
+
+.focus-card h4 {
+  margin-top: 0;
+  font-size: 1.2rem;
+}
+
+.focus-controls {
+  display: flex;
+  gap: 0.6rem;
+}

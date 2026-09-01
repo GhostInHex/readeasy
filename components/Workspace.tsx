@@ -9,6 +9,7 @@ import { isTransformError } from "@/lib/types";
 export default function Workspace() {
   const [busy, setBusy] = useState(false);
   const [result, setResult] = useState<TransformSuccess | null>(null);
+  const [source, setSource] = useState<TransformRequest | null>(null);
   const [error, setError] = useState<{ message: string; hint: string } | null>(null);
 
   async function transform(request: TransformRequest) {
@@ -24,8 +25,10 @@ export default function Workspace() {
       if (isTransformError(payload)) {
         setError({ message: payload.error.message, hint: payload.error.hint });
         setResult(null);
+        setSource(null);
       } else {
         setResult(payload);
+        setSource(request);
       }
     } catch {
       setError({
@@ -33,6 +36,7 @@ export default function Workspace() {
         hint: "Check your connection and try again, or paste the page text in the Raw text tab."
       });
       setResult(null);
+      setSource(null);
     } finally {
       setBusy(false);
     }
@@ -49,7 +53,7 @@ export default function Workspace() {
         </div>
       )}
 
-      <SplitView result={result} busy={busy} />
+      <SplitView result={result} busy={busy} source={source} />
     </>
   );
 }
