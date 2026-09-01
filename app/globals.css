@@ -193,28 +193,18 @@ button:disabled {
 
 .reading h3 {
   margin: 0 0 0.5rem;
-  font-size: 1.5rem;
+  font-size: 1.5em;
 }
 
 .summary {
-  font-size: 1.05rem;
+  font-size: 1.05em;
   margin: 0 0 0.35rem;
 }
 
 .reading-time {
   color: var(--muted);
   margin: 0 0 1.25rem;
-  font-size: 0.9rem;
-}
-
-.section {
-  border-top: 1px solid var(--border);
-  padding-top: 1rem;
-}
-
-.section h4 {
-  margin: 0 0 0.5rem;
-  font-size: 1.15rem;
+  font-size: 0.9em;
 }
 
 .takeaway {
@@ -227,7 +217,7 @@ button:disabled {
 .badge {
   border-radius: 999px;
   padding: 0.1rem 0.55rem;
-  font-size: 0.75rem;
+  font-size: 0.75em;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -265,7 +255,7 @@ button:disabled {
 
 .mode-description {
   color: var(--muted);
-  font-size: 0.9rem;
+  font-size: 0.9em;
   margin: 0.5rem 0 1rem;
 }
 
@@ -324,7 +314,7 @@ button.secondary {
 
 .focus-card h4 {
   margin-top: 0;
-  font-size: 1.2rem;
+  font-size: 1.2em;
 }
 
 .focus-controls {
@@ -358,12 +348,12 @@ button.secondary {
   padding: 1rem 1.25rem 1.25rem;
   letter-spacing: 0.03em;
   word-spacing: 0.12em;
-  line-height: 1.9;
+  line-height: calc(var(--reading-line) + 0.3);
   max-width: 62ch;
 }
 
 .mode-dyslexia h4 {
-  font-size: 1.2rem;
+  font-size: 1.2em;
   margin: 0 0 0.5rem;
 }
 
@@ -387,7 +377,7 @@ button.secondary {
   align-items: center;
   gap: 0.5rem;
   font-weight: 400;
-  font-size: 0.9rem;
+  font-size: 0.9em;
   margin-bottom: 1rem;
 }
 
@@ -400,7 +390,7 @@ button.secondary {
 
 .action-count {
   color: var(--muted);
-  font-size: 0.9rem;
+  font-size: 0.9em;
   margin: 0 0 0.75rem;
 }
 
@@ -439,7 +429,7 @@ button.secondary {
 .action-item label {
   margin: 0;
   font-weight: 500;
-  font-size: 1.05rem;
+  font-size: 1.05em;
   cursor: pointer;
 }
 
@@ -457,7 +447,7 @@ button.secondary {
   color: #8c2415;
   border-radius: 999px;
   padding: 0.1rem 0.6rem;
-  font-size: 0.85rem;
+  font-size: 0.85em;
   font-weight: 700;
 }
 
@@ -479,7 +469,7 @@ button.secondary {
 
 .listen-status {
   color: var(--muted);
-  font-size: 0.95rem;
+  font-size: 0.95em;
   margin: 0.75rem 0 1rem;
 }
 
@@ -494,6 +484,127 @@ button.secondary {
 .listen-outline .listen-now {
   color: var(--fg);
   font-weight: 600;
+}
+
+/* --- Cosmetic toggles ---
+   Everything a reader can adjust lives on .reading as two custom properties and a theme, so every
+   Mode inherits it without knowing the toggles exist. Sizes inside the reading view are in em. */
+
+.reading {
+  --reading-size: 1.05rem;
+  --reading-line: 1.6;
+  font-size: var(--reading-size);
+  line-height: var(--reading-line);
+  padding: 0.75rem;
+  border-radius: var(--radius);
+}
+
+.reading[data-text-size="s"] {
+  --reading-size: 0.9rem;
+}
+
+.reading[data-text-size="l"] {
+  --reading-size: 1.3rem;
+}
+
+.reading[data-spacing="wide"] {
+  --reading-line: 2.15;
+}
+
+.reading-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 0 0 1rem;
+  font-size: 0.85rem;
+}
+
+.toolbar-group {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.chip {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.25rem 0.7rem;
+  font: inherit;
+  cursor: pointer;
+  min-width: 2.2rem;
+}
+
+.chip-active {
+  background: var(--accent-soft);
+  color: var(--accent);
+  border-color: var(--accent);
+  font-weight: 700;
+}
+
+.size-s {
+  font-size: 0.8rem;
+}
+
+.size-m {
+  font-size: 1rem;
+}
+
+.size-l {
+  font-size: 1.25rem;
+}
+
+/* High-contrast dark theme, scoped to the reading view so the rest of the page is untouched. */
+.reading[data-theme="dark"] {
+  --fg: #f7f9fc;
+  --muted: #c6d0dd;
+  --panel: #191d24;
+  --border: #5a6474;
+  --accent: #8dc2ff;
+  --accent-soft: #1e2a3b;
+  background: #0c0e12;
+  color: var(--fg);
+}
+
+.reading[data-theme="dark"] button.primary {
+  color: #0c0e12;
+}
+
+.reading[data-theme="dark"] .badge-high {
+  background: #3d1811;
+  border-color: #b05a48;
+  color: #ffbcae;
+}
+
+.reading[data-theme="dark"] .badge-medium {
+  background: #3a2c0d;
+  border-color: #a8863a;
+  color: #ffdd9e;
+}
+
+.reading[data-theme="dark"] .badge-low {
+  background: #16301b;
+  border-color: #5e9068;
+  color: #b6e3bf;
+}
+
+.reading[data-theme="dark"] .deadline-chip {
+  background: #3d1811;
+  border-color: #b05a48;
+  color: #ffbcae;
+}
+
+.reading[data-theme="dark"] .action-done {
+  background: #12151b;
+}
+
+.reading[data-theme="dark"] .mode-dyslexia {
+  background: #14120b;
+  border-color: #4a4227;
+}
+
+.reading[data-theme="dark"] .mode-dyslexia .takeaway {
+  background: #241f12;
 }
 
 
