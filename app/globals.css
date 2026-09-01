@@ -241,6 +241,38 @@ button.link {
   font-size: 0.9em;
 }
 
+/* The measured before/after grade level, above the reading view. */
+.readability-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 1rem;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--panel);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.readability-badge[data-easier="yes"] {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.readability-badge strong {
+  color: var(--fg);
+}
+
+.readability-badge[data-easier="yes"] strong {
+  color: inherit;
+}
+
+.readability-arrow {
+  margin: 0 0.4rem;
+}
+
 .takeaway {
   background: var(--accent-soft);
   border-radius: 0.5rem;

@@ -1,5 +1,6 @@
 "use client";
 
+import ReadabilityBadge from "@/components/ReadabilityBadge";
 import ReadingView from "@/components/ReadingView";
 import type { TransformRequest, TransformSuccess } from "@/lib/types";
 
@@ -14,6 +15,9 @@ export default function RightPanel({ result, busy, source }: RightPanelProps) {
   return (
     <div className="panel panel-readeasy">
       <h2>ReadEasy version</h2>
+      {!busy && result && (
+        <ReadabilityBadge cleanedOriginal={result.cleanedOriginal} restructured={result.restructured} />
+      )}
       {busy && <p className="placeholder">Restructuring…</p>}
       {!busy && !result && <p className="placeholder">The accessible version will appear here.</p>}
       {!busy && result && <ReadingView restructured={result.restructured} source={source} />}
