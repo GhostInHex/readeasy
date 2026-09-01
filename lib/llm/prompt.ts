@@ -26,8 +26,12 @@ const SHARED_RULES = `Rules you must follow:
 
 const VARIANT_INSTRUCTIONS: Record<RestructureVariant, string> = {
   default: `Rewrite the page as 3 to 7 sections. Each simplifiedText is one to three short paragraphs.`,
-  // Ticket 11 (ADHD mode) replaces this with the micro-card variant.
-  adhd: `Rewrite the page as 3 to 7 sections. Each simplifiedText is one to three short paragraphs.`
+  adhd: `Rewrite the page as micro-cards: 6 to 14 cards, in page order, each holding exactly one idea.
+- Each simplifiedText is at most two short sentences. Never more. One sentence is better when it is enough.
+- heading is a label of 2 to 5 words for that one idea, not a sentence.
+- Mark the two or three words that matter most on each card by wrapping them in double asterisks, like **April 15** or **must apply**. Never wrap a whole sentence, and never use asterisks for anything else.
+- Cover the whole page. Splitting one topic across consecutive cards is expected; do not compress the page by leaving parts out.
+- keyTakeaway may be an empty string when the card's own sentences already say the whole idea.`
 };
 
 export const SYSTEM_PROMPT = `You are the restructuring step of ReadEasy, an accessibility reader. You reshape text that has already been extracted from a web page so that readers with dyslexia, ADHD, or low vision can use it. You are a rewriter, not an author: every fact in your output must come from the text you are given.`;

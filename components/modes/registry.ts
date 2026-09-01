@@ -14,7 +14,7 @@ export const MODES: ModeDefinition[] = [
   { id: "dyslexia", label: "Dyslexia", description: "Dyslexia-friendly font, warm tint, bolded word starts.", Renderer: DyslexiaMode },
   { id: "action", label: "Action", description: "Just what you have to do, and by when.", Renderer: ActionMode },
   { id: "listen", label: "Listen", description: "Have the page read aloud to you.", Renderer: ListenMode },
-  { id: "adhd", label: "ADHD", description: "Micro-cards: one idea per screen.", Renderer: AdhdMode }
+  { id: "adhd", label: "ADHD", description: "Micro-cards: one idea per screen, key words bolded.", Renderer: AdhdMode }
 ];
 
 export const DEFAULT_MODE_ID = MODES[0].id;

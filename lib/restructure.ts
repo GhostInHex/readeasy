@@ -32,12 +32,12 @@ export async function restructure(input: RestructureInput, llm: LlmClient): Prom
 
   const first = await callModel(request, llm);
   try {
-    return validateRestructured(parseRestructureJson(first));
+    return validateRestructured(parseRestructureJson(first), request.variant);
   } catch (error) {
     if (!(error instanceof TransformFailure) || error.code !== "invalid_restructure") throw error;
   }
 
   // Exactly one retry, telling the model what was wrong with its first answer.
   const second = await callModel({ ...request, previousAttempt: first }, llm);
-  return validateRestructured(parseRestructureJson(second));
+  return validateRestructured(parseRestructureJson(second), request.variant);
 }

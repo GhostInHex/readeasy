@@ -1,4 +1,6 @@
 import { TransformFailure } from "@/lib/errors";
+import type { RestructureVariant } from "@/lib/llm/types";
+import { toMicroCards } from "@/lib/microcards";
 import type { ActionItem, Restructured, Section, Urgency } from "@/lib/types";
 
 const URGENCIES: Urgency[] = ["high", "medium", "low"];
@@ -48,8 +50,12 @@ function validateActionItem(value: unknown, index: number): ActionItem | null {
  *   sections[{heading, simplifiedText, keyTakeaway}]}`
  *
  * Every Mode renders from this object, so anything missing fails here rather than in the UI.
+ *
+ * The shape is the same for every variant — Modes never learn a second contract. The `adhd`
+ * variant additionally has its sections re-chunked into micro-cards, so the two-sentence rule
+ * holds even when the model returns longer cards than it was asked for.
  */
-export function validateRestructured(value: unknown): Restructured {
+export function validateRestructured(value: unknown, variant: RestructureVariant = "default"): Restructured {
   if (typeof value !== "object" || value === null) invalid("response was not an object");
   const record = value as Record<string, unknown>;
 
@@ -72,7 +78,15 @@ export function validateRestructured(value: unknown): Restructured {
   const rawMinutes = Number(record.readingTimeMinutes);
   const readingTimeMinutes = Number.isFinite(rawMinutes) && rawMinutes > 0 ? Math.round(rawMinutes) : 1;
 
-  return { title, summary, readingTimeMinutes, actionItems, sections };
+  const cards = variant === "adhd" ? toMicroCards(sections) : sections;
+
+  return {
+    title,
+    summary,
+    readingTimeMinutes,
+    actionItems,
+    sections: cards.length ? cards : sections
+  };
 }
 
 /** Extract the JSON object from a model response that may be fenced or prefixed with prose. */

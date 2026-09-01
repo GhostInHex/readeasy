@@ -1,4 +1,5 @@
 import type { LlmClient, RestructureInput } from "@/lib/llm/types";
+import { splitSentences } from "@/lib/microcards";
 import type { ActionItem, Restructured, Section, Urgency } from "@/lib/types";
 import { estimateReadingTimeMinutes, firstSentences } from "@/lib/text";
 
@@ -58,6 +59,36 @@ function buildSections(text: string): Section[] {
 }
 
 /**
+ * Micro-cards for the `adhd` variant. The stub cannot judge which words matter, so it marks the
+ * numbers, dates and obligation words a reader scans for — enough to exercise the emphasis path
+ * offline. `**` is the same key-word marker the real prompt asks for.
+ */
+const KEY_WORD =
+  /\b(?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2}(?:,\s*\d{4})?|\b\d[\d,./-]*\b|\b(?:must|required|deadline|no later than|apply|submit|file)\b/gi;
+
+const MAX_STUB_CARDS = 12;
+
+function markKeyWords(text: string): string {
+  let marked = 0;
+  return text.replace(KEY_WORD, (hit) => (marked++ < 3 ? `**${hit}**` : hit));
+}
+
+function buildMicroCards(text: string): Section[] {
+  const sentences = splitSentences(text);
+  const cards: Section[] = [];
+
+  for (let index = 0; index < sentences.length && cards.length < MAX_STUB_CARDS; index += 2) {
+    cards.push({
+      heading: `Idea ${cards.length + 1}`,
+      simplifiedText: markKeyWords(sentences.slice(index, index + 2).join(" ")),
+      keyTakeaway: ""
+    });
+  }
+
+  return cards.length ? cards : buildSections(text);
+}
+
+/**
  * The canned Restructure stub. It performs no AI work: it reflows the cleaned text so the
  * response contract and every Mode renderer can be exercised without a network call. Used
  * by tests, and as the fallback when no OpenRouter key is configured.
@@ -71,7 +102,7 @@ export function createStubLlmClient(): LlmClient {
         summary: firstSentences(input.text, 2),
         readingTimeMinutes: estimateReadingTimeMinutes(input.text),
         actionItems: buildActionItems(input.text),
-        sections: buildSections(input.text)
+        sections: input.variant === "adhd" ? buildMicroCards(input.text) : buildSections(input.text)
       };
       return JSON.stringify(stub);
     }
