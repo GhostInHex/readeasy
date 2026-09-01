@@ -362,3 +362,68 @@ button.secondary {
   display: flex;
   gap: 0.6rem;
 }
+
+/* --- Dyslexia mode --- */
+
+/* Vendored so the demo works offline; OFL licence in public/fonts/. */
+@font-face {
+  font-family: "OpenDyslexic";
+  src: local("OpenDyslexic"), url("/fonts/opendyslexic-400.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "OpenDyslexic";
+  src: local("OpenDyslexic Bold"), url("/fonts/opendyslexic-700.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+
+/* Everything below is scoped to this mode, so switching away restores the default view. */
+.mode-dyslexia {
+  font-family: "OpenDyslexic", Verdana, Tahoma, sans-serif;
+  background: #fdf6e3;
+  border: 1px solid #e8dcbe;
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem 1.25rem;
+  letter-spacing: 0.03em;
+  word-spacing: 0.12em;
+  line-height: 1.9;
+  max-width: 62ch;
+}
+
+.mode-dyslexia h4 {
+  font-size: 1.2rem;
+  margin: 0 0 0.5rem;
+}
+
+.mode-dyslexia p {
+  margin: 0 0 0.9rem;
+}
+
+.mode-dyslexia .takeaway {
+  background: #f6ead0;
+  margin-bottom: 0;
+}
+
+.dyslexia-section + .dyslexia-section {
+  border-top: 1px solid #e8dcbe;
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+}
+
+.switch {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 400;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.switch input {
+  width: auto;
+  accent-color: var(--accent);
+}
+
