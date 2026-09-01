@@ -470,4 +470,30 @@ button.secondary {
   text-decoration: line-through;
 }
 
+/* --- Listen mode --- */
+
+.listen-controls {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.listen-status {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin: 0.75rem 0 1rem;
+}
+
+.listen-outline {
+  margin: 0;
+  padding-left: 1.4rem;
+  display: grid;
+  gap: 0.4rem;
+  color: var(--muted);
+}
+
+.listen-outline .listen-now {
+  color: var(--fg);
+  font-weight: 600;
+}
+
 
