@@ -1,0 +1,70 @@
+/**
+ * Reading-level pills.
+ *
+ * Scoped to this module so the feature carries its own look: every value is a design token with the
+ * token's own value as the fallback, which keeps the pills correct whether or not the token layer is
+ * present. They read as the same family as the text-size and spacing chips beside them — the reader
+ * should see one row of controls, not two designs.
+ */
+
+.group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-1, 0.25rem);
+}
+
+.label {
+  color: var(--ink-soft, #5c5348);
+  margin-right: var(--space-1, 0.25rem);
+}
+
+.pill {
+  background: transparent;
+  color: var(--ink-soft, #5c5348);
+  border: 1px solid var(--line-strong, #948a7a);
+  border-radius: var(--radius-pill, 999px);
+  padding: var(--space-1, 0.25rem) 0.7rem;
+  font: inherit;
+  cursor: pointer;
+  transition: background var(--duration, 220ms) var(--ease, cubic-bezier(0.16, 1, 0.3, 1)),
+    color var(--duration, 220ms) var(--ease, cubic-bezier(0.16, 1, 0.3, 1)),
+    border-color var(--duration, 220ms) var(--ease, cubic-bezier(0.16, 1, 0.3, 1));
+}
+
+.pill:hover:not(.pillActive) {
+  border-color: var(--accent, #22406a);
+  color: var(--accent, #22406a);
+}
+
+/* Stated here as well as globally: this module should not depend on another ticket's stylesheet for
+   the one affordance a keyboard reader navigates by. */
+.pill:focus-visible {
+  outline: 3px solid var(--accent, #22406a);
+  outline-offset: 2px;
+}
+
+.pillActive {
+  background: var(--accent-soft, #e3e9f0);
+  color: var(--accent, #22406a);
+  border-color: var(--accent, #22406a);
+  font-weight: 700;
+}
+
+/* The pill being fetched. A dashed edge rather than a spinner or a fade: no motion to distract, and
+   no drop in contrast for the reader who needs it most. */
+.pill[aria-busy="true"] {
+  border-style: dashed;
+}
+
+.status {
+  flex-basis: 100%;
+  margin: var(--space-1, 0.25rem) 0 0;
+  color: var(--ink-soft, #5c5348);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pill {
+    transition: none;
+  }
+}

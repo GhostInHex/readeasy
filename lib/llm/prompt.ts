@@ -1,4 +1,5 @@
 import type { RestructureInput, RestructureVariant } from "@/lib/llm/types";
+import { DEFAULT_READING_LEVEL, type ReadingLevel } from "@/lib/types";
 
 /** The exact JSON contract the model must answer with. Mirrored by `validateRestructured`. */
 export const RESTRUCTURE_SCHEMA_TEXT = `{
@@ -36,10 +37,32 @@ const VARIANT_INSTRUCTIONS: Record<RestructureVariant, string> = {
 
 export const SYSTEM_PROMPT = `You are the restructuring step of ReadEasy, an accessibility reader. You reshape text that has already been extracted from a web page so that readers with dyslexia, ADHD, or low vision can use it. You are a rewriter, not an author: every fact in your output must come from the text you are given.`;
 
+/**
+ * Reading level rules, added on top of the shared rules. The standard level adds nothing, so the
+ * prompt every page has always been restructured with is unchanged.
+ *
+ * The last rule is the one that matters most: a page rewritten at the simpler level still has to
+ * carry every requirement, date and amount the original stated. Easier words, not less page — a
+ * reader who is given the simpler version because they need it is the reader who can least afford a
+ * dropped deadline.
+ */
+const READING_LEVEL_RULES: Record<ReadingLevel, string> = {
+  standard: "",
+  simpler: `This reader asked for the simpler level, so also follow these rules:
+- Write simpler than the grade 5 level asked for above: aim at roughly a US grade 3 level. Keep sentences under about 12 words, and one idea to a sentence.
+- Use the plainest everyday word that still means the same thing. Copy names, numbers, dates, amounts, and form or office names exactly as the page writes them.
+- If a word may be new to the reader, say what it means in the same sentence or the next one, using only what the page itself says.
+- Write to the reader as "you", and put the doing word early: "You must send the form", not "The form must be submitted".
+- Keep paragraphs to two or three sentences.
+- Keep every requirement, deadline, and amount the page states. Simpler means easier words, never less of the page.`
+};
+
 export function buildUserPrompt(input: RestructureInput): string {
+  const levelRules = READING_LEVEL_RULES[input.level ?? DEFAULT_READING_LEVEL];
+
   return `${VARIANT_INSTRUCTIONS[input.variant]}
 
-${SHARED_RULES}
+${SHARED_RULES}${levelRules ? `\n\n${levelRules}` : ""}
 
 Return JSON in exactly this shape:
 ${RESTRUCTURE_SCHEMA_TEXT}

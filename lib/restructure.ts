@@ -1,13 +1,33 @@
 import { TransformFailure } from "@/lib/errors";
 import type { LlmClient, RestructureInput } from "@/lib/llm/types";
 import { parseRestructureJson, validateRestructured } from "@/lib/schema";
-import type { Restructured } from "@/lib/types";
+import { DEFAULT_READING_LEVEL, type ReadingLevel, type Restructured } from "@/lib/types";
 
 /** Ceiling on the text handed to the model, so long publications stay inside the context window. */
 export const MAX_RESTRUCTURE_CHARS = 24_000;
 
 export function truncateForModel(text: string): string {
   return text.length > MAX_RESTRUCTURE_CHARS ? `${text.slice(0, MAX_RESTRUCTURE_CHARS)}…` : text;
+}
+
+/**
+ * Pin the rewriting boundary to a reading level.
+ *
+ * The level changes only how the model is asked to write, so it belongs to the client rather than to
+ * the pipeline around it: the route composes it onto the client it hands to `runTransform`, and every
+ * layer in between — Cleaning, fetching, the retry, the schema gate — stays unaware that levels
+ * exist. The standard level returns the client untouched, so the default path is exactly the request
+ * it was before.
+ */
+export function withReadingLevel(llm: LlmClient, level: ReadingLevel): LlmClient {
+  if (level === DEFAULT_READING_LEVEL) {
+    return llm;
+  }
+
+  return {
+    name: `${llm.name}+${level}`,
+    complete: (input) => llm.complete({ ...input, level })
+  };
 }
 
 async function callModel(input: RestructureInput, llm: LlmClient): Promise<string> {

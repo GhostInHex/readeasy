@@ -1,4 +1,4 @@
-import type { Restructured } from "@/lib/types";
+import type { ReadingLevel, Restructured } from "@/lib/types";
 
 export type RestructureVariant = "default" | "adhd";
 
@@ -8,6 +8,12 @@ export interface RestructureInput {
   /** Title recovered by Cleaning, when the page had one. */
   title?: string;
   variant: RestructureVariant;
+  /**
+   * Reading level to write at. Absent means the standard level, so the default prompt is unchanged.
+   * Orthogonal to `variant`: the variant decides the shape of the output, the level decides how hard
+   * the words are.
+   */
+  level?: ReadingLevel;
   /** Set on the single retry: the unusable answer from the first attempt. */
   previousAttempt?: string;
 }
