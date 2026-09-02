@@ -1,6 +1,6 @@
 "use client";
 
-import type { LineSpacing, ReadingPreferences, TextSize, Theme } from "@/lib/preferences";
+import type { LineSpacing, ReadingPreferences, TextSize } from "@/lib/preferences";
 
 interface ReadingToolbarProps {
   preferences: ReadingPreferences;
@@ -18,14 +18,13 @@ const SPACINGS: { value: LineSpacing; label: string }[] = [
   { value: "wide", label: "Wide" }
 ];
 
-const THEMES: { value: Theme; label: string }[] = [
-  { value: "light", label: "Light" },
-  { value: "dark", label: "High contrast" }
-];
-
 /**
- * Cosmetic controls for the reading view: text size, line spacing, theme. Pure CSS variables —
- * they change how the text looks, never what it says, and they apply to every Mode.
+ * Cosmetic controls for the reading view: text size and line spacing. Pure CSS variables — they
+ * change how the text looks, never what it says, and they apply to every Mode.
+ *
+ * Theme is deliberately not here. It belongs to the whole page, not just this panel, so it lives in
+ * the header where a light-sensitive reader reaches it before transforming anything. Both controls
+ * write the same shared preference, so there is no second place for the setting to disagree.
  */
 export default function ReadingToolbar({ preferences, onChange }: ReadingToolbarProps) {
   return (
@@ -56,20 +55,6 @@ export default function ReadingToolbar({ preferences, onChange }: ReadingToolbar
             onClick={() => onChange({ spacing: spacing.value })}
           >
             {spacing.label}
-          </button>
-        ))}
-      </div>
-
-      <div className="toolbar-group" role="group" aria-label="Theme">
-        {THEMES.map((theme) => (
-          <button
-            key={theme.value}
-            type="button"
-            aria-pressed={preferences.theme === theme.value}
-            className={preferences.theme === theme.value ? "chip chip-active" : "chip"}
-            onClick={() => onChange({ theme: theme.value })}
-          >
-            {theme.label}
           </button>
         ))}
       </div>

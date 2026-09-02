@@ -68,7 +68,9 @@ test("every contract token is defined in the light theme", () => {
 });
 
 test("the dark theme redefines every colour token, so no light value leaks through", () => {
-  const colours = CONTRACT.filter((name) => /^--(bg|surface|ink|accent)/.test(name));
+  const colours = Object.keys(LIGHT).filter((name) =>
+    /^--(bg|surface|ink|accent|line|paper|notice|signal|dyslexia|done)/.test(name)
+  );
   for (const name of colours) {
     assert.ok(DARK[name], `[data-theme="dark"] is missing ${name}`);
     assert.notEqual(DARK[name], LIGHT[name], `${name} is identical in both themes`);
@@ -93,18 +95,26 @@ test("Atkinson Hyperlegible leads the body stack and OpenDyslexic is untouched",
   assert.match(GLOBALS, /opendyslexic-700\.woff2/);
 });
 
-test("the global stylesheet holds no colour literal — every colour comes from a token", () => {
-  const literals = GLOBALS.match(/#[0-9a-fA-F]{3,8}\b/g);
-  assert.equal(literals, null, `globals.css still hardcodes ${literals?.join(", ")}`);
+test("the global stylesheet holds no colour literal except the theme swatches", () => {
+  const literals = GLOBALS.match(/#[0-9a-fA-F]{3,8}\b/g) ?? [];
+  // The theme switch shows a chip of the theme it switches TO, which is by definition not the theme
+  // currently in the variables. Those two grounds are the only literals allowed anywhere.
+  const allowed = new Set([LIGHT["--bg"].toLowerCase(), DARK["--bg"].toLowerCase()]);
+  const stray = literals.filter((value) => !allowed.has(value.toLowerCase()));
+  assert.deepEqual(stray, [], `globals.css hardcodes ${stray.join(", ")}`);
 });
 
 /** Body text, secondary text, and link text in both themes. */
 const TEXT_PAIRS: [string, string, string][] = [
   ["--ink", "--bg", "body text on the page"],
+  ["--ink", "--bg-deep", "body text in the header"],
   ["--ink", "--surface", "body text on a card"],
   ["--ink-soft", "--bg", "secondary text on the page"],
+  ["--ink-soft", "--bg-deep", "the footer's text"],
   ["--ink-soft", "--surface", "secondary text on a card"],
+  ["--ink-cold", "--paper-cold", "the original page's own text"],
   ["--accent", "--bg", "link text on the page"],
+  ["--accent", "--bg-deep", "the wordmark in the header"],
   ["--accent", "--surface", "link text on a card"],
   ["--accent", "--accent-soft", "accent text on an accent pill"],
   ["--ink", "--accent-soft", "body text on a takeaway"],

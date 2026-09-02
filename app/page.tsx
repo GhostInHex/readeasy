@@ -1,17 +1,22 @@
+import Hero from "@/components/Hero";
+import SiteHeader from "@/components/SiteHeader";
+import ReadingPreferencesProvider from "@/components/ReadingPreferencesProvider";
 import Workspace from "@/components/Workspace";
 
 export default function Home() {
   return (
-    <main className="page">
-      <header className="hero">
-        <h1>ReadEasy</h1>
-        <p className="tagline">ReadEasy — the web, made readable for every reader.</p>
-        <p className="lede">
-          Paste a page link, or the page text itself. ReadEasy clears away the clutter and rewrites what is
-          left in plain language, with deadlines pulled out into a simple checklist.
+    <ReadingPreferencesProvider>
+      <SiteHeader />
+      <main className="page">
+        <Hero />
+        <Workspace />
+      </main>
+      <footer className="site-footer">
+        <p>
+          ReadEasy never invents facts. Every sentence it shows you is a rewrite of something the original page
+          already said.
         </p>
-      </header>
-      <Workspace />
-    </main>
+      </footer>
+    </ReadingPreferencesProvider>
   );
 }

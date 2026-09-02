@@ -16,11 +16,19 @@
  */
 
 :root {
-  /* Ground and ink. Cream is the page, surface is anything raised off it. */
+  /* Ground and ink. Cream is the page, surface is anything raised off it, bg-deep is the recessed
+     field the header and footer sit in. */
   --bg: #fbf6ec;
+  --bg-deep: #f2eada;
   --surface: #fffcf5;
   --ink: #231e19;         /* 15.34:1 on --bg */
   --ink-soft: #5c5348;    /* 7.00:1 on --bg — tinted from the ground, never grey */
+
+  /* The before/after comparison is this product's whole claim, so the two sides are made of
+     different paper: cold grey stock for the original, the warm ground for ours. This is the one
+     place a neutral belongs in a warm palette — it is carrying the argument, not filling space. */
+  --paper-cold: #efeeea;
+  --ink-cold: #44443f;    /* 8.43:1 on --paper-cold */
 
   /* One accent: ink blue, the colour of a fountain pen on warm paper. */
   --accent: #22406a;      /* 9.70:1 on --bg */
@@ -63,9 +71,23 @@
   --radius-sm: 0.5rem;
   --radius-pill: 999px;
 
+  /* Type scale. Display sizes are fluid so the hero holds its proportion from 360px to 1440px
+     without a breakpoint; body sizes stay fixed, because a reader who set their browser text size
+     larger should get exactly that. */
+  --text-display: clamp(2.5rem, 1.9rem + 3vw, 4.25rem);
+  --text-title: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --text-lede: clamp(1.05rem, 1rem + 0.4vw, 1.25rem);
+  --text-body: 1rem;
+  --text-small: 0.9rem;
+  --text-label: 0.78rem; /* uppercase, tracked — see .panel h2 */
+
   /* Faces arrive as --font-atkinson / --font-literata from next/font in app/layout.tsx. */
   --font-body: var(--font-atkinson), "Atkinson Hyperlegible", Verdana, system-ui, sans-serif;
   --font-heading: var(--font-literata), "Literata", Georgia, "Times New Roman", serif;
+
+  /* One motion grammar. Exponential ease-out, from an already-visible default. */
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration: 220ms;
 }
 
 /**
@@ -79,9 +101,13 @@
  */
 [data-theme="light"] {
   --bg: #fbf6ec;
+  --bg-deep: #f2eada;
   --surface: #fffcf5;
   --ink: #231e19;
   --ink-soft: #5c5348;
+
+  --paper-cold: #efeeea;
+  --ink-cold: #44443f;
 
   --accent: #22406a;
   --accent-soft: #e3e9f0;
@@ -114,9 +140,13 @@
  */
 [data-theme="dark"] {
   --bg: #14120f;
+  --bg-deep: #100e0c;
   --surface: #1e1b17;
   --ink: #f4efe5;         /* 16.32:1 on --bg */
   --ink-soft: #c3b9aa;    /* 9.65:1 on --bg */
+
+  --paper-cold: #1d1d20;
+  --ink-cold: #c8c8ce;    /* 10.10:1 on --paper-cold */
 
   --accent: #9dbbde;      /* 9.43:1 on --bg */
   --accent-soft: #1e2a3a;

@@ -4,7 +4,7 @@ import { useState } from "react";
 import ModeBar from "@/components/ModeBar";
 import ReadingToolbar from "@/components/ReadingToolbar";
 import { DEFAULT_MODE_ID, findMode } from "@/components/modes/registry";
-import { useReadingPreferences } from "@/components/useReadingPreferences";
+import { useReadingPreferences } from "@/components/ReadingPreferencesProvider";
 import { preferenceAttributes } from "@/lib/preferences";
 import type { Restructured, TransformRequest } from "@/lib/types";
 

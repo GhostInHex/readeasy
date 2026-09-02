@@ -46,22 +46,234 @@ h4 {
   border: 0;
 }
 
+/* --- Shell: header, page, footer --- */
+
+/* Sticky, because the theme switch is an accessibility control: a reader whose eyes start to hurt
+   two screens down should not have to scroll back up to fix it. Opaque, so nothing behind it
+   degrades the contrast. */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  padding: var(--space-4) var(--space-5);
+  background: var(--bg-deep);
+  border-bottom: 1px solid var(--line);
+}
+
+.wordmark {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.wordmark-easy {
+  color: var(--accent);
+}
+
+/* The theme switch. Two options rather than one toggle, so a label never has to mean both the
+   current state and the next one. */
+.theme-switch {
+  display: flex;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-pill);
+  padding: 0.15rem;
+  background: var(--surface);
+}
+
+.theme-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.8rem;
+  border: none;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--ink-soft);
+  font: inherit;
+  font-size: var(--text-small);
+  cursor: pointer;
+  transition: background var(--duration) var(--ease), color var(--duration) var(--ease);
+}
+
+.theme-option-active {
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* A literal chip of each theme's ground, so the choice is visible before it is read. These two are
+   the only hardcoded colours in the app: a swatch must show the theme it switches to, which is by
+   definition not the theme currently in the variables. */
+.theme-swatch {
+  width: 0.85rem;
+  height: 0.85rem;
+  border-radius: 50%;
+  border: 1px solid var(--line-strong);
+}
+
+.theme-swatch[data-theme-preview="light"] {
+  background: #fbf6ec;
+}
+
+.theme-swatch[data-theme-preview="dark"] {
+  background: #14120f;
+}
+
 .page {
   display: grid;
-  gap: var(--space-5);
-  padding: var(--space-6) var(--space-5) var(--space-7);
+  gap: var(--space-7);
+  padding: var(--space-7) var(--space-5);
   max-width: 1180px;
   margin: 0 auto;
 }
 
+.site-footer {
+  background: var(--bg-deep);
+  border-top: 1px solid var(--line);
+  padding: var(--space-5);
+  margin-top: var(--space-6);
+}
+
+.site-footer p {
+  max-width: 68ch;
+  margin: 0 auto;
+  color: var(--ink-soft);
+  font-size: var(--text-small);
+  text-align: center;
+}
+
+/* --- Landing hero: the before/after argument, at full scale --- */
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: var(--space-6);
+  align-items: center;
+}
+
 .hero h1 {
-  font-size: 2.5rem;
+  font-family: var(--font-heading);
+  font-size: var(--text-display);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  margin: 0 0 var(--space-4);
+  text-wrap: balance;
+  /* The measure keeps the display line from running long on wide screens; balance then breaks it
+     evenly rather than leaving one orphaned word. */
+  max-width: 18ch;
+}
+
+.hero-lede {
+  color: var(--ink-soft);
+  font-size: var(--text-lede);
+  max-width: 46ch;
+  margin: 0 0 var(--space-5);
+}
+
+.hero-affordances {
+  list-style: none;
   margin: 0;
-  letter-spacing: -0.02em;
+  padding: 0;
+  display: grid;
+  gap: var(--space-2);
+  font-size: var(--text-small);
+  color: var(--ink-soft);
+}
+
+.hero-affordances li {
+  display: flex;
+  gap: var(--space-3);
+  align-items: baseline;
+}
+
+/* Drawn, not a unicode glyph: a short rule in the accent, the same mark the progress fill uses. */
+.hero-affordances li::before {
+  content: "";
+  flex: none;
+  width: var(--space-4);
+  height: 2px;
+  background: var(--accent);
+  transform: translateY(-0.3em);
+}
+
+/* The proof is two sheets of different paper, offset like pages on a desk. */
+.hero-proof {
+  margin: 0;
+  display: grid;
+  gap: var(--space-3);
+}
+
+.proof-pane {
+  border-radius: var(--radius);
+  padding: var(--space-4) var(--space-5);
+  border: 1px solid var(--line);
+}
+
+.proof-before {
+  background: var(--paper-cold);
+  color: var(--ink-cold);
+  transform: rotate(-0.35deg);
+}
+
+.proof-after {
+  background: var(--accent-soft);
+  color: var(--ink);
+  transform: rotate(0.35deg);
+  margin-left: var(--space-5);
+  border-color: var(--accent);
+}
+
+.proof-label {
+  font-size: var(--text-label);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  margin: 0 0 var(--space-2);
+  opacity: 0.75;
+}
+
+.proof-text {
+  margin: 0;
+  font-size: var(--text-lede);
+  line-height: 1.5;
+}
+
+.proof-before .proof-text {
+  /* The original's own register: dense, unbroken, hard to scan. */
+  line-height: 1.4;
+}
+
+.proof-meta {
+  margin: var(--space-3) 0 0;
+  font-size: var(--text-small);
+  font-weight: 600;
+}
+
+.proof-after .proof-meta {
+  color: var(--accent);
+}
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+
+  .proof-after {
+    margin-left: 0;
+  }
 }
 
 .tagline {
-  font-size: 1.15rem;
+  font-size: var(--text-lede);
   margin: var(--space-1) 0 var(--space-3);
 }
 
@@ -79,9 +291,12 @@ h4 {
   background: var(--surface);
 }
 
+/* The transform box is where the product starts, so it reads as the primary object on the page. */
 .input-card {
   display: grid;
   gap: var(--space-3);
+  padding: var(--space-5) var(--space-5) var(--space-6);
+  border-color: var(--line-strong);
 }
 
 .tabs {
@@ -97,6 +312,8 @@ h4 {
   padding: 0.4rem var(--space-4);
   font: inherit;
   cursor: pointer;
+  transition: background var(--duration) var(--ease), color var(--duration) var(--ease),
+    border-color var(--duration) var(--ease);
 }
 
 .tab-active {
@@ -121,6 +338,12 @@ textarea {
   font: inherit;
   background: var(--surface);
   color: var(--ink);
+  transition: border-color var(--duration) var(--ease);
+}
+
+input:hover,
+textarea:hover {
+  border-color: var(--accent);
 }
 
 textarea {
@@ -129,7 +352,7 @@ textarea {
 
 .hint {
   color: var(--ink-soft);
-  font-size: 0.9rem;
+  font-size: var(--text-small);
   margin: 0.4rem 0 0;
 }
 
@@ -137,28 +360,43 @@ button.primary {
   background: var(--accent);
   color: var(--accent-ink);
   padding: var(--space-3) var(--space-5);
-  border: none;
+  border: 1px solid var(--accent);
   border-radius: var(--radius-sm);
   font: inherit;
   font-weight: 600;
   cursor: pointer;
   justify-self: start;
+  transition: transform var(--duration) var(--ease), box-shadow var(--duration) var(--ease);
 }
 
-/* Disabled controls: dim the surface, not the label. `opacity` on the whole button drags the label
-   down with it, and a 0.55-alpha label on a 0.55-alpha fill lands at 3:1 — below the 4.5:1 this
-   audience needs. Recolouring keeps the label at full strength: 9.55:1 light, 8.40:1 dark. The
-   difference from an enabled button is the flat, colourless fill, not faded text. */
+button.primary:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 var(--space-1) var(--space-3) color-mix(in srgb, var(--accent) 28%, transparent);
+}
+
+button.primary:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Disabled controls stay filled, just colourless. Two failures to avoid: `opacity` on the whole
+   button drags the label down with it (a 0.55-alpha label on a 0.55-alpha fill lands at 3:1, below
+   the 4.5:1 this audience needs), and an unfilled outline reads as an empty input rather than a
+   button — on mobile, where the primary is full width, it looked exactly like the URL field above it.
+   A flat sand fill keeps the button shape and the label at 9.55:1 light, 8.40:1 dark. */
 button:disabled {
   background: var(--line);
-  border-color: var(--line);
+  border: 1px solid var(--line-strong);
   color: var(--ink);
   cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
 button.secondary:disabled,
 button.link:disabled {
   background: transparent;
+  border-color: var(--line-strong);
   color: var(--ink-soft);
 }
 
@@ -188,6 +426,8 @@ button.link:disabled {
   color: var(--ink-soft);
 }
 
+/* The split view is the product's argument, so the two halves are made of different paper — the same
+   material distinction the hero sets up. Neither is decoration: a reader compares them. */
 .split {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -195,12 +435,33 @@ button.link:disabled {
   align-items: flex-start;
 }
 
+.panel-original {
+  background: var(--paper-cold);
+  color: var(--ink-cold);
+}
+
+.panel-original .placeholder,
+.panel-original .original-text {
+  color: var(--ink-cold);
+}
+
 .panel h2 {
   margin-top: 0;
-  font-size: 1.1rem;
+  margin-bottom: var(--space-4);
+  font-family: var(--font-body);
+  font-size: var(--text-label);
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.09em;
   color: var(--ink-soft);
+}
+
+.panel-original h2 {
+  color: var(--ink-cold);
+}
+
+.panel-readeasy h2 {
+  color: var(--accent);
 }
 
 .placeholder {
@@ -210,7 +471,7 @@ button.link:disabled {
 .original-text {
   white-space: pre-wrap;
   font-family: inherit;
-  font-size: 0.95rem;
+  font-size: var(--text-small);
   max-height: 70vh;
   overflow-y: auto;
   margin: 0;
@@ -235,8 +496,8 @@ button.link:disabled {
 
 .original-shot figcaption,
 .shot-switch {
-  color: var(--ink-soft);
-  font-size: 0.9rem;
+  color: var(--ink-cold);
+  font-size: var(--text-small);
   margin: var(--space-2) 0 0;
 }
 
@@ -252,8 +513,12 @@ button.link {
 }
 
 .reading h3 {
+  font-family: var(--font-heading);
   margin: 0 0 var(--space-2);
-  font-size: 1.5em;
+  font-size: 1.6em;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
 }
 
 .summary {
@@ -278,7 +543,7 @@ button.link {
   border-radius: var(--radius-pill);
   background: var(--surface);
   color: var(--ink-soft);
-  font-size: 0.9rem;
+  font-size: var(--text-small);
 }
 
 .readability-badge[data-easier="yes"] {
@@ -299,11 +564,14 @@ button.link {
   margin: 0 0.4rem;
 }
 
+/* The key takeaway is the one line a reader must not miss, so it carries the accent field and a rule
+   in the accent itself — the same mark the hero's affordance list uses. */
 .takeaway {
   background: var(--accent-soft);
   border-radius: var(--radius-sm);
-  padding: 0.6rem 0.8rem;
-  margin: var(--space-3) 0 0;
+  padding: var(--space-3) var(--space-4);
+  margin: var(--space-4) 0 0;
+  border-top: 2px solid var(--accent);
 }
 
 .badge {
@@ -364,6 +632,11 @@ button.secondary {
   font: inherit;
   font-weight: 600;
   cursor: pointer;
+  transition: background var(--duration) var(--ease);
+}
+
+button.secondary:hover:not(:disabled) {
+  background: var(--accent-soft);
 }
 
 .coming-soon {
@@ -394,19 +667,24 @@ button.secondary {
 .progress-fill {
   background: var(--accent);
   height: 100%;
-  transition: width 150ms ease-out;
+  transition: width var(--duration) var(--ease);
 }
 
+/* The one card on screen in Focus mode carries the reading; it gets the surface and the space. */
 .focus-card {
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  padding: var(--space-4) var(--space-5);
+  padding: var(--space-5);
   margin: var(--space-4) 0;
+  background: var(--surface);
 }
 
 .focus-card h4 {
+  font-family: var(--font-heading);
   margin-top: 0;
-  font-size: 1.2em;
+  margin-bottom: var(--space-3);
+  font-size: 1.25em;
+  line-height: 1.25;
 }
 
 .focus-controls {
@@ -626,6 +904,13 @@ button.secondary {
   font: inherit;
   cursor: pointer;
   min-width: 2.2rem;
+  transition: background var(--duration) var(--ease), color var(--duration) var(--ease),
+    border-color var(--duration) var(--ease);
+}
+
+.chip:hover:not(.chip-active) {
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 .chip-active {
@@ -653,4 +938,63 @@ button.secondary {
 .reading {
   background: var(--surface);
   color: var(--ink);
+}
+
+/* --- Motion ---
+   One authored moment: the transformed page arrives. Everything else is a state change on a control,
+   already covered by its own transition. The default is visible, so a reader who blocks animation
+   loses nothing, and the reveal is short enough not to delay the reading. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(var(--space-3));
+  }
+}
+
+.reading {
+  animation: rise 400ms var(--ease) both;
+}
+
+.readability-badge {
+  animation: rise 400ms var(--ease) 60ms both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* --- Mobile --- */
+
+@media (max-width: 640px) {
+  .page {
+    gap: var(--space-6);
+    padding: var(--space-6) var(--space-4);
+  }
+
+  .site-header,
+  .site-footer {
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .card,
+  .panel {
+    padding: var(--space-4);
+  }
+
+  .input-card {
+    padding: var(--space-4) var(--space-4) var(--space-5);
+  }
+
+  /* A full-width primary is the reachable target on a phone. */
+  button.primary {
+    justify-self: stretch;
+    width: 100%;
+    text-align: center;
+  }
 }
