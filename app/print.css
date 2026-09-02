@@ -1,0 +1,224 @@
+/**
+ * Print — the ReadEasy version on paper.
+ *
+ * Every rule here sits inside `@media print`, so nothing in this file can change how the app looks on
+ * screen. That is why it is a separate stylesheet imported after `globals.css` rather than a block
+ * inside it: paper is the only medium this file knows about, and arriving last is what lets its
+ * overrides win without a single `!important`.
+ *
+ * The sheet does three jobs.
+ *
+ * 1. Repaints the palette for paper. Theme tokens follow the reader, so someone reading in dark theme
+ *    who presses Ctrl+P would otherwise print near-white ink (`--ink: #f4efe5`) onto white paper: a
+ *    blank page. Print redefines the token names rather than restyling elements, so every rule in
+ *    `globals.css` keeps working and the literals stay in one block. They belong here and not in
+ *    `tokens.css` because paper is not a theme a reader can choose.
+ * 2. Drops the app. Header, hero, transform box, the original panel, and every control go, so the
+ *    sheet carries the reading and nothing else.
+ * 3. Sets the page: breaks between sections, headings kept with their text, type sized in points.
+ *
+ * What prints is the Mode on screen. Dyslexia mode prints the whole page; Action mode prints the
+ * checklist with boxes a reader can tick in pen; Focus and ADHD print the card being read, because
+ * those two only ever render one card and no stylesheet can put the others on the sheet.
+ *
+ * A feature that adds a control to the reading view inherits this for free if the control is a
+ * `button`, an `input`, a `[role="tablist"]`, or carries `.chip` or `.tab`. Anything else new prints
+ * as content.
+ */
+
+@media print {
+  @page {
+    /* Generous, so the measure stays readable and nothing lands in a printer's unprintable edge. */
+    margin: 16mm 14mm;
+  }
+
+  /* --- The paper palette ---
+     Existing token names, not new ones, so every rule downstream inherits paper values untouched.
+     `[data-theme]` is matched alongside `:root` because the reading view carries its own theme
+     attribute; matching only `:root` would leave a dark reading panel dark. */
+  :root,
+  [data-theme] {
+    --bg: #fff;
+    --bg-deep: #fff;
+    --surface: #fff;
+    --ink: #000;
+    --ink-soft: #333; /* secondary text stays secondary and still prints solidly */
+
+    --paper-cold: #fff;
+    --ink-cold: #333;
+
+    /* The accent becomes ink. Nothing on paper is clickable, and colour here would spend a cartridge
+       saying what weight and rules already say. */
+    --accent: #000;
+    --accent-soft: #fff;
+    --accent-ink: #000; /* browsers drop background colour by default, so a label meant for a filled
+                           field has to read on white or it reads on nothing */
+
+    --line: #767676; /* rules divide without competing with the text */
+    --line-strong: #000;
+
+    --notice-bg: #fff;
+    --notice-line: #000;
+
+    /* Every urgency badge carries its own words — "Do this", "Should do", "Optional" — so dropping the
+       colours drops no information. */
+    --signal-high: #000;
+    --signal-high-bg: #fff;
+    --signal-high-line: #000;
+    --signal-medium: #000;
+    --signal-medium-bg: #fff;
+    --signal-medium-line: #000;
+    --signal-low: #000;
+    --signal-low-bg: #fff;
+    --signal-low-line: #000;
+
+    --dyslexia-bg: #fff;
+    --dyslexia-line: #767676;
+    --dyslexia-takeaway: #fff;
+    --done-bg: #fff;
+  }
+
+  /* --- What does not print --- */
+
+  /* The shell, the landing argument, and the machinery for starting a transform. */
+  .site-header,
+  .site-footer,
+  .hero,
+  .input-card,
+  .notice,
+  .panel-original,
+  .readability-badge,
+  .placeholder {
+    display: none;
+  }
+
+  /* Controls: paper has nothing to press. Checkboxes are the exception — a printed checklist a reader
+     can tick with a pen is half the reason to print a page at all. */
+  button,
+  select,
+  textarea,
+  input:not([type="checkbox"]),
+  .chip,
+  .tab {
+    display: none;
+  }
+
+  /* The reading view's own chrome: cosmetic toggles, the Mode bar, progress and transport controls,
+     and the counters that narrate them. */
+  .reading-toolbar,
+  .mode-bar,
+  .mode-description,
+  .focus-progress,
+  .focus-controls,
+  .listen-controls,
+  .listen-status,
+  .action-count,
+  .switch,
+  .coming-soon,
+  .hint,
+  [role="tablist"],
+  [role="progressbar"] {
+    display: none;
+  }
+
+  /* Nothing has been transformed yet, so there is no ReadEasy version to print — better an empty sheet
+     than one that says "ReadEasy version" above nothing. */
+  .panel-readeasy:not(:has(.reading)) {
+    display: none;
+  }
+
+  /* --- The sheet --- */
+
+  .page,
+  .split {
+    display: block;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    gap: 0;
+  }
+
+  /* Panels and cards are screen affordances, paper raised off a page. On paper the sheet is the card,
+     so the boxes go and the type carries the structure. The takeaway keeps its rule and the checklist
+     keeps its boxes: those two draw meaning rather than depth. */
+  .panel-readeasy,
+  .reading,
+  .focus-card,
+  .mode-dyslexia {
+    border: 0;
+    border-radius: 0;
+    padding: 0;
+    background: none;
+  }
+
+  /* The reveal animation starts at opacity 0, and printing straight after load would otherwise catch it
+     mid-flight and print a faint page. */
+  .reading {
+    animation: none;
+  }
+
+  .mode-body {
+    min-height: 0;
+  }
+
+  /* Grid containers fragment unevenly across pages; block flow is predictable, and these lists are a
+     single column on paper either way. */
+  .action-list,
+  .listen-outline {
+    display: block;
+  }
+
+  .action-list > * + *,
+  .listen-outline > * + * {
+    margin-top: var(--space-2);
+  }
+
+  /* Form controls are painted as content rather than background, so a checkbox survives a printer with
+     background graphics off. Said explicitly because an empty box is the point of a printed checklist. */
+  input[type="checkbox"] {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* --- Type at print sizes ---
+     Points, because a printer measures in points and paper has no viewport to scale against. A reader
+     who chose Large keeps large print; Small is not carried over, since 0.9rem is a fair screen size
+     and a poor paper one. Wide spacing survives, tightened enough not to spend a sheet on air. */
+  .reading,
+  .reading[data-text-size],
+  .reading[data-spacing] {
+    --reading-size: 12pt;
+    --reading-line: 1.45;
+  }
+
+  .reading[data-text-size="l"] {
+    --reading-size: 15pt;
+  }
+
+  .reading[data-spacing="wide"] {
+    --reading-line: 1.85;
+  }
+
+  /* --- Breaks ---
+     A section is the unit a reader holds in their head, so a break falls between sections and never
+     inside one. A forced break per section would instead spend a whole sheet on every three-line
+     section. No heading is left at the foot of a page with its text overleaf. */
+  .dyslexia-section,
+  .focus-card,
+  .action-item,
+  .takeaway {
+    break-inside: avoid;
+  }
+
+  h2,
+  h3,
+  h4 {
+    break-after: avoid;
+  }
+
+  p,
+  li {
+    orphans: 3;
+    widows: 3;
+  }
+}

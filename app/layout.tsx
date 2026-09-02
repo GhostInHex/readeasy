@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Atkinson_Hyperlegible, Literata } from "next/font/google";
 import { PREFERENCES_STORAGE_KEY, THEME_ATTRIBUTE, DEFAULT_PREFERENCES } from "@/lib/preferences";
 import "./globals.css";
+import "./print.css";
 
 /**
  * Both faces are downloaded at build time and served from our own origin, so the app makes no
