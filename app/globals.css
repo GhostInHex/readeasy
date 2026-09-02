@@ -1,24 +1,37 @@
-:root {
-  --bg: #fffdf8;
-  --fg: #1a1a1a;
-  --muted: #55606e;
-  --panel: #ffffff;
-  --accent: #1d4ed8;
-  --accent-soft: #eef2ff;
-  --border: #e2e3e7;
-  --radius: 0.75rem;
-}
+@import "./tokens.css";
+
+/**
+ * Layout and component rules. Every colour, spacing step, radius, and face comes from tokens.css —
+ * a literal in this file is a bug. See tokens.css for the contract and the measured contrast ratios.
+ */
 
 * {
   box-sizing: border-box;
+  scrollbar-color: var(--line-strong) transparent;
+  scrollbar-width: thin;
 }
 
 body {
   background: var(--bg);
-  color: var(--fg);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--ink);
+  font-family: var(--font-body);
   line-height: 1.6;
   margin: 0;
+}
+
+/* Browser surfaces belong to the design too: selection and scrollbars both default to colours that
+   come from no design system. */
+::selection {
+  background: var(--accent-soft);
+  color: var(--ink);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+  font-weight: 600;
 }
 
 .sr-only {
@@ -35,8 +48,8 @@ body {
 
 .page {
   display: grid;
-  gap: 1.5rem;
-  padding: 2rem 1.5rem 4rem;
+  gap: var(--space-5);
+  padding: var(--space-6) var(--space-5) var(--space-7);
   max-width: 1180px;
   margin: 0 auto;
 }
@@ -49,39 +62,39 @@ body {
 
 .tagline {
   font-size: 1.15rem;
-  margin: 0.25rem 0 0.75rem;
+  margin: var(--space-1) 0 var(--space-3);
 }
 
 .lede {
-  color: var(--muted);
+  color: var(--ink-soft);
   max-width: 60ch;
   margin: 0;
 }
 
 .card,
 .panel {
-  border: 1px solid var(--border);
+  border: 1px solid var(--line);
   border-radius: var(--radius);
-  padding: 1.25rem;
-  background: var(--panel);
+  padding: var(--space-5);
+  background: var(--surface);
 }
 
 .input-card {
   display: grid;
-  gap: 0.75rem;
+  gap: var(--space-3);
 }
 
 .tabs {
   display: flex;
-  gap: 0.5rem;
+  gap: var(--space-2);
 }
 
 .tab {
   background: transparent;
-  color: var(--muted);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  padding: 0.4rem 1rem;
+  color: var(--ink-soft);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-pill);
+  padding: 0.4rem var(--space-4);
   font: inherit;
   cursor: pointer;
 }
@@ -102,12 +115,12 @@ label {
 input,
 textarea {
   width: 100%;
-  padding: 0.75rem;
-  border: 1px solid var(--border);
-  border-radius: 0.5rem;
+  padding: var(--space-3);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
   font: inherit;
-  background: var(--panel);
-  color: var(--fg);
+  background: var(--surface);
+  color: var(--ink);
 }
 
 textarea {
@@ -115,26 +128,38 @@ textarea {
 }
 
 .hint {
-  color: var(--muted);
+  color: var(--ink-soft);
   font-size: 0.9rem;
   margin: 0.4rem 0 0;
 }
 
 button.primary {
   background: var(--accent);
-  color: #ffffff;
-  padding: 0.75rem 1.25rem;
+  color: var(--accent-ink);
+  padding: var(--space-3) var(--space-5);
   border: none;
-  border-radius: 0.5rem;
+  border-radius: var(--radius-sm);
   font: inherit;
   font-weight: 600;
   cursor: pointer;
   justify-self: start;
 }
 
+/* Disabled controls: dim the surface, not the label. `opacity` on the whole button drags the label
+   down with it, and a 0.55-alpha label on a 0.55-alpha fill lands at 3:1 — below the 4.5:1 this
+   audience needs. Recolouring keeps the label at full strength: 9.55:1 light, 8.40:1 dark. The
+   difference from an enabled button is the flat, colourless fill, not faded text. */
 button:disabled {
-  opacity: 0.55;
+  background: var(--line);
+  border-color: var(--line);
+  color: var(--ink);
   cursor: not-allowed;
+}
+
+button.secondary:disabled,
+button.link:disabled {
+  background: transparent;
+  color: var(--ink-soft);
 }
 
 :focus-visible {
@@ -144,13 +169,13 @@ button:disabled {
 
 .notice {
   border-radius: var(--radius);
-  padding: 1rem 1.25rem;
-  border: 1px solid var(--border);
+  padding: var(--space-4) var(--space-5);
+  border: 1px solid var(--line);
 }
 
 .notice-error {
-  background: #fff4f2;
-  border-color: #f2b8ad;
+  background: var(--notice-bg);
+  border-color: var(--notice-line);
 }
 
 .notice-message {
@@ -160,14 +185,14 @@ button:disabled {
 
 .notice-hint {
   margin: 0.35rem 0 0;
-  color: var(--muted);
+  color: var(--ink-soft);
 }
 
 .split {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 1.5rem;
-  align-items: start;
+  gap: var(--space-5);
+  align-items: flex-start;
 }
 
 .panel h2 {
@@ -175,11 +200,11 @@ button:disabled {
   font-size: 1.1rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--muted);
+  color: var(--ink-soft);
 }
 
 .placeholder {
-  color: var(--muted);
+  color: var(--ink-soft);
 }
 
 .original-text {
@@ -203,16 +228,16 @@ button:disabled {
   max-height: 70vh;
   object-fit: cover;
   object-position: top;
-  border: 1px solid var(--border);
-  border-radius: 0.5rem;
-  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
 }
 
 .original-shot figcaption,
 .shot-switch {
-  color: var(--muted);
+  color: var(--ink-soft);
   font-size: 0.9rem;
-  margin: 0.5rem 0 0;
+  margin: var(--space-2) 0 0;
 }
 
 button.link {
@@ -222,11 +247,12 @@ button.link {
   font: inherit;
   color: var(--accent);
   text-decoration: underline;
+  text-underline-offset: 0.15em;
   cursor: pointer;
 }
 
 .reading h3 {
-  margin: 0 0 0.5rem;
+  margin: 0 0 var(--space-2);
   font-size: 1.5em;
 }
 
@@ -236,8 +262,8 @@ button.link {
 }
 
 .reading-time {
-  color: var(--muted);
-  margin: 0 0 1.25rem;
+  color: var(--ink-soft);
+  margin: 0 0 var(--space-5);
   font-size: 0.9em;
 }
 
@@ -245,13 +271,13 @@ button.link {
 .readability-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  margin: 0 0 1rem;
-  padding: 0.35rem 0.75rem;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: var(--panel);
-  color: var(--muted);
+  gap: var(--space-2);
+  margin: 0 0 var(--space-4);
+  padding: 0.35rem var(--space-3);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-pill);
+  background: var(--surface);
+  color: var(--ink-soft);
   font-size: 0.9rem;
 }
 
@@ -262,7 +288,7 @@ button.link {
 }
 
 .readability-badge strong {
-  color: var(--fg);
+  color: var(--ink);
 }
 
 .readability-badge[data-easier="yes"] strong {
@@ -275,13 +301,13 @@ button.link {
 
 .takeaway {
   background: var(--accent-soft);
-  border-radius: 0.5rem;
+  border-radius: var(--radius-sm);
   padding: 0.6rem 0.8rem;
-  margin: 0.75rem 0 0;
+  margin: var(--space-3) 0 0;
 }
 
 .badge {
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   padding: 0.1rem 0.55rem;
   font-size: 0.75em;
   font-weight: 700;
@@ -292,21 +318,21 @@ button.link {
 }
 
 .badge-high {
-  background: #fdecea;
-  border-color: #e2a49a;
-  color: #8c2415;
+  background: var(--signal-high-bg);
+  border-color: var(--signal-high-line);
+  color: var(--signal-high);
 }
 
 .badge-medium {
-  background: #fff6e0;
-  border-color: #dfbe7c;
-  color: #7a5410;
+  background: var(--signal-medium-bg);
+  border-color: var(--signal-medium-line);
+  color: var(--signal-medium);
 }
 
 .badge-low {
-  background: #eef6ee;
-  border-color: #a8c9ac;
-  color: #2c5731;
+  background: var(--signal-low-bg);
+  border-color: var(--signal-low-line);
+  color: var(--signal-low);
 }
 
 /* --- Mode framework --- */
@@ -315,14 +341,14 @@ button.link {
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;
-  border-top: 1px solid var(--border);
-  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  padding-top: var(--space-4);
 }
 
 .mode-description {
-  color: var(--muted);
+  color: var(--ink-soft);
   font-size: 0.9em;
-  margin: 0.5rem 0 1rem;
+  margin: var(--space-2) 0 var(--space-4);
 }
 
 .mode-body {
@@ -330,21 +356,21 @@ button.link {
 }
 
 button.secondary {
-  background: var(--panel);
+  background: var(--surface);
   color: var(--accent);
   border: 1px solid var(--accent);
   padding: 0.65rem 1.1rem;
-  border-radius: 0.5rem;
+  border-radius: var(--radius-sm);
   font: inherit;
   font-weight: 600;
   cursor: pointer;
 }
 
 .coming-soon {
-  border: 1px dashed var(--border);
+  border: 1px dashed var(--line-strong);
   border-radius: var(--radius);
-  padding: 1rem 1.25rem;
-  color: var(--muted);
+  padding: var(--space-4) var(--space-5);
+  color: var(--ink-soft);
 }
 
 .coming-soon p {
@@ -359,9 +385,9 @@ button.secondary {
 }
 
 .progress-track {
-  background: var(--border);
-  border-radius: 999px;
-  height: 0.5rem;
+  background: var(--line);
+  border-radius: var(--radius-pill);
+  height: var(--space-2);
   overflow: hidden;
 }
 
@@ -372,10 +398,10 @@ button.secondary {
 }
 
 .focus-card {
-  border: 1px solid var(--border);
+  border: 1px solid var(--line);
   border-radius: var(--radius);
-  padding: 1rem 1.25rem;
-  margin: 1rem 0;
+  padding: var(--space-4) var(--space-5);
+  margin: var(--space-4) 0;
 }
 
 .focus-card h4 {
@@ -408,10 +434,10 @@ button.secondary {
 /* Everything below is scoped to this mode, so switching away restores the default view. */
 .mode-dyslexia {
   font-family: "OpenDyslexic", Verdana, Tahoma, sans-serif;
-  background: #fdf6e3;
-  border: 1px solid #e8dcbe;
+  background: var(--dyslexia-bg);
+  border: 1px solid var(--dyslexia-line);
   border-radius: var(--radius);
-  padding: 1rem 1.25rem 1.25rem;
+  padding: var(--space-4) var(--space-5) var(--space-5);
   letter-spacing: 0.03em;
   word-spacing: 0.12em;
   line-height: calc(var(--reading-line) + 0.3);
@@ -419,8 +445,9 @@ button.secondary {
 }
 
 .mode-dyslexia h4 {
+  font-family: "OpenDyslexic", Verdana, Tahoma, sans-serif;
   font-size: 1.2em;
-  margin: 0 0 0.5rem;
+  margin: 0 0 var(--space-2);
 }
 
 .mode-dyslexia p {
@@ -428,23 +455,23 @@ button.secondary {
 }
 
 .mode-dyslexia .takeaway {
-  background: #f6ead0;
+  background: var(--dyslexia-takeaway);
   margin-bottom: 0;
 }
 
 .dyslexia-section + .dyslexia-section {
-  border-top: 1px solid #e8dcbe;
-  margin-top: 1.25rem;
-  padding-top: 1.25rem;
+  border-top: 1px solid var(--dyslexia-line);
+  margin-top: var(--space-5);
+  padding-top: var(--space-5);
 }
 
 .switch {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--space-2);
   font-weight: 400;
   font-size: 0.9em;
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-4);
 }
 
 .switch input {
@@ -455,9 +482,9 @@ button.secondary {
 /* --- Action mode --- */
 
 .action-count {
-  color: var(--muted);
+  color: var(--ink-soft);
   font-size: 0.9em;
-  margin: 0 0 0.75rem;
+  margin: 0 0 var(--space-3);
 }
 
 .action-list {
@@ -465,17 +492,17 @@ button.secondary {
   margin: 0;
   padding: 0;
   display: grid;
-  gap: 0.75rem;
+  gap: var(--space-3);
 }
 
 .action-item {
   display: flex;
-  gap: 0.75rem;
-  align-items: start;
-  border: 1px solid var(--border);
+  gap: var(--space-3);
+  align-items: flex-start;
+  border: 1px solid var(--line);
   border-radius: var(--radius);
-  padding: 0.85rem 1rem;
-  background: var(--panel);
+  padding: 0.85rem var(--space-4);
+  background: var(--surface);
 }
 
 .action-item input[type="checkbox"] {
@@ -501,28 +528,28 @@ button.secondary {
 
 .action-meta {
   display: flex;
-  gap: 0.5rem;
+  gap: var(--space-2);
   align-items: center;
   flex-wrap: wrap;
   margin: 0;
 }
 
 .deadline-chip {
-  background: #fdecea;
-  border: 1px solid #e2a49a;
-  color: #8c2415;
-  border-radius: 999px;
+  background: var(--signal-high-bg);
+  border: 1px solid var(--signal-high-line);
+  color: var(--signal-high);
+  border-radius: var(--radius-pill);
   padding: 0.1rem 0.6rem;
   font-size: 0.85em;
   font-weight: 700;
 }
 
 .action-done {
-  background: #f7f8fa;
+  background: var(--done-bg);
 }
 
 .action-done label {
-  color: var(--muted);
+  color: var(--ink-soft);
   text-decoration: line-through;
 }
 
@@ -534,9 +561,9 @@ button.secondary {
 }
 
 .listen-status {
-  color: var(--muted);
+  color: var(--ink-soft);
   font-size: 0.95em;
-  margin: 0.75rem 0 1rem;
+  margin: var(--space-3) 0 var(--space-4);
 }
 
 .listen-outline {
@@ -544,11 +571,11 @@ button.secondary {
   padding-left: 1.4rem;
   display: grid;
   gap: 0.4rem;
-  color: var(--muted);
+  color: var(--ink-soft);
 }
 
 .listen-outline .listen-now {
-  color: var(--fg);
+  color: var(--ink);
   font-weight: 600;
 }
 
@@ -561,7 +588,7 @@ button.secondary {
   --reading-line: 1.6;
   font-size: var(--reading-size);
   line-height: var(--reading-line);
-  padding: 0.75rem;
+  padding: var(--space-3);
   border-radius: var(--radius);
 }
 
@@ -580,22 +607,22 @@ button.secondary {
 .reading-toolbar {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
-  margin: 0 0 1rem;
+  gap: var(--space-3);
+  margin: 0 0 var(--space-4);
   font-size: 0.85rem;
 }
 
 .toolbar-group {
   display: flex;
-  gap: 0.25rem;
+  gap: var(--space-1);
 }
 
 .chip {
   background: transparent;
-  color: var(--muted);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  padding: 0.25rem 0.7rem;
+  color: var(--ink-soft);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-pill);
+  padding: var(--space-1) 0.7rem;
   font: inherit;
   cursor: pointer;
   min-width: 2.2rem;
@@ -620,57 +647,10 @@ button.secondary {
   font-size: 1.25rem;
 }
 
-/* High-contrast dark theme, scoped to the reading view so the rest of the page is untouched. */
-.reading[data-theme="dark"] {
-  --fg: #f7f9fc;
-  --muted: #c6d0dd;
-  --panel: #191d24;
-  --border: #5a6474;
-  --accent: #8dc2ff;
-  --accent-soft: #1e2a3b;
-  background: #0c0e12;
-  color: var(--fg);
+/* The reading view repaints its own ground because it carries its own `data-theme` — a reader can
+   keep a light page and a high-contrast panel. It draws --surface so that when the two themes agree
+   it disappears into the panel around it, exactly as it did before tokens. */
+.reading {
+  background: var(--surface);
+  color: var(--ink);
 }
-
-.reading[data-theme="dark"] button.primary {
-  color: #0c0e12;
-}
-
-.reading[data-theme="dark"] .badge-high {
-  background: #3d1811;
-  border-color: #b05a48;
-  color: #ffbcae;
-}
-
-.reading[data-theme="dark"] .badge-medium {
-  background: #3a2c0d;
-  border-color: #a8863a;
-  color: #ffdd9e;
-}
-
-.reading[data-theme="dark"] .badge-low {
-  background: #16301b;
-  border-color: #5e9068;
-  color: #b6e3bf;
-}
-
-.reading[data-theme="dark"] .deadline-chip {
-  background: #3d1811;
-  border-color: #b05a48;
-  color: #ffbcae;
-}
-
-.reading[data-theme="dark"] .action-done {
-  background: #12151b;
-}
-
-.reading[data-theme="dark"] .mode-dyslexia {
-  background: #14120b;
-  border-color: #4a4227;
-}
-
-.reading[data-theme="dark"] .mode-dyslexia .takeaway {
-  background: #241f12;
-}
-
-

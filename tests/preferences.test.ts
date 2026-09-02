@@ -6,6 +6,8 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import {
   DEFAULT_PREFERENCES,
+  PREFERENCES_STORAGE_KEY,
+  THEME_ATTRIBUTE,
   parsePreferences,
   preferenceAttributes,
   type ReadingPreferences
@@ -40,4 +42,19 @@ test("preferences become the data attributes the stylesheet keys off", () => {
     "data-spacing": "wide",
     "data-theme": "dark"
   });
+});
+
+test("light is the default theme, so no reader gets a dark page they did not choose", () => {
+  assert.equal(DEFAULT_PREFERENCES.theme, "light");
+});
+
+/**
+ * The pre-paint script in app/layout.tsx reads this key and writes this attribute. Both are shared
+ * constants rather than repeated strings, because a typo in either one costs a reader who chose dark
+ * a bright flash on every page load — and nothing else would fail.
+ */
+test("the theme attribute and storage key are the ones the boot script uses", () => {
+  assert.equal(THEME_ATTRIBUTE, "data-theme");
+  assert.equal(PREFERENCES_STORAGE_KEY, "readeasy.reading-preferences");
+  assert.equal(preferenceAttributes(DEFAULT_PREFERENCES)[THEME_ATTRIBUTE], DEFAULT_PREFERENCES.theme);
 });

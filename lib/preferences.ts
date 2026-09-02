@@ -17,6 +17,13 @@ export interface ReadingPreferences {
 
 export const PREFERENCES_STORAGE_KEY = "readeasy.reading-preferences";
 
+/**
+ * The attribute the theme tokens key off. It sits on `<html>` (set before first paint, so a reader
+ * who chose dark never sees a bright flash) and on the reading view, so both agree the moment the
+ * toggle changes.
+ */
+export const THEME_ATTRIBUTE = "data-theme";
+
 export const DEFAULT_PREFERENCES: ReadingPreferences = {
   textSize: "m",
   spacing: "normal",
@@ -60,6 +67,6 @@ export function preferenceAttributes(preferences: ReadingPreferences): Record<st
   return {
     "data-text-size": preferences.textSize,
     "data-spacing": preferences.spacing,
-    "data-theme": preferences.theme
+    [THEME_ATTRIBUTE]: preferences.theme
   };
 }
