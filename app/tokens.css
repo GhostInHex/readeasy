@@ -1,0 +1,144 @@
+/**
+ * ReadEasy design tokens — the "warm & calm" language.
+ *
+ * Cream paper, deep ink, one accent. Every colour, spacing step, radius, and font in the app comes
+ * from a name in here; `globals.css` holds layout and never a literal. Other tickets consume these
+ * names with fallbacks (`var(--accent, #22406A)`), so this file is the contract they build against.
+ *
+ * Two rules worth knowing before editing:
+ *
+ * 1. Every value below is verified against WCAG 2.1 in both themes — body text at 4.5:1, control
+ *    boundaries at 3:1 (1.4.11), dividers at 1.6:1. The measured ratio sits beside each pair. Change
+ *    a value and you owe the recheck; the readers this app is for are the ones a near-miss fails.
+ * 2. The accent is deliberately outside the violet/indigo family and far from the priority-signal
+ *    colours below, so no reader mistakes a link for a deadline. Under protanopia and deuteranopia it
+ *    stays 49+ ΔE from every signal.
+ */
+
+:root {
+  /* Ground and ink. Cream is the page, surface is anything raised off it. */
+  --bg: #fbf6ec;
+  --surface: #fffcf5;
+  --ink: #231e19;         /* 15.34:1 on --bg */
+  --ink-soft: #5c5348;    /* 7.00:1 on --bg — tinted from the ground, never grey */
+
+  /* One accent: ink blue, the colour of a fountain pen on warm paper. */
+  --accent: #22406a;      /* 9.70:1 on --bg */
+  --accent-soft: #e3e9f0; /* accent reads 8.55:1 on it */
+  --accent-ink: #fffcf5;  /* label colour on a filled accent button — 10.20:1 */
+
+  /* Two line weights: --line divides, --line-strong bounds a control. */
+  --line: #cfc4ac;        /* 1.61:1 on --bg */
+  --line-strong: #948a7a; /* 3.16:1 on --bg, clears 1.4.11 */
+
+  /* Priority and error signals. Each carries a text label too, so colour is never the sole cue. */
+  --notice-bg: #fbebe4;
+  --notice-line: #b37056;
+  --signal-high: #8c2415;
+  --signal-high-bg: #fbe6e1;
+  --signal-high-line: #b26a58;
+  --signal-medium: #6e4a0c;
+  --signal-medium-bg: #faefd6;
+  --signal-medium-line: #a38240;
+  --signal-low: #25512b;
+  --signal-low-bg: #e8f0e5;
+  --signal-low-line: #6c8d6f;
+
+  /* Dyslexia mode keeps its own warmer paper; OpenDyslexic is untouched. */
+  --dyslexia-bg: #fdf6e3;
+  --dyslexia-line: #cfbe92;
+  --dyslexia-takeaway: #f4e7c9;
+  --done-bg: #f2ecdf;
+
+  /* Spacing. Six steps, chosen so the values already in the app land on one. */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 4rem; /* page bottom only — the scale's outer edge, not a seventh step */
+
+  --radius: 0.75rem;
+  --radius-sm: 0.5rem;
+  --radius-pill: 999px;
+
+  /* Faces arrive as --font-atkinson / --font-literata from next/font in app/layout.tsx. */
+  --font-body: var(--font-atkinson), "Atkinson Hyperlegible", Verdana, system-ui, sans-serif;
+  --font-heading: var(--font-literata), "Literata", Georgia, "Times New Roman", serif;
+}
+
+/**
+ * Themes are applied by `[data-theme]`, not by `:root` alone, so the same block serves `<html>` and
+ * any element that carries the attribute — the reading view sets it too, and a light panel inside a
+ * dark page resets cleanly. There is deliberately no `prefers-color-scheme` rule: the choice belongs
+ * to the reader, made once in the toolbar and remembered.
+ *
+ * `--light-*` mirrors are what `[data-theme="light"]` restores from; `:root` above holds the same
+ * values so a page with no attribute at all still renders light.
+ */
+[data-theme="light"] {
+  --bg: #fbf6ec;
+  --surface: #fffcf5;
+  --ink: #231e19;
+  --ink-soft: #5c5348;
+
+  --accent: #22406a;
+  --accent-soft: #e3e9f0;
+  --accent-ink: #fffcf5;
+
+  --line: #cfc4ac;
+  --line-strong: #948a7a;
+
+  --notice-bg: #fbebe4;
+  --notice-line: #b37056;
+  --signal-high: #8c2415;
+  --signal-high-bg: #fbe6e1;
+  --signal-high-line: #b26a58;
+  --signal-medium: #6e4a0c;
+  --signal-medium-bg: #faefd6;
+  --signal-medium-line: #a38240;
+  --signal-low: #25512b;
+  --signal-low-bg: #e8f0e5;
+  --signal-low-line: #6c8d6f;
+
+  --dyslexia-bg: #fdf6e3;
+  --dyslexia-line: #cfbe92;
+  --dyslexia-takeaway: #f4e7c9;
+  --done-bg: #f2ecdf;
+}
+
+/**
+ * Dark theme. Not an inversion — the same warm hues carried down, so the app still reads as paper
+ * rather than a terminal.
+ */
+[data-theme="dark"] {
+  --bg: #14120f;
+  --surface: #1e1b17;
+  --ink: #f4efe5;         /* 16.32:1 on --bg */
+  --ink-soft: #c3b9aa;    /* 9.65:1 on --bg */
+
+  --accent: #9dbbde;      /* 9.43:1 on --bg */
+  --accent-soft: #1e2a3a;
+  --accent-ink: #14120f;
+
+  --line: #4a443b;
+  --line-strong: #7c7466;
+
+  --notice-bg: #3a211a;
+  --notice-line: #a2685a;
+  --signal-high: #ffbcae;
+  --signal-high-bg: #3d1811;
+  --signal-high-line: #b05a48;
+  --signal-medium: #ffdd9e;
+  --signal-medium-bg: #3a2c0d;
+  --signal-medium-line: #a8863a;
+  --signal-low: #b6e3bf;
+  --signal-low-bg: #16301b;
+  --signal-low-line: #5e9068;
+
+  --dyslexia-bg: #191509;
+  --dyslexia-line: #5b5132;
+  --dyslexia-takeaway: #241f12;
+  --done-bg: #191712;
+}
