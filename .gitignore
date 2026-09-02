@@ -12,3 +12,8 @@ out
 
 .worktrees/
 .scratch/logs/
+
+# Local build tooling (verify-trio stays: package.json's verify:trio needs it)
+tools/*
+!tools/verify-trio.ts
+.scratch/

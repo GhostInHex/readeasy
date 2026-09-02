@@ -1,4 +1,0 @@
-*** Begin Patch
-*** Add File: tools/overnight-runner.mjs
-+#!/usr/bin/env node
-*** End Patch
