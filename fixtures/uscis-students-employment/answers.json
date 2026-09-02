@@ -1,0 +1,21 @@
+{
+  "slug": "uscis-students-employment",
+  "label": "USCIS — Students and Employment",
+  "url": "https://www.uscis.gov/working-in-the-united-states/students-and-exchange-visitors/students-and-employment",
+  "capturedAt": "2026-09-03",
+  "engine": "hand-written from fixtures/uscis-students-employment/cleaned.txt",
+  "answers": [
+    {
+      "question": "What do I need to get a student visa?",
+      "answer": "The page says you generally need a student visa to study full time in the United States, and that there are two categories, known as the F and M visas. To enter in the F-1 or M-1 category you must:\n- be enrolled in an academic, language-training or vocational program\n- attend a school approved by the Student and Exchange Visitors Program, Immigration & Customs Enforcement\n- be enrolled as a full-time student at the institution\n- be proficient in English, or be enrolled in courses leading to English proficiency\n- have enough money to support yourself for the whole course of study\n- keep a residence abroad that you have no intention of giving up"
+    },
+    {
+      "question": "Can I work while I study?",
+      "answer": "F-1 students may not work off campus during the first academic year, but may accept on-campus employment, subject to certain conditions and restrictions. After the first academic year, F-1 students may take three types of off-campus employment: Curricular Practical Training (CPT), Optional Practical Training (OPT) before or after completion, and the science, technology, engineering and mathematics (STEM) OPT extension. F-1 students may also be eligible to work off campus case by case in special situations, such as severe economic hardship or special student relief. M-1 students may take practical training only after they have completed their studies."
+    },
+    {
+      "question": "Who has to approve off-campus work?",
+      "answer": "For both F-1 and M-1 students, the page says any off-campus training employment must be related to your area of study. It must be authorized before you start any work by the Designated School Official, the person authorized to maintain SEVIS, and by USCIS. The page also says that in general, only people who have permission from DHS to work can apply for a Social Security number."
+    }
+  ]
+}

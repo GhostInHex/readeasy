@@ -1,0 +1,21 @@
+{
+  "slug": "utdallas-first-year-apply",
+  "label": "UT Dallas — Apply as a first-year student",
+  "url": "https://enroll.utdallas.edu/freshman/apply/",
+  "capturedAt": "2026-09-03",
+  "engine": "hand-written from fixtures/utdallas-first-year-apply/cleaned.txt",
+  "answers": [
+    {
+      "question": "Which application should I use?",
+      "answer": "The page asks which type of applicant you are, then gives an application for each:\n- Freshman, if you will graduate from high school soon, or have not enrolled in any post-secondary coursework after high school\n- Graduate, if you have completed at least a bachelor's degree and are seeking a certificate, master's or doctoral degree\n- Other applicant types, listed further down the page: certificates for current UT Dallas undergraduates, international transient or visiting, non-degree seeking, returning or readmission, second bachelor's degree, and transient or visiting"
+    },
+    {
+      "question": "How much is the application fee?",
+      "answer": "The page says the application fee is $75. It lists that fee for the international transient or visiting application, the non-degree seeking application, the second bachelor's degree application, and the transient or visiting application. Non-degree seeking applicants pay it at utdallas.edu/payfee."
+    },
+    {
+      "question": "I studied at UT Dallas before. Do I need to apply again?",
+      "answer": "The page says you should apply for readmission through ApplyTexas if you have completed at least one semester at UT Dallas and have not been enrolled there within the last three long semesters, not counting summer. Current students do not need to reapply for admission if they have been enrolled in UT Dallas classes within the last three long semesters, which the page names as Fall and Spring. For more, the page points to the undergraduate catalog."
+    }
+  ]
+}

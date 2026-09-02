@@ -1,0 +1,21 @@
+{
+  "slug": "irs-eitc",
+  "label": "IRS — Who Qualifies for the Earned Income Tax Credit (EITC)",
+  "url": "https://www.irs.gov/credits-deductions/individuals/earned-income-tax-credit/who-qualifies-for-the-earned-income-tax-credit-eitc",
+  "capturedAt": "2026-09-03",
+  "engine": "hand-written from fixtures/irs-eitc/cleaned.txt",
+  "answers": [
+    {
+      "question": "What are the basic rules to qualify?",
+      "answer": "To qualify for the EITC, the page says you must:\n- have earned income\n- have investment income below the limit\n- have a valid Social Security number by the due date of your return, including extensions\n- be a U.S. citizen or a resident alien all year\n- not file Form 2555, Foreign Earned Income\n- meet certain rules if you are separated from your spouse and not filing a joint tax return\nThe page also says there are special rules for military members, clergy members, and taxpayers and their relatives with disabilities."
+    },
+    {
+      "question": "Can I get this credit if I do not claim a child?",
+      "answer": "Yes. The page says you can claim the EITC without a qualifying child if you meet the basic rules and you:\n- lived in the United States for more than half the tax year\n- cannot be claimed as a qualifying child of another taxpayer, or as a dependent of another person\n- are at least age 25 but under age 65 at the end of the year\nIf you are married and file a joint return, at least one spouse must meet the age rule. Here the United States means the 50 states, the District of Columbia and U.S. military bases, and not U.S. territories such as Guam, the Virgin Islands or Puerto Rico."
+    },
+    {
+      "question": "Do I need a Social Security number?",
+      "answer": "Yes. You, your spouse if you file jointly, and the child you claim must each have a valid Social Security number. The number must be issued on or before the due date of the tax return, including extensions. A number does not count for the EITC if it was issued after that due date, or if it was issued only to apply for or receive a federally funded benefit, such as Medicaid, and does not authorize you to work."
+    }
+  ]
+}
