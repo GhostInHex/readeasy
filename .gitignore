@@ -8,3 +8,4 @@ out
 .pnpm-store/
 
 .scratch/readeasy-git/
+.env*

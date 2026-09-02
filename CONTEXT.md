@@ -81,6 +81,29 @@ Dallas Team — info@dallas.acm.org
 - **Readability score:** stretch, last ("Original: college level → ReadEasy: grade 5").
 - **Left panel rule:** default = **cleaned original text** (pre-AI, original wording, plain style). For the cached demo pages only = **pre-captured screenshot** of the messy page.
 
+## Post-MVP round (grill session 2, 2026-09-01)
+
+- **Baseline first:** current app deploys to Vercel BEFORE feature work starts — a complete entry must exist at all times. Feature work deploys on top.
+- **Features approved (loose order, no fixed dates):**
+  1. **Karaoke Listen** — browser TTS with word highlighting in sync (no LLM).
+  2. **Ask this page** — grounded Q&A over the cleaned page text; 3 suggested prompts; answers **pre-cached for the demo trio** (live LLM only as enhancement). Cached-demo rule is non-negotiable.
+  3. **Reading level** — Simpler/Standard pill pair; Standard is today's output, Simpler is a second restructure variant (same pattern as ADHD mode).
+  4. **My pages history** — localStorage, revisit past transforms (no DB).
+  5. **Export simplified page** — print stylesheet.
+- **Rejected:** multi-language output (quality risk, off-problem-statement).
+- **Design:** direction = **warm & calm** (cream/off-white, deep ink text, one accent, generous spacing, large type). Body font **Atkinson Hyperlegible**; warm humanist heading font; **OpenDyslexic retained** for dyslexia mode. **Default light theme, manual dark toggle** (no auto `prefers-color-scheme`). The before/after left-panel/right-panel skeleton is load-bearing — kept.
+- **Design process:** design **tokens** (palette/type/spacing one-pager) agreed FIRST; features build against them as CSS variables; the full **visual overhaul happens LAST**, done interactively together (not overnight). User explicitly chose design-last for the visual pass.
+- **Execution split:** features run via the **overnight runner** as tickets; design overhaul is interactive human+agent work.
+- **Target:** all work done by end of Sep 3; video + submission after. Hard rule: master stays shippable; nothing merges without green tests.
+
+## Project vocabulary (round 2)
+
+- **Karaoke highlighting** — Listen mode highlighting each word on screen in sync with the browser's speech.
+- **Ask this page** — question box over a transformed page; answers grounded only in that page's cleaned text; three suggested prompts per page.
+- **Reading level** — the Simpler/Standard toggle between two Restructure variants of the same page.
+- **Design tokens** — the agreed palette, type, and spacing values defined before feature work; applied via CSS variables.
+- **Left panel rule:** default = **cleaned original text** (pre-AI, original wording, plain style). For the cached demo pages only = **pre-captured screenshot** of the messy page.
+
 - **Tagline:** **"ReadEasy — the web, made readable for every reader."** (app landing screen). Submission-form description: *"ReadEasy restructures any web page into clear, accessible formats for readers with dyslexia, ADHD, or low vision — rewritten in plain language, with deadlines extracted into simple checklists."* Person-first language always; no labeling or pity framing.
 
 ## Project vocabulary
