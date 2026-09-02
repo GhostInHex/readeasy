@@ -1,0 +1,116 @@
+/**
+ * Recent pages. Every colour, step, radius, and face comes from app/tokens.css — a literal here is a
+ * bug, the same rule globals.css follows.
+ *
+ * Deliberately not another card: this sits between the transform box and the reading panels, so it is
+ * styled as a list of links. A third raised surface would compete with the two that carry the
+ * product's before/after argument.
+ */
+
+.history {
+  display: grid;
+  gap: var(--space-2);
+}
+
+/* The same small-caps label the reading panels use for their headings, so this reads as a signpost
+   rather than a section of its own. */
+.heading {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--text-label);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--ink-soft);
+}
+
+.note {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: var(--text-small);
+}
+
+.list {
+  list-style: none;
+  margin: var(--space-2) 0 0;
+  padding: 0;
+  display: grid;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* A rule between rows, none around the list: the divider is there to separate two pages, not to draw
+   a box. */
+.row + .row {
+  border-top: 1px solid var(--line);
+}
+
+.open {
+  flex: 1;
+  display: grid;
+  gap: var(--space-1);
+  justify-items: start;
+  text-align: left;
+  padding: var(--space-3);
+  /* Transparent rather than absent, so hover and focus never nudge the row sideways. */
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--ink);
+  font: inherit;
+  cursor: pointer;
+  transition: background var(--duration) var(--ease), border-color var(--duration) var(--ease);
+}
+
+.open:hover:not(:disabled) {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+
+/* While a transform is running these are dead, but the filled disabled button in globals.css would
+   turn six quiet rows into six sand-coloured slabs. Greyed text carries it instead. */
+.open:disabled,
+.remove:disabled {
+  background: none;
+  border-color: transparent;
+  color: var(--ink-soft);
+  cursor: not-allowed;
+}
+
+.title {
+  font-weight: 600;
+  /* Titles read off a URL can be one long unbroken word. */
+  overflow-wrap: anywhere;
+}
+
+.meta {
+  color: var(--ink-soft);
+  font-size: var(--text-small);
+}
+
+.open:disabled .title,
+.open:disabled .meta {
+  color: var(--ink-soft);
+}
+
+.remove {
+  flex: none;
+  padding: var(--space-1) var(--space-3);
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  background: none;
+  color: var(--ink-soft);
+  font: inherit;
+  font-size: var(--text-small);
+  cursor: pointer;
+  transition: color var(--duration) var(--ease), border-color var(--duration) var(--ease);
+}
+
+.remove:hover {
+  color: var(--accent);
+  border-color: var(--line-strong);
+}
