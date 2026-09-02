@@ -1,4 +1,5 @@
 import index from "@/fixtures/index.json";
+import type { ReadingLevel } from "@/lib/types";
 
 /**
  * Cached page lookup.
@@ -55,4 +56,25 @@ export function matchCachedPage(rawUrl: string | null | undefined): CachedPage |
 
   const key = fingerprint(rawUrl);
   return (key && BY_FINGERPRINT.get(key)) || null;
+}
+
+/**
+ * Where a cached page's pre-generated Restructure for one reading level lives, relative to the repo
+ * root: `fixtures/<slug>/<level>.json`.
+ *
+ * Convention, not configuration. `index.json` says nothing about these files, so a variant starts
+ * being served the moment it is captured into place (`tools/capture-simpler.mjs`) and nothing has to
+ * be registered. Only `simpler.json` is captured today; the standard level is restructured live.
+ *
+ * Reading the file is deliberately not this module's job — the left panel imports it into the
+ * browser bundle, and `node:fs` has no business there. `lib/cached-transform.ts` does the reading on
+ * the server.
+ */
+export function cachedVariantPath(slug: string, level: ReadingLevel): string {
+  return `fixtures/${slug}/${level}.json`;
+}
+
+/** Where a cached page's cleaned original text lives, relative to the repo root. */
+export function cachedCleanedTextPath(slug: string): string {
+  return `fixtures/${slug}/cleaned.txt`;
 }
