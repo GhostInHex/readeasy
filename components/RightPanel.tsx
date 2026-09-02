@@ -1,5 +1,6 @@
 "use client";
 
+import AskPanel from "@/components/AskPanel";
 import ReadabilityBadge from "@/components/ReadabilityBadge";
 import ReadingView from "@/components/ReadingView";
 import type { TransformRequest, TransformSuccess } from "@/lib/types";
@@ -21,6 +22,13 @@ export default function RightPanel({ result, busy, source }: RightPanelProps) {
       {busy && <p className="placeholder">Restructuring…</p>}
       {!busy && !result && <p className="placeholder">The accessible version will appear here.</p>}
       {!busy && result && <ReadingView restructured={result.restructured} source={source} />}
+      {!busy && result && (
+        <AskPanel
+          cleanedOriginal={result.cleanedOriginal}
+          sourceUrl={result.sourceUrl}
+          title={result.restructured.title}
+        />
+      )}
     </div>
   );
 }
