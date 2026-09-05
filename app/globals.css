@@ -46,32 +46,42 @@ h4 {
   border: 0;
 }
 
-/* --- Shell: header, page, footer --- */
+/* --- Shell: masthead, reading bar, page, footer --- */
 
-/* Sticky, because the theme switch is an accessibility control: a reader whose eyes start to hurt
-   two screens down should not have to scroll back up to fix it. Opaque, so nothing behind it
-   degrades the contrast. */
+/* Sticky, because both of its rows are things a reader reaches for mid-page: the theme when their
+   eyes start to hurt two screens down, the Mode when the current one stops suiting the section they
+   are on. Opaque, so nothing scrolling behind it degrades the contrast. */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 10;
+  background: var(--bg-deep);
+  border-bottom: 1px solid var(--line);
+}
+
+/* The nameplate row: the mark, and the one control a reader needs before they read anything. */
+.masthead {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-4);
   flex-wrap: wrap;
+  max-width: 1180px;
+  margin: 0 auto;
   padding: var(--space-4) var(--space-5);
-  background: var(--bg-deep);
-  border-bottom: 1px solid var(--line);
 }
 
 .wordmark {
   font-family: var(--font-heading);
-  font-size: 1.35rem;
+  font-size: 1.6rem;
   font-weight: 600;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
   text-decoration: none;
   color: var(--ink);
+  /* The mark carries the same drawn accent rule the standfirst and the key takeaway use, so the
+     product's one gesture starts in its own name. */
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 0.15rem;
 }
 
 .wordmark-easy {
@@ -127,12 +137,112 @@ h4 {
   background: #14120f;
 }
 
-.page {
-  display: grid;
-  gap: var(--space-7);
-  padding: var(--space-7) var(--space-5);
+/* --- The reading bar ---
+   The masthead's second row, present only while a page is open: which page, how it is being read,
+   and the way back to the box. A rule divides it from the nameplate rather than a colour change,
+   because it is the same header doing more, not a different surface. */
+.readingbar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
   max-width: 1180px;
   margin: 0 auto;
+  padding: var(--space-3) var(--space-5);
+  border-top: 1px solid var(--line);
+}
+
+.readingbar-page {
+  flex: 1 1 12rem;
+  min-width: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.1rem;
+}
+
+.readingbar-source {
+  font-size: var(--text-label);
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+
+/* One line, clipped: the panel below carries the title in full, and a wrapping title here would
+   change the header's height while the reader scrolls under it. */
+.readingbar-title {
+  font-family: var(--font-heading);
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Five views of one page, so one segmented control rather than five loose pills. The active Mode is
+   filled with the accent — the only filled control in the header — because it is the one state here
+   that changes what the reader is looking at. */
+.mode-switch {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem;
+  padding: 0.2rem;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-pill);
+  background: var(--surface);
+}
+
+.mode-option {
+  border: none;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--ink-soft);
+  font: inherit;
+  font-size: var(--text-small);
+  padding: 0.4rem 0.85rem;
+  cursor: pointer;
+  transition: background var(--duration) var(--ease), color var(--duration) var(--ease);
+}
+
+.mode-option:hover:not(.mode-option-active) {
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.mode-option-active {
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 700;
+}
+
+.readingbar-change {
+  flex: none;
+  background: transparent;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-pill);
+  color: var(--ink-soft);
+  font: inherit;
+  font-size: var(--text-small);
+  padding: 0.4rem 0.9rem;
+  cursor: pointer;
+  transition: color var(--duration) var(--ease), border-color var(--duration) var(--ease);
+}
+
+.readingbar-change:hover:not(:disabled) {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.page {
+  display: grid;
+  gap: var(--space-6);
+  padding: var(--space-6) var(--space-5) var(--space-7);
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+/* The landing opens with air above the headline; a page already open starts reading straight away. */
+.page[data-stage="landing"] {
+  padding-top: var(--space-7);
 }
 
 .site-footer {
@@ -143,101 +253,119 @@ h4 {
 }
 
 .site-footer p {
-  max-width: 68ch;
+  max-width: var(--measure);
   margin: 0 auto;
   color: var(--ink-soft);
   font-size: var(--text-small);
   text-align: center;
 }
 
-/* --- Landing hero: the before/after argument, at full scale --- */
+/* --- Landing: the before/after argument, set as one page rather than a stack of boxes --- */
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
-  gap: var(--space-6);
-  align-items: center;
+  gap: var(--space-5);
 }
 
 .hero h1 {
   font-family: var(--font-heading);
   font-size: var(--text-display);
-  line-height: 1.05;
-  letter-spacing: -0.025em;
-  margin: 0 0 var(--space-4);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  margin: 0;
   text-wrap: balance;
   /* The measure keeps the display line from running long on wide screens; balance then breaks it
      evenly rather than leaving one orphaned word. */
-  max-width: 18ch;
+  max-width: 22ch;
 }
 
 .hero-lede {
   color: var(--ink-soft);
   font-size: var(--text-lede);
-  max-width: 46ch;
-  margin: 0 0 var(--space-5);
+  max-width: 54ch;
+  margin: 0;
 }
 
+/* The standfirst: three facts across one row under a rule, the way a paper sets a summary line.
+   Not three cards — the rules divide them, so nothing has to be boxed to be separate. */
 .hero-affordances {
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: var(--space-4) 0 0;
+  border-top: 1px solid var(--line);
   display: grid;
-  gap: var(--space-2);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-5);
   font-size: var(--text-small);
   color: var(--ink-soft);
 }
 
-.hero-affordances li {
-  display: flex;
-  gap: var(--space-3);
-  align-items: baseline;
+.hero-affordances li + li {
+  border-left: 1px solid var(--line);
+  padding-left: var(--space-5);
 }
 
-/* Drawn, not a unicode glyph: a short rule in the accent, the same mark the progress fill uses. */
-.hero-affordances li::before {
-  content: "";
-  flex: none;
-  width: var(--space-4);
-  height: 2px;
-  background: var(--accent);
-  transform: translateY(-0.3em);
-}
-
-/* The proof is two sheets of different paper, offset like pages on a desk. */
-.hero-proof {
+/* The proof. Under the heaviest rule on the page, because this is the claim everything else rests on:
+   the same sentence twice, on the two kinds of paper the tokens set aside for exactly this comparison.
+   No borders and no card — the paper and the rules carry it. */
+.proof {
   margin: 0;
-  display: grid;
-  gap: var(--space-3);
+  border-top: 3px solid var(--ink);
+  padding-top: var(--space-4);
 }
 
-.proof-pane {
-  border-radius: var(--radius);
-  padding: var(--space-4) var(--space-5);
-  border: 1px solid var(--line);
+.proof-caption {
+  font-size: var(--text-label);
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  font-weight: 700;
+  color: var(--ink-soft);
+  margin-bottom: var(--space-4);
+}
+
+.proof-pair {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: var(--space-4);
+  align-items: stretch;
+}
+
+.proof-side {
+  display: grid;
+  align-content: start;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5) var(--space-5);
+  border-radius: var(--radius-sm);
 }
 
 .proof-before {
   background: var(--paper-cold);
   color: var(--ink-cold);
-  transform: rotate(-0.35deg);
 }
 
 .proof-after {
-  background: var(--accent-soft);
-  color: var(--ink);
-  transform: rotate(0.35deg);
-  margin-left: var(--space-5);
-  border-color: var(--accent);
+  background: var(--surface);
+  border-top: 2px solid var(--accent);
+}
+
+/* The turn from one side to the other, drawn in the accent at one stroke weight. */
+.proof-turn {
+  align-self: center;
+  width: var(--space-6);
+  height: auto;
+  color: var(--accent);
 }
 
 .proof-label {
   font-size: var(--text-label);
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.09em;
   font-weight: 700;
-  margin: 0 0 var(--space-2);
-  opacity: 0.75;
+  margin: 0;
+}
+
+.proof-after .proof-label {
+  color: var(--accent);
 }
 
 .proof-text {
@@ -252,35 +380,49 @@ h4 {
 }
 
 .proof-meta {
-  margin: var(--space-3) 0 0;
+  margin: 0;
   font-size: var(--text-small);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .proof-after .proof-meta {
   color: var(--accent);
 }
 
-@media (max-width: 900px) {
-  .hero {
+@media (max-width: 860px) {
+  .hero-affordances {
     grid-template-columns: 1fr;
-    gap: var(--space-5);
+    gap: var(--space-3);
   }
 
-  .proof-after {
-    margin-left: 0;
+  .hero-affordances li + li {
+    border-left: 0;
+    border-top: 1px solid var(--line);
+    padding-left: 0;
+    padding-top: var(--space-3);
+  }
+
+  .proof-pair {
+    grid-template-columns: 1fr;
+  }
+
+  /* The comparison still runs before → after; on one column that direction is downward. */
+  .proof-turn {
+    justify-self: center;
+    transform: rotate(90deg);
   }
 }
 
-.tagline {
-  font-size: var(--text-lede);
-  margin: var(--space-1) 0 var(--space-3);
+/* --- The transform box --- */
+
+.transform-box {
+  display: grid;
+  gap: var(--space-5);
 }
 
-.lede {
-  color: var(--ink-soft);
-  max-width: 60ch;
-  margin: 0;
+/* `hidden` has to beat the grid above: a folded box is out of the page, not an empty row in it. */
+.transform-box[hidden] {
+  display: none;
 }
 
 .card,
@@ -291,36 +433,94 @@ h4 {
   background: var(--surface);
 }
 
-/* The transform box is where the product starts, so it reads as the primary object on the page. */
+/* The one thing on the landing a reader acts on, so the one thing lifted off the paper. Everything
+   else here is printed on the page; this is a card sitting on top of it. */
 .input-card {
   display: grid;
-  gap: var(--space-3);
-  padding: var(--space-5) var(--space-5) var(--space-6);
+  gap: var(--space-4);
   border-color: var(--line-strong);
+  box-shadow: var(--shadow-raise);
+}
+
+.input-card-heading {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: var(--text-title);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
 }
 
 .tabs {
   display: flex;
-  gap: var(--space-2);
+  gap: var(--space-5);
+  border-bottom: 1px solid var(--line);
 }
 
+/* Underlined, not pilled. Which kind of input you are filling in is a different kind of choice from
+   the pill-shaped options elsewhere in the app, and it should not read as one of them. */
 .tab {
   background: transparent;
   color: var(--ink-soft);
-  border: 1px solid var(--line-strong);
-  border-radius: var(--radius-pill);
-  padding: 0.4rem var(--space-4);
+  border: 0;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  margin-bottom: -1px;
+  padding: var(--space-1) 0 var(--space-3);
   font: inherit;
+  font-weight: 600;
   cursor: pointer;
-  transition: background var(--duration) var(--ease), color var(--duration) var(--ease),
-    border-color var(--duration) var(--ease);
+  transition: color var(--duration) var(--ease), border-color var(--duration) var(--ease);
+}
+
+.tab:hover:not(.tab-active) {
+  color: var(--accent);
 }
 
 .tab-active {
-  background: var(--accent-soft);
-  color: var(--accent);
-  border-color: var(--accent);
-  font-weight: 600;
+  color: var(--ink);
+  border-bottom-color: var(--accent);
+}
+
+/* One field per tab: label, control, hint. The grid gap owns the spacing, so the label and hint drop
+   their own margins rather than adding to it. */
+.input-field {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.input-field label,
+.input-field .hint {
+  margin: 0;
+}
+
+.input-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  flex-wrap: wrap;
+}
+
+/* Three real pages, so a first-time reader never has to invent a URL to see what this does. */
+.starters {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.starters-label {
+  font-size: var(--text-label);
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+
+.starters-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
 }
 
 label {
@@ -427,17 +627,69 @@ button.link:disabled {
 }
 
 /* The split view is the product's argument, so the two halves are made of different paper — the same
-   material distinction the hero sets up. Neither is decoration: a reader compares them. */
+   material distinction the hero sets up. Neither is decoration: a reader compares them.
+
+   The ReadEasy side gets the wider column because it carries the reading; the original sits beside it
+   the way a facsimile sits in a margin, there to be checked rather than read. */
 .split {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: var(--space-5);
-  align-items: flex-start;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 6fr);
+  gap: var(--space-6);
+  align-items: start;
 }
 
+/* The original is short — a screenshot, or a scrolling block of text — and the reading beside it can
+   run for thousands of pixels. Left static it leaves a column of empty paper the height of the page.
+   Sticking it below the header keeps the "before" in view for exactly as long as there is an "after"
+   to check it against, which is the whole point of the split. The offset clears the sticky header's
+   two measured rows (148px at every width where the split is side by side) plus a step of air. */
+@media (min-width: 861px) {
+  .panel-original {
+    position: sticky;
+    top: calc(148px + var(--space-4));
+    max-height: calc(100vh - 148px - var(--space-6) * 2);
+    overflow-y: auto;
+  }
+
+  /* The sheet has to fit inside the sticky frame, caption included: the "Show the cleaned text"
+     control lives in that caption, and a control clipped by its own container is a control nobody
+     finds. 14rem is the frame's other furniture — padding, the heading line, the caption. */
+  .panel-original .original-shot img,
+  .panel-original .original-text {
+    max-height: calc(100vh - 148px - 14rem);
+  }
+}
+
+/* Panels are columns of a page, not cards on it: one rule along the top, and no box. The card
+   treatment belongs to the innermost thing that actually holds content — the Focus card, the answer,
+   the checklist row — so the reading is never a box inside a box inside a box. */
+.panel {
+  border-top: 3px solid var(--line-strong);
+  padding-top: var(--space-4);
+}
+
+/* The exception: the original is a sheet of the cold stock, so it is filled and padded like one. */
 .panel-original {
   background: var(--paper-cold);
   color: var(--ink-cold);
+  border-radius: var(--radius-sm);
+  border-top-color: var(--line-strong);
+  padding: var(--space-4) var(--space-5) var(--space-5);
+}
+
+/* Controls on the cold sheet take its ink, not the warm page's. */
+.panel-original .chip {
+  color: var(--ink-cold);
+}
+
+/* The fold control belongs to the stacked layout, where the original is a strip a reader opens. Side
+   by side there is nothing to open, and a control that does nothing is worse than no control. */
+.original-fold {
+  display: none;
+}
+
+.panel-readeasy {
+  border-top-color: var(--accent);
 }
 
 .panel-original .placeholder,
@@ -445,9 +697,19 @@ button.link:disabled {
   color: var(--ink-cold);
 }
 
-.panel h2 {
-  margin-top: 0;
+/* The heading line doubles as the panel's control edge: what this side is on the left of it, what a
+   reader can change about how it renders on the right. */
+.panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  flex-wrap: wrap;
   margin-bottom: var(--space-4);
+}
+
+.panel h2 {
+  margin: 0;
   font-family: var(--font-body);
   font-size: var(--text-label);
   font-weight: 700;
@@ -521,6 +783,15 @@ button.link {
   text-wrap: balance;
 }
 
+/* Prose inside the reading holds the measure. At the panel's full width a line of body copy runs past
+   90 characters, which is where a reader with dyslexia or ADHD starts losing the return sweep — the
+   single most consequential typographic number in this app. Headings and controls are exempt: they
+   are short by nature, and a constrained heading just wraps early. */
+.reading p,
+.reading li {
+  max-width: var(--measure);
+}
+
 .summary {
   font-size: 1.05em;
   margin: 0 0 0.35rem;
@@ -528,8 +799,22 @@ button.link {
 
 .reading-time {
   color: var(--ink-soft);
-  margin: 0 0 var(--space-5);
+  margin: 0;
   font-size: 0.9em;
+}
+
+/* The facts about this version of the page, gathered into one band under the summary: what grade
+   level it measures at, how long it takes, and which level is on screen. A band rather than three
+   stacked paragraphs, because none of them is worth its own line of the reader's attention — and a
+   rule below closes the band off so the reading proper starts on a clean edge. */
+.reading-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
+  margin: var(--space-4) 0 var(--space-5);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--line);
 }
 
 /* The measured before/after grade level, above the reading view. */
@@ -537,7 +822,7 @@ button.link {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  margin: 0 0 var(--space-4);
+  margin: 0;
   padding: 0.35rem var(--space-3);
   border: 1px solid var(--line-strong);
   border-radius: var(--radius-pill);
@@ -616,7 +901,7 @@ button.link {
 .mode-description {
   color: var(--ink-soft);
   font-size: 0.9em;
-  margin: var(--space-2) 0 var(--space-4);
+  margin: 0 0 var(--space-4);
 }
 
 .mode-body {
@@ -664,10 +949,15 @@ button.secondary:hover:not(:disabled) {
   overflow: hidden;
 }
 
+/* Scaled rather than widened: animating `width` relayouts the bar on every frame, and this one moves
+   while a reader is mid-sentence beside it. `transform` stays on the compositor. */
 .progress-fill {
   background: var(--accent);
   height: 100%;
-  transition: width var(--duration) var(--ease);
+  width: 100%;
+  transform-origin: left center;
+  transform: scaleX(var(--progress, 0));
+  transition: transform var(--duration) var(--ease);
 }
 
 /* The one card on screen in Focus mode carries the reading; it gets the surface and the space. */
@@ -689,7 +979,7 @@ button.secondary:hover:not(:disabled) {
 
 .focus-controls {
   display: flex;
-  gap: 0.6rem;
+  gap: var(--space-3);
 }
 
 /* --- Dyslexia mode --- */
@@ -835,7 +1125,7 @@ button.secondary:hover:not(:disabled) {
 
 .listen-controls {
   display: flex;
-  gap: 0.6rem;
+  gap: var(--space-3);
 }
 
 .listen-status {
@@ -844,12 +1134,15 @@ button.secondary:hover:not(:disabled) {
   margin: var(--space-3) 0 var(--space-4);
 }
 
+/* The outline is the page itself, read aloud in order — so it is set as reading, not as a list of
+   items. Numbers, because a reader following along by ear needs to know which part is being spoken. */
 .listen-outline {
   margin: 0;
-  padding-left: 1.4rem;
+  padding-left: 1.6rem;
   display: grid;
-  gap: 0.4rem;
+  gap: var(--space-3);
   color: var(--ink-soft);
+  max-width: var(--measure);
 }
 
 .listen-outline .listen-now {
@@ -971,15 +1264,84 @@ button.secondary:hover:not(:disabled) {
 
 /* --- Mobile --- */
 
+/* The split cannot stay a split on a phone: at 390px two columns leave the reading 196px wide, which
+   is nine words a line and a page five thousand pixels long. It stacks — and because a reader who
+   came here to read should not have to scroll the whole cluttered original first, the "before" folds
+   to a strip showing the top of the page, with a control to open the rest. Both sides survive, in the
+   order the product argues in. */
+@media (max-width: 860px) {
+  .split {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-5);
+  }
+
+  .original-fold {
+    display: inline-flex;
+  }
+
+  /* Enough of the real page to see what was wrong with it. The fade says there is more without
+     drawing a second control for it — and a mask reads only alpha, so `currentColor` here is a
+     stand-in for "opaque", not a colour decision. */
+  .panel-original[data-open="false"] .original-body {
+    max-height: 8rem;
+    overflow: hidden;
+    mask-image: linear-gradient(to bottom, currentColor 60%, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, currentColor 60%, transparent);
+  }
+
+  .panel-original[data-open="false"] .original-shot img {
+    max-height: 8rem;
+  }
+}
+
 @media (max-width: 640px) {
   .page {
     gap: var(--space-6);
     padding: var(--space-6) var(--space-4);
   }
 
+  /* The header's own padding is the inset on a phone; the rows inside it stop adding their own, or
+     the wordmark ends up 2.5rem from an edge 390px away from the other one. */
   .site-header,
   .site-footer {
     padding: var(--space-3) var(--space-4);
+  }
+
+  .masthead {
+    padding: var(--space-1) 0;
+  }
+
+  /* The header is sticky, so every row it wraps to is a row of reading taken away for the rest of the
+     session. On a phone the page title and the way back share the top row, and the five Modes scroll
+     sideways in one line below them instead of stacking into two. */
+  .readingbar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: var(--space-2) var(--space-3);
+    padding: var(--space-3) 0 var(--space-1);
+  }
+
+  .readingbar-page {
+    grid-area: 1 / 1;
+  }
+
+  .readingbar-change {
+    grid-area: 1 / 2;
+  }
+
+  .mode-switch {
+    grid-area: 2 / 1 / 3 / -1;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .mode-switch::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mode-option {
+    flex: none;
   }
 
   .card,
@@ -995,6 +1357,27 @@ button.secondary:hover:not(:disabled) {
   button.primary {
     justify-self: stretch;
     width: 100%;
+    text-align: center;
+  }
+
+  /* Two transport buttons share the row: neither is reachable if the first one is full width. */
+  .focus-controls button.primary,
+  .listen-controls button.primary {
+    width: auto;
+    justify-self: start;
+  }
+
+  .focus-controls,
+  .listen-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3);
+  }
+
+  .focus-controls button,
+  .listen-controls button {
+    width: 100%;
+    justify-self: stretch;
     text-align: center;
   }
 }

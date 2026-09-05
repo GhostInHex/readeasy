@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type CSSProperties } from "react";
 import type { ModeProps } from "@/components/modes/types";
 import { splitEmphasis, toMicroCards } from "@/lib/microcards";
 import type { Restructured, Section, TransformRequest, TransformResponse } from "@/lib/types";
@@ -120,7 +120,7 @@ export default function AdhdMode({ restructured, source }: ModeProps) {
           aria-valuenow={safeIndex + 1}
           aria-label="Micro-card progress"
         >
-          <div className="progress-fill" style={{ width: `${((safeIndex + 1) / total) * 100}%` }} />
+          <div className="progress-fill" style={{ "--progress": (safeIndex + 1) / total } as CSSProperties} />
         </div>
       </div>
 

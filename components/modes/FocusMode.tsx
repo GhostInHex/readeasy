@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
 import type { ModeProps } from "@/components/modes/types";
 
 function paragraphsOf(text: string): string[] {
@@ -42,7 +42,7 @@ export default function FocusMode({ restructured }: ModeProps) {
           aria-valuenow={safeIndex + 1}
           aria-label="Reading progress"
         >
-          <div className="progress-fill" style={{ width: `${((safeIndex + 1) / total) * 100}%` }} />
+          <div className="progress-fill" style={{ "--progress": (safeIndex + 1) / total } as CSSProperties} />
         </div>
       </div>
 

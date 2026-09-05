@@ -1,9 +1,13 @@
 "use client";
 
 import { useRef, useState } from "react";
+import Hero from "@/components/Hero";
 import InputCard from "@/components/InputCard";
+import ReadingBar from "@/components/ReadingBar";
 import { ReadingLevelProvider } from "@/components/ReadingLevelProvider";
+import SiteHeader from "@/components/SiteHeader";
 import SplitView from "@/components/SplitView";
+import { DEFAULT_MODE_ID } from "@/components/modes/registry";
 import {
   DEFAULT_READING_LEVEL,
   isTransformError,
@@ -33,6 +37,12 @@ const UNREACHABLE: Failure = {
  * has not been fetched is fetched without clearing the panel: the version on screen stays readable
  * while the other one is written, because a reader who asked for easier words should not have the
  * page taken away from them first.
+ *
+ * It also owns the shape of the whole screen, because that shape depends on whether there is a page
+ * open. With nothing transformed the landing argues for the product. The moment a page arrives the
+ * argument has been made: the hero goes, the transform box folds into one line in the header, and
+ * the reading starts in the first viewport instead of the third. Mode lives up here for the same
+ * reason — the switcher is in the sticky header, so the state has to be above both of them.
  */
 export default function Workspace() {
   const [busy, setBusy] = useState(false);
@@ -42,6 +52,8 @@ export default function Workspace() {
   const [results, setResults] = useState<Partial<Record<ReadingLevel, TransformSuccess>>>({});
   const [source, setSource] = useState<TransformRequest | null>(null);
   const [error, setError] = useState<Failure | null>(null);
+  const [modeId, setModeId] = useState<string>(DEFAULT_MODE_ID);
+  const [inputOpen, setInputOpen] = useState(false);
 
   // Bumped by every new transform, so a level still in flight for the previous page cannot land in
   // the panel after the reader has moved on.
@@ -77,10 +89,14 @@ export default function Workspace() {
     if (outcome.ok) {
       setResults({ [level]: outcome.result });
       setSource(request);
+      // The box has done its job. Folding it away is what puts the new page in the first viewport.
+      setInputOpen(false);
     } else {
       setError({ message: outcome.message, hint: outcome.hint });
       setResults({});
       setSource(null);
+      // A page that failed to load leaves the reader in the box, with their address still in it.
+      setInputOpen(true);
     }
     setBusy(false);
   }
@@ -110,18 +126,41 @@ export default function Workspace() {
     }
   }
 
+  const result = results[level] ?? null;
+  // Busy counts as reading: the panels carry the loading state, so the reader watches the page they
+  // asked for arrive rather than the landing they have already read.
+  const reading = Boolean(result) || busy;
+
   return (
     <ReadingLevelProvider value={{ level, pending, error: levelError, select: selectLevel }}>
-      <InputCard onTransform={transform} busy={busy} />
+      <SiteHeader>
+        {result && (
+          <ReadingBar
+            title={result.restructured.title}
+            sourceUrl={result.sourceUrl}
+            modeId={modeId}
+            onSelectMode={setModeId}
+            inputOpen={inputOpen}
+            onToggleInput={() => setInputOpen((open) => !open)}
+            busy={busy}
+          />
+        )}
+      </SiteHeader>
 
-      {error && (
-        <div className="notice notice-error" role="alert">
-          <p className="notice-message">{error.message}</p>
-          <p className="notice-hint">{error.hint}</p>
-        </div>
-      )}
+      <main className="page" data-stage={reading ? "reading" : "landing"}>
+        {!reading && <Hero />}
 
-      <SplitView result={results[level] ?? null} busy={busy} source={source} />
+        <InputCard onTransform={transform} busy={busy} folded={reading && !inputOpen} />
+
+        {error && (
+          <div className="notice notice-error" role="alert">
+            <p className="notice-message">{error.message}</p>
+            <p className="notice-hint">{error.hint}</p>
+          </div>
+        )}
+
+        {reading && <SplitView result={result} busy={busy} source={source} modeId={modeId} />}
+      </main>
     </ReadingLevelProvider>
   );
 }

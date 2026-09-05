@@ -12,6 +12,7 @@
   align-items: center;
   flex-wrap: wrap;
   gap: var(--space-1, 0.25rem);
+  font-size: var(--text-small, 0.9rem);
 }
 
 .label {

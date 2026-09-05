@@ -1,16 +1,12 @@
-import Hero from "@/components/Hero";
-import SiteHeader from "@/components/SiteHeader";
 import ReadingPreferencesProvider from "@/components/ReadingPreferencesProvider";
 import Workspace from "@/components/Workspace";
 
 export default function Home() {
   return (
     <ReadingPreferencesProvider>
-      <SiteHeader />
-      <main className="page">
-        <Hero />
-        <Workspace />
-      </main>
+      {/* The workspace owns the masthead as well as the page, because the shape of both depends on
+          whether a page is open. */}
+      <Workspace />
       <footer className="site-footer">
         <p>
           ReadEasy never invents facts. Every sentence it shows you is a rewrite of something the original page

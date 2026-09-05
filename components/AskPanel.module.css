@@ -86,12 +86,14 @@
   color: var(--ink-soft, #5c5348);
 }
 
-/* The answer carries the accent edge, the same mark the key takeaway uses: this is the line to read. */
+/* The answer carries the accent rule along its top, the same mark the key takeaway and the wordmark
+   use: this is the line to read. Along the top rather than the side, so it reads as the app's one
+   drawn gesture rather than a coloured tab stuck to a card. */
 .answer {
   display: grid;
   gap: var(--space-2, 0.5rem);
   border: 1px solid var(--line, #cfc4ac);
-  border-left: 3px solid var(--accent, #22406a);
+  border-top: 2px solid var(--accent, #22406a);
   border-radius: var(--radius-sm, 0.5rem);
   padding: var(--space-4, 1rem);
   background: var(--surface, #fffcf5);

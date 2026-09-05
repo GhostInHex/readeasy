@@ -71,10 +71,19 @@
   --radius-sm: 0.5rem;
   --radius-pill: 999px;
 
+  /* Depth, used once: the transform box is the only thing on the landing a reader acts on, so it is
+     the only thing raised off the paper. Warm-tinted from the ink rather than black, with a real
+     offset and a soft blur — a shadow describes a sheet lifted off a desk, not a glow. */
+  --shadow-raise: 0 0.35rem 1.1rem -0.5rem color-mix(in srgb, var(--ink) 22%, transparent);
+  --shadow-lift: 0 0.6rem 1.6rem -0.5rem color-mix(in srgb, var(--ink) 26%, transparent);
+
+  /* The measure. One number for every column of prose in the app, so no two read at different widths. */
+  --measure: 68ch;
+
   /* Type scale. Display sizes are fluid so the hero holds its proportion from 360px to 1440px
      without a breakpoint; body sizes stay fixed, because a reader who set their browser text size
      larger should get exactly that. */
-  --text-display: clamp(2.5rem, 1.9rem + 3vw, 4.25rem);
+  --text-display: clamp(2.6rem, 1.7rem + 4.2vw, 5.25rem);
   --text-title: clamp(1.5rem, 1.3rem + 1vw, 2rem);
   --text-lede: clamp(1.05rem, 1rem + 0.4vw, 1.25rem);
   --text-body: 1rem;
@@ -171,4 +180,9 @@
   --dyslexia-line: #5b5132;
   --dyslexia-takeaway: #241f12;
   --done-bg: #191712;
+
+  /* On a dark ground a lifted sheet reads by its own lighter surface, not by a darker shadow. The
+     shadow stays, deeper and tighter, so the edge still separates. */
+  --shadow-raise: 0 0.35rem 1.1rem -0.5rem rgb(0 0 0 / 0.55);
+  --shadow-lift: 0 0.6rem 1.6rem -0.5rem rgb(0 0 0 / 0.65);
 }
