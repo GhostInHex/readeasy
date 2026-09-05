@@ -1,0 +1,64 @@
+{
+  "title": "Students and Employment",
+  "summary": "This page tells you about student visas and work rules in the United States. It is for people who want to study full-time in the U.S.",
+  "readingTimeMinutes": 2,
+  "actionItems": [
+    {
+      "task": "Send photos that are unmounted and unretouched with your application.",
+      "urgency": "high"
+    },
+    {
+      "task": "Check that your school is approved by the Student and Exchange Visitors Program, Immigration & Customs Enforcement before you apply.",
+      "urgency": "high"
+    },
+    {
+      "task": "Show that you have enough money to pay for your whole course of study.",
+      "urgency": "high"
+    },
+    {
+      "task": "Keep a home in another country that you plan to keep.",
+      "urgency": "high"
+    },
+    {
+      "task": "Ask the Designated School Official for work permission before you start any off-campus job.",
+      "urgency": "high"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Photo Rules",
+      "simplifiedText": "You must send photos that are unmounted. Unmounted means the photo is loose and not glued or taped down. Photos must be unretouched. Unretouched means the photo has no edits and no digital changes. If you send a mounted or retouched photo, your case will be slowed down. You may have to go to an Applicant Support Center to prove who you are.",
+      "keyTakeaway": "Send loose, unedited photos or your case will be slowed down."
+    },
+    {
+      "heading": "Who Needs a Student Visa",
+      "simplifiedText": "You will need a student visa if you want to study full-time in the United States. There are two visa types for students. They are called the F visa and the M visa. You may use the F-1 or M-1 visa if you meet all of the rules the page lists next.",
+      "keyTakeaway": "Full-time students in the U.S. need an F-1 or M-1 visa."
+    },
+    {
+      "heading": "Rules for F-1 and M-1 Visas",
+      "simplifiedText": "You must join an academic program, a language training program, or a vocational program. Your school must be approved by the Student and Exchange Visitors Program, Immigration & Customs Enforcement. You must be a full-time student. You must know English or be in classes that lead to knowing English. You must have enough money to pay for yourself during all your study time. You must keep a home in another country that you do not plan to give up.",
+      "keyTakeaway": "You must meet all six rules to get an F-1 or M-1 visa."
+    },
+    {
+      "heading": "F-1 Visa and M-1 Visa",
+      "simplifiedText": "The F-1 visa is for academic students. It lets you come to the U.S. as a full-time student at an SEVP-certified school. SEVP-certified means the U.S. government lets that school take foreign students. You must join a program that ends with a degree, diploma, or certificate. The M-1 visa is for vocational students. Vocational means job training, not academic study. Language training is not part of the M-1 visa.",
+      "keyTakeaway": "F-1 is for academic study; M-1 is for vocational study."
+    },
+    {
+      "heading": "Work Rules for Students",
+      "simplifiedText": "F-1 students may not work off-campus in the first school year. Off-campus means outside the school. They may take a job on campus if the rules allow it. After the first year, F-1 students may work off-campus in three ways. These ways are Curricular Practical Training (CPT), Optional Practical Training (OPT), and the STEM Optional Practical Training Extension. STEM means Science, Technology, Engineering, and Mathematics. F-1 students may also work off-campus in special cases, like very hard money problems. M-1 students may only do practical training after they finish their studies. Practical training means real work in your field of study.",
+      "keyTakeaway": "F-1 students cannot work off-campus in year one; M-1 students can only train after they finish studying."
+    },
+    {
+      "heading": "Work Permission and Social Security",
+      "simplifiedText": "Any off-campus training job must connect to your area of study. You must get work permission before you start the job. You get this from the Designated School Official (DSO). The DSO is the person who can update the Student and Exchange Visitor Information System (SEVIS). You must also get permission from USCIS. Only people who have work permission from DHS can apply for a Social Security number. DHS is the Department of Homeland Security. A Social Security number is the number the U.S. government gives you to track your earnings.",
+      "keyTakeaway": "Get work approval from your DSO and USCIS before you start any off-campus job."
+    },
+    {
+      "heading": "Where to Learn More",
+      "simplifiedText": "If you want to change to F or M student status, read the Changing to a Nonimmigrant F or M Student Status page. For more facts about F and M visas, read the USCIS Policy Manual. For more facts about the home-abroad rule, read 9 FAM 402.5-5(E)(1) of the U.S. Department of State Foreign Affairs Manual. For more facts about the Student and Exchange Visitors Program, read the Student & Exchange Visitor Program, Immigration & Customs Enforcement page and the Study in the States Training Opportunities in the United States pages. For more facts about foreign students and Social Security numbers, read the Social Security Administration website.",
+      "keyTakeaway": "More facts are on the USCIS Policy Manual and the linked pages."
+    }
+  ]
+}

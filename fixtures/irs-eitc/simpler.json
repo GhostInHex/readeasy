@@ -1,0 +1,51 @@
+{
+  "title": "Who Qualifies for the Earned Income Tax Credit (EITC)",
+  "summary": "This page is from the IRS. It tells you if you can claim the EITC tax credit.",
+  "readingTimeMinutes": 3,
+  "actionItems": [
+    {
+      "task": "Check if you meet the basic EITC rules, like earned income and a valid Social Security number.",
+      "urgency": "high",
+      "deadline": "by the due date of your return (including extensions)"
+    },
+    {
+      "task": "Use the EITC Assistant tool if you are not sure you qualify.",
+      "urgency": "medium"
+    },
+    {
+      "task": "Ask the Social Security Administration for a new SSN card if your card says \"Not valid for employment\" and your status has changed to U.S. citizen or permanent resident.",
+      "urgency": "medium"
+    },
+    {
+      "task": "Use Worksheet 1 to check if you paid more than half the cost of keeping up a home.",
+      "urgency": "low"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Basic Rules You Must Meet",
+      "simplifiedText": "The EITC is for workers who make low to moderate money. You must have earned income. Earned income is money you get from a job.\n\nYou must also meet all of these rules. You must have a valid Social Security number by the due date of your tax return, including extensions. You must be a U.S. citizen or a resident alien all year. You must not file Form 2555, Foreign Earned Income.",
+      "keyTakeaway": "You must meet all the basic EITC rules, including having earned income and a valid SSN."
+    },
+    {
+      "heading": "Your Social Security Number",
+      "simplifiedText": "You, your spouse if you file together, and the child you claim must all have a valid SSN. The SSN must be issued on or before the due date of your tax return, including extensions.\n\nAn SSN is not valid for the EITC if it was issued after the due date. It is also not valid if it was issued only to apply for a federal benefit like Medicaid, and it does not let you work.",
+      "keyTakeaway": "Your SSN must be issued on or before the due date of your return and must let you work."
+    },
+    {
+      "heading": "Your Filing Status",
+      "simplifiedText": "You can file as married filing jointly, head of household, qualifying surviving spouse, or single. You can also file as married filing separate in some cases.\n\nTo file as head of household, you must not be married. You must have a qualifying child live with you for more than half the year. You must also pay more than half the cost to keep up your home. Costs include rent, mortgage interest, taxes, insurance, repairs, utilities, and food eaten in the home.",
+      "keyTakeaway": "Your filing status must be one of the allowed ones, and head of household has extra rules."
+    },
+    {
+      "heading": "Special Rules for Some People",
+      "simplifiedText": "There are special rules for military members, clergy members, and taxpayers or relatives with disabilities. If you are not sure if you qualify, you can use the IRS EITC Assistant.\n\nIf you were a nonresident alien for any part of the year, you can only claim the EITC if you file as married filing jointly. Your spouse must be a U.S. citizen or resident alien, and you must choose to be treated as a U.S. resident.",
+      "keyTakeaway": "Military, clergy, and people with disabilities have special EITC rules, and nonresident aliens have extra limits."
+    },
+    {
+      "heading": "Claiming the EITC Without a Qualifying Child",
+      "simplifiedText": "You can claim the EITC even if you do not have a qualifying child. You must meet the basic EITC rules. You must live in the United States for more than half the tax year. The United States includes the 50 states, the District of Columbia, and U.S. military bases.\n\nYou cannot be claimed as a qualifying child or dependent of another person. You must be at least age 25 but under age 65 at the end of the year. If you are married and file a joint return, at least one spouse must meet the age rule.",
+      "keyTakeaway": "You can claim the EITC without a child if you meet the basic rules, live in the U.S., and meet the age rule."
+    }
+  ]
+}

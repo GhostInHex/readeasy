@@ -1,0 +1,80 @@
+{
+  "title": "Apply To UT Dallas",
+  "summary": "This page tells you how to apply to UT Dallas. It lists the different types of applicants and how each one can apply.",
+  "readingTimeMinutes": 2,
+  "actionItems": [
+    {
+      "task": "Pick the application that fits you from the list (Freshman, Graduate, Certificates for Current Undergraduates, International Transient/Visiting, Non-Degree Seeking, Returning/Readmission, Second Bachelor's Degree, or Transient/Visiting).",
+      "urgency": "high"
+    },
+    {
+      "task": "If you are a current undergraduate UTD student and want a certificate, go to your UTD Student Center in Orion and pick the Apply to a Certificate Program tile.",
+      "urgency": "high"
+    },
+    {
+      "task": "If you are an International Transient/Visiting student, complete the Visiting Student application on ApplyTexas, choose UG International Student Enrolled at a Non-US Institution as your first-choice major, send an official college transcript, and pay the $75 application fee.",
+      "urgency": "high"
+    },
+    {
+      "task": "If you are a Non-Degree Seeking student, complete the Transfer or Visiting Student application on ApplyTexas, choose Undergraduate, Non-Degree as your major, send official transcripts showing at least the last 30 undergraduate semester credit hours (and a degree transcript if you finished a bachelor's), and pay the $75 application fee at utdallas.edu/payfee.",
+      "urgency": "high"
+    },
+    {
+      "task": "If you want to take graduate classes or teacher certification as a graduate, non-degree-seeking student, submit an application through the graduate application.",
+      "urgency": "high"
+    },
+    {
+      "task": "If you are returning after missing three long semesters (Fall, Spring), apply for readmission through ApplyTexas.",
+      "urgency": "high"
+    },
+    {
+      "task": "If you are applying for a Second Bachelor's Degree, contact the academic department you want to apply to, then complete the ApplyTexas Application for transfer students, send official college transcripts (including one showing degree conferral), send an essay about the coursework you wish to complete, and pay the $75 application fee.",
+      "urgency": "high"
+    },
+    {
+      "task": "If you are a Transient/Visiting student, complete the Visiting Student application on ApplyTexas, choose UGRD Non-Degree Transient — enrolled at another 4-year institution, send an official college transcript, and pay the $75 application fee.",
+      "urgency": "high"
+    },
+    {
+      "task": "If admitted to a certificate program, you must enroll in coursework for the term you applied for or your admission will be canceled, and you must still apply for graduation.",
+      "urgency": "high"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Pick Your Applicant Type",
+      "simplifiedText": "You need to pick the application that fits you. The page lists Freshman, Graduate, and Other Applicant Types. Read each type and find the one that is right for you.",
+      "keyTakeaway": "Pick the applicant type on the page that fits you best."
+    },
+    {
+      "heading": "Certificates for Current UTD Students",
+      "simplifiedText": "If you are a current UTD undergraduate student, you can apply for a certificate. Go to your UTD Student Center in Orion. Pick the Apply to a Certificate Program tile. Then pick and finish the certificate application you want.\n\nYou must be a current undergraduate UTD student. Each certificate has its own rules. If you are accepted, you must sign up for classes for that term. If you do not sign up, your admission is canceled. You must still apply for graduation.",
+      "keyTakeaway": "Current UTD undergraduates apply for certificates in their Orion Student Center, and must enroll if admitted."
+    },
+    {
+      "heading": "International Transient or Visiting",
+      "simplifiedText": "This is for students from a school outside the U.S. who want to take classes at UT Dallas for one semester. You must be at an accredited school outside the U.S. and seek a four-year degree there. You must be in good standing at your school.\n\nFill out the Visiting Student application on ApplyTexas. Pick UG International Student Enrolled at a Non-US Institution as your first-choice major. Tell which major you want to take. Send an official college transcript. Pay the $75 fee.",
+      "keyTakeaway": "International visiting students apply on ApplyTexas, send a transcript, and pay $75."
+    },
+    {
+      "heading": "Non-Degree Seeking Students",
+      "simplifiedText": "Use this if you want to take undergraduate classes or an Undergraduate Certificate without getting a degree. You must have finished college classes after high school, or already have a bachelor's or equal degree. Classes depend on space.\n\nFill out the Transfer or Visiting Student application on ApplyTexas. Pick Undergraduate, Non-Degree as your major. Then pick the UT Dallas school where you will take classes. Send an official transcript with at least the last 30 undergraduate semester credit hours. If you have a bachelor's, also send a transcript that shows the degree was given. Pay the $75 fee at utdallas.edu/payfee.",
+      "keyTakeaway": "Non-degree students apply on ApplyTexas, send transcripts, and pay the $75 fee."
+    },
+    {
+      "heading": "Returning or Readmission",
+      "simplifiedText": "Use this if you finished at least one semester at UT Dallas and have not been in UT Dallas classes for the last three long semesters (Fall, Spring). Current students do not need to reapply if they have been enrolled in the last three long semesters.\n\nYou can find more information in the undergraduate catalog.",
+      "keyTakeaway": "Apply for readmission through ApplyTexas if you missed three long semesters."
+    },
+    {
+      "heading": "Second Bachelor's Degree",
+      "simplifiedText": "Use this if you already have a bachelor's degree and want a second undergraduate degree. Classes depend on space. Talk to the academic department you want to join for more information.\n\nAfter the department says yes, fill out the ApplyTexas Application for transfer students. Pick the program you want. List your full school history. Send official college transcripts from every school, including one that shows your first degree. Send an essay about the coursework you want to do at UT Dallas. Pay the $75 fee.",
+      "keyTakeaway": "Second bachelor's applicants must contact the department, then apply on ApplyTexas, send transcripts and an essay, and pay $75."
+    },
+    {
+      "heading": "Transient or Visiting Students",
+      "simplifiedText": "This is for students at another U.S. four-year school who want to take classes at UT Dallas for one semester. You must be at another U.S. school and seeking a degree there. You must be in good standing at your school.\n\nFill out the Visiting Student application on ApplyTexas. Pick UGRD Non-Degree Transient — enrolled at another 4-year institution as your major. Send an official college transcript. Pay the $75 fee.",
+      "keyTakeaway": "Transient students apply on ApplyTexas, send a transcript, and pay $75."
+    }
+  ]
+}
