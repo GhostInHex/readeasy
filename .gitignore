@@ -17,3 +17,6 @@ out
 tools/*
 !tools/verify-trio.ts
 .scratch/
+
+# Screenshots from a design-review round: regenerated on demand, never referenced by the app.
+.impeccable/
