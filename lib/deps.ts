@@ -1,4 +1,5 @@
 import { fetchPageHtml } from "@/lib/fetch-page";
+import { parseModelList } from "@/lib/llm/fallback";
 import { createOpenRouterClient } from "@/lib/llm/openrouter";
 import { createStubLlmClient } from "@/lib/llm/stub";
 import type { LlmClient } from "@/lib/llm/types";
@@ -20,6 +21,7 @@ export function defaultLlmClient(): LlmClient {
   return createOpenRouterClient({
     apiKey,
     model: process.env.OPENROUTER_MODEL,
+    fallbackModels: parseModelList(process.env.OPENROUTER_FALLBACK_MODELS),
     appUrl: process.env.NEXT_PUBLIC_APP_URL
   });
 }

@@ -1,6 +1,7 @@
 import { findCachedAnswer } from "@/lib/ask-cache";
 import { TransformFailure } from "@/lib/errors";
-import { DEFAULT_MODEL } from "@/lib/llm/openrouter";
+import { attemptTimeoutMs, parseModelList, runWithFallbacks } from "@/lib/llm/fallback";
+import { DEFAULT_MODEL, FALLBACK_MODELS } from "@/lib/llm/openrouter";
 import { splitSentences } from "@/lib/microcards";
 import { truncateForModel } from "@/lib/restructure";
 import type { TransformError } from "@/lib/types";
@@ -103,52 +104,85 @@ interface ChatCompletion {
 }
 
 /**
- * The model path. Same service and the same failure vocabulary as the Restructure client, with its
- * own prompt and its own error codes so a reader can tell "the answering step failed" from "the
- * rewriting step failed". A cached page never reaches this function.
+ * The model path. Same service, same failure vocabulary, and the same fallback chain as the
+ * Restructure client, with its own prompt and its own error codes so a reader can tell "the
+ * answering step failed" from "the rewriting step failed". A cached page never reaches this
+ * function.
  */
-export function createOpenRouterAnswerer(options: { apiKey: string; model?: string; appUrl?: string }): AskLlm {
-  const model = options.model?.trim() || DEFAULT_MODEL;
+export function createOpenRouterAnswerer(options: {
+  apiKey: string;
+  model?: string;
+  fallbackModels?: string[];
+  appUrl?: string;
+}): AskLlm {
+  const models = [
+    options.model?.trim() || DEFAULT_MODEL,
+    ...(options.fallbackModels?.length ? options.fallbackModels : FALLBACK_MODELS)
+  ];
+  const perModelTimeout = attemptTimeoutMs(ASK_TIMEOUT_MS, models.length);
 
   return {
-    name: `openrouter:${model}`,
+    name: `openrouter:${models.join(" + ")}`,
     source: "model",
     async answer(input: AskInput): Promise<string> {
-      let response: Response;
-      try {
-        response = await fetch(ASK_ENDPOINT, {
-          method: "POST",
-          headers: {
-            authorization: `Bearer ${options.apiKey}`,
-            "content-type": "application/json",
-            ...(options.appUrl ? { "http-referer": options.appUrl } : {}),
-            "x-title": "ReadEasy"
-          },
-          body: JSON.stringify({
+      return runWithFallbacks(
+        models.map((model) => () =>
+          answerWithModel({
+            apiKey: options.apiKey,
+            appUrl: options.appUrl,
             model,
-            messages: [
-              { role: "system", content: ASK_SYSTEM_PROMPT },
-              { role: "user", content: buildAskPrompt(input) }
-            ],
-            temperature: 0.1,
-            max_tokens: 600
-          }),
-          signal: AbortSignal.timeout(ASK_TIMEOUT_MS)
-        });
-      } catch (error) {
-        const timedOut = error instanceof Error && (error.name === "TimeoutError" || error.name === "AbortError");
-        throw new TransformFailure({
-          code: timedOut ? "ask_timeout" : "ask_unreachable",
-          message: timedOut
-            ? "Answering that question took too long."
-            : "ReadEasy could not reach the answering service.",
-          hint: "Ask again in a moment, or pick one of the suggested questions."
-        });
-      }
-
-      return readAnswer(response);
+            input,
+            timeoutMs: perModelTimeout
+          })
+        )
+      );
     }
   };
+}
+
+/** One Ask call to one model, mapped onto the Ask error contract. */
+async function answerWithModel(request: {
+  apiKey: string;
+  appUrl?: string;
+  model: string;
+  input: AskInput;
+  timeoutMs: number;
+}): Promise<string> {
+  const { apiKey, appUrl, model, input, timeoutMs } = request;
+
+  let response: Response;
+  try {
+    response = await fetch(ASK_ENDPOINT, {
+      method: "POST",
+      headers: {
+        authorization: `Bearer ${apiKey}`,
+        "content-type": "application/json",
+        ...(appUrl ? { "http-referer": appUrl } : {}),
+        "x-title": "ReadEasy"
+      },
+      body: JSON.stringify({
+        model,
+        messages: [
+          { role: "system", content: ASK_SYSTEM_PROMPT },
+          { role: "user", content: buildAskPrompt(input) }
+        ],
+        temperature: 0.1,
+        max_tokens: 600
+      }),
+      signal: AbortSignal.timeout(timeoutMs)
+    });
+  } catch (error) {
+    const timedOut = error instanceof Error && (error.name === "TimeoutError" || error.name === "AbortError");
+    throw new TransformFailure({
+      code: timedOut ? "ask_timeout" : "ask_unreachable",
+      message: timedOut
+        ? "Answering that question took too long."
+        : "ReadEasy could not reach the answering service.",
+      hint: "Ask again in a moment, or pick one of the suggested questions."
+    });
+  }
+
+  return readAnswer(response);
 }
 
 /** HTTP status and payload, mapped onto the error contract a reader can act on. */
@@ -282,6 +316,7 @@ export function defaultAskLlm(): AskLlm {
   return createOpenRouterAnswerer({
     apiKey,
     model: process.env.OPENROUTER_MODEL,
+    fallbackModels: parseModelList(process.env.OPENROUTER_FALLBACK_MODELS),
     appUrl: process.env.NEXT_PUBLIC_APP_URL
   });
 }
