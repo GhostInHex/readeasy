@@ -1,0 +1,39 @@
+<!doctype html>
+<!-- ReadEasy demo — 08 · trust / proof card -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,500;7..72,700&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root { --bg: #fbf6ec; --ink: #231e19; --ink-soft: #5c5348; --accent: #22406a; --accent-soft: #e3e9f0; }
+  * { margin: 0; box-sizing: border-box; }
+  html, body { width: 1920px; height: 1080px; overflow: hidden; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font-family: "Atkinson Hyperlegible", sans-serif;
+    display: grid; place-items: center;
+  }
+  .wrap { max-width: 1500px; }
+  h1 { font-family: "Literata", serif; font-size: 84px; font-weight: 700; line-height: 1.1; }
+  h1 em { font-style: normal; color: var(--accent); }
+  .stats { display: flex; gap: 40px; margin-top: 70px; }
+  .stat {
+    flex: 1; background: var(--accent-soft); border-radius: 22px;
+    padding: 52px 48px; border: 1px solid #cdd8e4;
+  }
+  .stat .n { font-family: "Literata", serif; font-size: 96px; font-weight: 700; color: var(--accent); line-height: 1; }
+  .stat .l { margin-top: 18px; font-size: 34px; color: var(--ink-soft); line-height: 1.35; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>The AI is a <em>rewriter, not an author</em> —<br>and the page proves it.</h1>
+    <div class="stats">
+      <div class="stat"><p class="n">5</p><p class="l">views over one validated JSON — no two views can disagree about the facts.</p></div>
+      <div class="stat"><p class="n">0</p><p class="l">invented facts. Every sentence is auditable against the original beside it.</p></div>
+      <div class="stat"><p class="n">2</p><p class="l">reading grades shown on the page — the claim carries a number, not an adjective.</p></div>
+    </div>
+  </div>
+</body>
+</html>

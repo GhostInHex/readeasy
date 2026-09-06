@@ -1,0 +1,36 @@
+<!doctype html>
+<!-- ReadEasy demo — 00 · hook -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,500;7..72,700&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fbf6ec; --surface: #fffcf5; --ink: #231e19; --ink-soft: #5c5348;
+    --accent: #22406a; --accent-soft: #e3e9f0; --line: #cfc4ac;
+  }
+  * { margin: 0; box-sizing: border-box; }
+  html, body { width: 1920px; height: 1080px; overflow: hidden; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font-family: "Atkinson Hyperlegible", sans-serif;
+    display: grid; place-items: center;
+  }
+  .card { text-align: center; animation: rise 1s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  @keyframes rise { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
+  .wordmark { font-family: "Literata", serif; font-weight: 700; font-size: 190px; letter-spacing: -0.02em; line-height: 1; }
+  .wordmark em { font-style: normal; color: var(--accent); }
+  .rule { width: 220px; height: 4px; background: var(--accent); border-radius: 2px; margin: 52px auto; }
+  .tagline { font-size: 52px; color: var(--ink-soft); }
+  .tagline strong { color: var(--ink); }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h1 class="wordmark">Read<em>Easy</em></h1>
+    <div class="rule"></div>
+    <p class="tagline">The web, made readable <strong>for every reader</strong>.</p>
+  </div>
+</body>
+</html>

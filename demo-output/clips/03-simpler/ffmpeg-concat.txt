@@ -1,0 +1,17 @@
+file 'frame_00001.png'
+duration 0.1955
+file 'frame_00002.png'
+duration 0.0333
+file 'frame_00003.png'
+duration 0.0333
+file 'frame_00004.png'
+duration 0.1065
+file 'frame_00005.png'
+duration 0.0333
+file 'frame_00006.png'
+duration 0.0333
+file 'frame_00007.png'
+duration 0.0877
+file 'frame_00008.png'
+duration 4.2866
+file 'frame_00008.png'

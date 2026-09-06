@@ -1,0 +1,1 @@
+Listen reads the page aloud with the browser's own voice — and each word lights up as it's spoken, so you follow by eye and ear together.

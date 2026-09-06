@@ -1,0 +1,45 @@
+<!doctype html>
+<!-- ReadEasy demo — 01 · problem -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,500;7..72,700&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; box-sizing: border-box; }
+  html, body { width: 1920px; height: 1080px; overflow: hidden; }
+  body {
+    background: #1d1913; color: #f5efe4;
+    font-family: "Atkinson Hyperlegible", sans-serif;
+    display: grid; grid-template-columns: 1.1fr 1fr; gap: 72px;
+    padding: 90px 110px; align-items: center;
+  }
+  .shot {
+    border-radius: 18px; overflow: hidden; height: 800px;
+    box-shadow: 0 40px 90px rgba(0,0,0,0.55);
+    border: 1px solid rgba(255,255,255,0.08);
+    transform: rotate(-1.2deg);
+  }
+  .shot img { width: 100%; display: block; filter: saturate(0.9); }
+  .copy h1 { font-family: "Literata", serif; font-size: 78px; line-height: 1.12; font-weight: 700; }
+  .copy h1 em { font-style: normal; color: #e8a08d; }
+  .quote {
+    margin-top: 44px; padding: 34px 38px; border-left: 6px solid #b37056;
+    background: rgba(179,112,86,0.10); border-radius: 0 14px 14px 0;
+    font-size: 33px; line-height: 1.5; color: #e9ddca;
+  }
+  .kicker { font-size: 30px; letter-spacing: 0.22em; text-transform: uppercase; color: #b09f85; margin-bottom: 26px; }
+  .foot { margin-top: 40px; font-size: 32px; color: #cbbfa8; }
+  .foot strong { color: #f5efe4; }
+</style>
+</head>
+<body>
+  <div class="shot"><img src="../../public/fixtures/irs-eitc.png" alt=""></div>
+  <div class="copy">
+    <p class="kicker">The problem</p>
+    <h1>Written for the institution.<br><em>Not for the reader.</em></h1>
+    <p class="quote">“You must have a valid Social Security number issued on or before the due date of your return, including extensions…”</p>
+    <p class="foot">The rule that decides your <strong>$4,000 tax credit</strong> — buried in paragraph nine.</p>
+  </div>
+</body>
+</html>

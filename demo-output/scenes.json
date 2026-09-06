@@ -1,0 +1,25 @@
+{
+  "title": "ReadEasy — Demo Video",
+  "output": "readeasy-demo.mp4",
+  "resolution": "3840x2160",
+  "fps": 30,
+  "totalDuration": 121.28,
+  "scenes": [
+    { "id": "00", "name": "hook",      "kind": "card", "duration": 5.64 },
+    { "id": "01", "name": "problem",   "kind": "card", "duration": 16.25 },
+    { "id": "02", "name": "transform", "kind": "clip", "duration": 18.8, "note": "loading freeze trimmed 15.03s -> 1.0s in clips/02-transform/ffmpeg-concat.txt" },
+    { "id": "03", "name": "simpler",   "kind": "clip", "duration": 9.63 },
+    { "id": "04", "name": "modes",     "kind": "clip", "duration": 18.5 },
+    { "id": "05", "name": "listen",    "kind": "clip", "duration": 14.88 },
+    { "id": "06", "name": "ask",       "kind": "clip", "duration": 7.21 },
+    { "id": "07", "name": "comfort",   "kind": "clip", "duration": 10.74 },
+    { "id": "08", "name": "trust",     "kind": "card", "duration": 13.47 },
+    { "id": "09", "name": "end",       "kind": "card", "duration": 6.14 }
+  ],
+  "build": {
+    "script": "studio/build.mjs",
+    "rebuildSingleScene": "node studio/build.mjs <ids-comma-separated>",
+    "finalConcat": "ffmpeg -y -f concat -safe 0 -i tmp-build/final-concat.txt -c copy -movflags +faststart readeasy-demo.mp4",
+    "notes": "Scene duration = max(footage, narration + 0.6s lead + tail); padding clones the last frame. Fades use paper color #FBF6EC. Final concat is -c copy, so partial rebuilds must be followed by the final concat step."
+  }
+}

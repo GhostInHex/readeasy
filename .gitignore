@@ -20,3 +20,10 @@ tools/*
 
 # Screenshots from a design-review round: regenerated on demand, never referenced by the app.
 .impeccable/
+
+# Demo-build intermediates and local logs
+demo-output/tmp-build/
+demo-output/**/*.log
+devserver.log
+npm-install.log
+transform-*.json
