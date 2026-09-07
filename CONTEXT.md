@@ -3,7 +3,7 @@
 ## Current situation
 
 We are preparing an entry for the **BUILDVERSE Hackathon** (by **ACM DALLAS**, hosted on HackCulture).
-Working directory `C:\Users\vinay\Documents\AI\hackathon` is otherwise empty.
+Working directory `C:\Users\vinay\Documents\AI\hackathon\readeasy` is the project root; sibling folders under `hackathon\` may hold other projects.
 
 Source of truth: https://hackculture.io/hackathons/buildverse-hackathon
 (API snapshot saved at `.scratch/buildverse_pretty.json`, fetched 2026-09-01.)
