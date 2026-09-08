@@ -1,5 +1,8 @@
 # ReadEasy
 
+## GIBC V2 — Track 03 Open Invention Submission Branch
+> This branch is the GIBC V2 Track 03 submission (created during July 11-Sep 21 window). Invention: generative AI that restructures any web page for accessibility. See `HACKATHON_DISCLOSURE.md` and `docs/GIBC_SUBMISSION.md`. Demo: https://readeasy-git-hackathon-gibc-open-ghostinhex.vercel.app
+
 **ReadEasy — the web, made readable for every reader.**
 
 ReadEasy restructures any web page into clear, accessible formats for readers with dyslexia,
