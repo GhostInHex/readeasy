@@ -1,7 +1,7 @@
 # ReadEasy
 
 ## AI Builders Hackathon — Submission Branch
-> This branch is the AI Builders submission (created during Aug 21-Sep 15 window). Core ReadEasy product + 10-slide deck in `docs/AI_BUILDERS_DECK.md`. See `HACKATHON_DISCLOSURE.md` for provenance. Demo: https://readeasy-git-hackathon-ai-builders-ghostinhex.vercel.app
+> This branch is the AI Builders submission (created during Aug 21-Sep 15 window). Core ReadEasy product + 10-slide deck in `docs/AI_BUILDERS_DECK.md`. See `HACKATHON_DISCLOSURE.md` for provenance. Demo: [readeasy-ai-builders.vercel.app](https://readeasy-ai-builders.vercel.app) (branch deploy: [readeasy-git-hackathon-ai-builders-imvrp555s-projects.vercel.app](https://readeasy-git-hackathon-ai-builders-imvrp555s-projects.vercel.app))
 
 **ReadEasy — the web, made readable for every reader.**
 

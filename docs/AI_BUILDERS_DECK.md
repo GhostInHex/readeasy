@@ -1,6 +1,6 @@
 # ReadEasy — AI Builders Hackathon Deck (10 Slides)
 
-> 10-slide deck for AI Builders. Companion: `HACKATHON_DISCLOSURE.md`. Live demo: https://readeasy-git-hackathon-ai-builders-ghostinhex.vercel.app
+> 10-slide deck for AI Builders. Companion: `HACKATHON_DISCLOSURE.md`. Live demo: [readeasy-ai-builders.vercel.app](https://readeasy-ai-builders.vercel.app)
 
 ---
 
@@ -203,7 +203,7 @@
 **Body:**
 
 - **Team:** Solo builder (online, Buildverse → AI Builders). Stack: Next.js 15 + React 19 + TypeScript + OpenRouter + Readability + Vercel.
-- **Repo:** https://github.com/GhostInHex/readeasy (public) · Branch: `hackathon/ai-builders` · Live: https://readeasy-git-hackathon-ai-builders-ghostinhex.vercel.app
+- **Repo:** https://github.com/GhostInHex/readeasy (public) · Branch: `hackathon/ai-builders` · Live: [readeasy-ai-builders.vercel.app](https://readeasy-ai-builders.vercel.app)
 - **Ask:**
   - **Users:** Try your hardest page — paste a link, see the checklist.
   - **Judges:** Verify live — any URL, plus raw-text fallback.

@@ -46,5 +46,5 @@ No model weights, private datasets, or undisclosed third-party code are included
 
 - Base repo: https://github.com/GhostInHex/readeasy
 - This submission branch: https://github.com/GhostInHex/readeasy/tree/hackathon/ai-builders
-- Live demo (submission branch): https://readeasy-git-hackathon-ai-builders-ghostinhex.vercel.app
+- Live demo: [Live Demo](https://readeasy-ai-builders.vercel.app) (branch deploy fallback: [readeasy-git-hackathon-ai-builders-imvrp555s-projects.vercel.app](https://readeasy-git-hackathon-ai-builders-imvrp555s-projects.vercel.app))
 - AI Builders Hackathon: https://ai-builders-hackathon-2026.devpost.com

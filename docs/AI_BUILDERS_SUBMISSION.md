@@ -41,7 +41,7 @@ One-button **Transform**: Fetch & Clean (Readability, no AI) → Restructure (Op
 |---|---|
 | **GitHub (submission branch)** | https://github.com/GhostInHex/readeasy/tree/hackathon/ai-builders |
 | **GitHub (repo root)** | https://github.com/GhostInHex/readeasy |
-| **Live demo (submission branch)** | https://readeasy-git-hackathon-ai-builders-ghostinhex.vercel.app |
+| **Live demo (submission branch)** | [Live Demo](https://readeasy-ai-builders.vercel.app) |
 | **Deck** | `docs/AI_BUILDERS_DECK.md` (in this branch) |
 | **Disclosure** | `HACKATHON_DISCLOSURE.md` (in this branch) |
 | **Demo video** | _placeholder — upload to YouTube/Loom and paste link here (5 min max)_ |
@@ -91,7 +91,7 @@ See `.env.example`.
 
 - [ ] Devpost project created for **AI Builders Hackathon (ai-builders-hackathon-2026.devpost.com)** before Sep 15, 2026 @11pm EDT
 - [ ] **GitHub link** set to submission branch: https://github.com/GhostInHex/readeasy/tree/hackathon/ai-builders (repo public)
-- [ ] **Live demo URL** set to https://readeasy-git-hackathon-ai-builders-ghostinhex.vercel.app (vercel branch deploy)
+- [ ] **Live demo URL** set to [Live Demo](https://readeasy-ai-builders.vercel.app)
 - [ ] **Demo video** (≤5 min) uploaded and linked
 - [ ] **Deck** — 10 slides: export `docs/AI_BUILDERS_DECK.md` to PDF/Google Slides and upload/link (Devpost deck field)
 - [ ] **Disclosure** — keep `HACKATHON_DISCLOSURE.md` in repo root; Devpost "built on existing project" field points to it
