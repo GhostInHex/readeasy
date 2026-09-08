@@ -1,7 +1,7 @@
 # ReadEasy — Practice to Create Slide Deck Outline (Ideathon)
 
 > **Purpose:** Ideathon allows Figma/Canva/slides — no code required. This 6-slide outline is optimized for the 25/25/25/25 rubric (Originality, Presentation, Visuals, Plausibility). Pair with `docs/PRACTICE_PITCH.md` video script (3–5 min, timed to 4:10).
-> **Demo:** https://readeasy-git-hackathon-practice-ghostinhex.vercel.app | **Repo:** https://github.com/GhostInHex/readeasy | **Disclosure:** `HACKATHON_DISCLOSURE.md`
+> **Demo:** [Live Demo](https://readeasy-practice.vercel.app) | **Repo:** https://github.com/GhostInHex/readeasy | **Disclosure:** `HACKATHON_DISCLOSURE.md`
 
 ## Design Direction (Apply to All Slides)
 
@@ -53,7 +53,7 @@
 ### Slide 4 — Demo
 
 **Title:** Live in 30 seconds — the demo trio
-**Visual:** Screen capture of https://readeasy-git-hackathon-practice-ghostinhex.vercel.app — trio buttons (IRS / UT Dallas / USCIS) highlighted. Inset: split view with sync scroll + readability badge "college → grade 5". Second inset: "Ask this page" Q&A, grounded answer.
+**Visual:** Screen capture of [Live Demo](https://readeasy-practice.vercel.app) — trio buttons (IRS / UT Dallas / USCIS) highlighted. Inset: split view with sync scroll + readability badge "college → grade 5". Second inset: "Ask this page" Q&A, grounded answer.
 
 **Flow (annotated screenshots, not live during pitch if time-tight):**
 1. Click Transform on IRS EITC → split view appears

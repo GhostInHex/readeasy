@@ -41,7 +41,7 @@ Generative AI was used and is disclosed here, per Practice rules.
 
 ## Verification
 
-- **Demo (live):** https://readeasy-git-hackathon-practice-ghostinhex.vercel.app
+- **Demo (live):** [Live Demo](https://readeasy-practice.vercel.app)
 - **Repo:** https://github.com/GhostInHex/readeasy (branch `hackathon/practice`)
 - **Pitch script:** `docs/PRACTICE_PITCH.md`
 - **Slides outline:** `docs/SLIDES_OUTLINE.md`

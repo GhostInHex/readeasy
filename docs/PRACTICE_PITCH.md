@@ -1,7 +1,7 @@
 # ReadEasy — Practice to Create Pitch (3–5 min Video Script)
 
-> **Total runtime:** ~3:50 (230s timed beats) — comfortably under the 5:00 limit. Leave 10s buffer at start/end.
-> **Branch:** `hackathon/practice` | **Demo:** https://readeasy-git-hackathon-practice-ghostinhex.vercel.app | **Repo:** https://github.com/GhostInHex/readeasy
+> **Total runtime:** ~4:10 (250s timed beats) — comfortably under the 5:00 limit. Leave 10s buffer at start/end.
+> **Branch:** `hackathon/practice` | **Demo:** [Live Demo](https://readeasy-practice.vercel.app) | **Repo:** https://github.com/GhostInHex/readeasy
 
 ## Timing At-a-Glance
 
@@ -65,7 +65,7 @@ Script:
 
 ## 3. How It Works / Implementation (60s) — Demo Trio + Verification
 
-**[VISUAL: Slide 4 — Demo. Live screen capture on https://readeasy-git-hackathon-practice-ghostinhex.vercel.app — trio buttons visible. Split view sync scroll.]**
+**[VISUAL: Slide 4 — Demo. Live screen capture on [Live Demo](https://readeasy-practice.vercel.app) — trio buttons visible. Split view sync scroll.]**
 
 Script:
 
@@ -134,7 +134,7 @@ Script:
 ## Links
 
 - **GitHub:** https://github.com/GhostInHex/readeasy
-- **Practice branch demo:** https://readeasy-git-hackathon-practice-ghostinhex.vercel.app
+- **Practice branch demo:** [Live Demo](https://readeasy-practice.vercel.app)
 - **Disclosure:** `HACKATHON_DISCLOSURE.md`
 - **Slides outline:** `docs/SLIDES_OUTLINE.md`
 

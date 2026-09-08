@@ -1,7 +1,7 @@
 # ReadEasy
 
 ## Practice to Create — Ideathon Submission Branch
-> This branch is the Practice to Create ideathon submission (reuse explicitly allowed per rules). ReadEasy presented as accessible web solution. See `HACKATHON_DISCLOSURE.md` and `docs/PRACTICE_PITCH.md` (3-5min video script). Demo: https://readeasy-git-hackathon-practice-ghostinhex.vercel.app
+> This branch is the Practice to Create ideathon submission (reuse explicitly allowed per rules). ReadEasy presented as accessible web solution. See `HACKATHON_DISCLOSURE.md` and `docs/PRACTICE_PITCH.md` (3-5min video script). Demo: [readeasy-practice.vercel.app](https://readeasy-practice.vercel.app) (branch deploy: readeasy-git-hackathon-practice-imvrp555s-projects.vercel.app)
 
 **ReadEasy — the web, made readable for every reader.**
 
