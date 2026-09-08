@@ -1,5 +1,8 @@
 # ReadEasy
 
+## UnivaBio — AI for Human Health Submission Branch
+> This branch is the UnivaBio submission (created during Aug 7-Oct 6 window). Health literacy focus: restructuring medical pages for plain language. New health demo fixture in `fixtures/univabio-health/`. See `HACKATHON_DISCLOSURE.md`, `docs/UNIVABIO_ONE_PAGER.md`. Demo: https://readeasy-git-hackathon-univabio-ghostinhex.vercel.app | GitHub: https://github.com/GhostInHex/readeasy/tree/hackathon/univabio
+
 **ReadEasy — the web, made readable for every reader.**
 
 ReadEasy restructures any web page into clear, accessible formats for readers with dyslexia,
