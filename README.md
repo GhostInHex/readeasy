@@ -1,5 +1,8 @@
 # ReadEasy
 
+## Next Byte Hacks V4 — Submission Branch
+> This branch is the Next Byte Hacks V4 submission (student-run, build-bold-ship-fast). ReadEasy as working student-built web app. See `HACKATHON_DISCLOSURE.md` and `docs/NEXTBYTE_SUBMISSION.md`. Demo: [readeasy-nextbyte.vercel.app](https://readeasy-nextbyte.vercel.app) (branch deploy: readeasy-git-hackathon-next-byte-imvrp555s-projects.vercel.app) | GitHub: https://github.com/GhostInHex/readeasy/tree/hackathon/next-byte
+
 **ReadEasy — the web, made readable for every reader.**
 
 ReadEasy restructures any web page into clear, accessible formats for readers with dyslexia,
