@@ -1,6 +1,11 @@
 # ReadEasy
 
+## GatewayHacks 2026 — Track 1 Accessibility & Health Submission Branch
+> This branch is the GatewayHacks 2026 submission (created during Sep 1-Oct 1 window). Primary Track: Accessibility & Health (secondary: Equity in Education). ReadEasy as health-literacy + education equity tool. See `HACKATHON_DISCLOSURE.md` and `docs/GATEWAY_TRACK.md`. Demo: https://readeasy-git-hackathon-gateway-ghostinhex.vercel.app | Momen track eligible but built with Next.js+OpenRouter.
+
 **ReadEasy — the web, made readable for every reader.**
+
+simplifying medical and educational gov pages for every reader
 
 ReadEasy restructures any web page into clear, accessible formats for readers with dyslexia,
 ADHD, or low vision — rewritten in plain language, with deadlines extracted into simple
