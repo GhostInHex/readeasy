@@ -49,7 +49,7 @@ No model weights, private datasets, or undisclosed third-party code are included
 
 - Base repo: https://github.com/GhostInHex/readeasy
 - This submission branch: https://github.com/GhostInHex/readeasy/tree/hackathon/ml-empowerment
-- Live demo (submission branch): https://readeasy-git-hackathon-ml-empowerment-ghostinhex.vercel.app
+- Live demo (submission branch): [readeasy-ml.vercel.app](https://readeasy-ml.vercel.app)
 - ML Empowerment Build Challenge 3.0: https://ml-build-challenge-3.devpost.com
 - Curriculum: https://mlempowermentfoundation.org/curriculum
 - Instagram: @mlempowermentfoundation

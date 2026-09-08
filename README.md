@@ -1,7 +1,7 @@
-## ML Empowerment Build Challenge 3.0 — Submission Branch
-> This branch is the ML Empowerment submission (Learn AI curriculum applied). See `LEARNING_JOURNEY.md`, `HACKATHON_DISCLOSURE.md`, `docs/ML_SUBMISSION.md`. Curriculum: https://mlempowermentfoundation.org/curriculum — Demo: https://readeasy-git-hackathon-ml-empowerment-ghostinhex.vercel.app | GitHub: https://github.com/GhostInHex/readeasy/tree/hackathon/ml-empowerment
-
 # ReadEasy
+
+## ML Empowerment Build Challenge 3.0 — Submission Branch
+> This branch is the ML Empowerment submission (Learn AI curriculum applied). See `LEARNING_JOURNEY.md`, `HACKATHON_DISCLOSURE.md`, `docs/ML_SUBMISSION.md`. Curriculum: https://mlempowermentfoundation.org/curriculum — Demo: [readeasy-ml.vercel.app](https://readeasy-ml.vercel.app) (branch deploy: readeasy-git-hackathon-ml-empowerment-imvrp555s-projects.vercel.app) | GitHub: https://github.com/GhostInHex/readeasy/tree/hackathon/ml-empowerment
 
 **ReadEasy — the web, made readable for every reader.**
 

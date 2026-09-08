@@ -64,7 +64,7 @@ The product uses **person-first, neutral language** throughout (enforced in `lib
 
 Devpost "Project Files" expects screenshots and/or video. Locations in this branch:
 
-- **Screenshots (cached demo trio):** `fixtures/` — cleaned text + screenshots for IRS Earned Income Tax Credit, UT Dallas First-Year Apply, USCIS Students & Employment; additional screenshots can be captured from the live demo at https://readeasy-git-hackathon-ml-empowerment-ghostinhex.vercel.app (Focus / Dyslexia / Action / Listen / ADHD views).
+- **Screenshots (cached demo trio):** `fixtures/` — cleaned text + screenshots for IRS Earned Income Tax Credit, UT Dallas First-Year Apply, USCIS Students & Employment; additional screenshots can be captured from the live demo at [readeasy-ml.vercel.app](https://readeasy-ml.vercel.app) (Focus / Dyslexia / Action / Listen / ADHD views).
 - **Demo video (placeholder before upload):** `demo-output/` — prior demo assets; record a ≤5 min video (problem 30s → paste URL + Transform split-screen 45s → five Modes 2 min → Ask + Reading level 45s → readability score + close 30s) and upload unlisted to YouTube or Loom. Paste the URL in Devpost and below.
 - **Screenshots to upload to Devpost:** Capture 3-5 images: (1) split-screen original vs. restructured, (2) Focus card, (3) Dyslexia/Bionic view, (4) Action checklist, (5) ADHD micro-cards. Save to `demo-output/` and attach in Devpost Project Files.
 
@@ -73,7 +73,7 @@ Devpost "Project Files" expects screenshots and/or video. Locations in this bran
 | Screenshots | `fixtures/` + live demo captures |
 | Demo video | _[PLACEHOLDER — paste YouTube/Loom URL after uploading]_ |
 | Deck (if required by judging) | This file + `LEARNING_JOURNEY.md` and `HACKATHON_DISCLOSURE.md` in branch root |
-| Live demo | https://readeasy-git-hackathon-ml-empowerment-ghostinhex.vercel.app |
+| Live demo | [readeasy-ml.vercel.app](https://readeasy-ml.vercel.app) |
 | Submission branch | https://github.com/GhostInHex/readeasy/tree/hackathon/ml-empowerment |
 
 ### Team Details
@@ -126,5 +126,5 @@ npm run verify:trio    # live-transform the demo trio and schema-check every ans
 - Curriculum: https://mlempowermentfoundation.org/curriculum
 - Instagram: @mlempowermentfoundation
 - Challenge: https://ml-build-challenge-3.devpost.com
-- Demo: https://readeasy-git-hackathon-ml-empowerment-ghostinhex.vercel.app
+- Demo: [readeasy-ml.vercel.app](https://readeasy-ml.vercel.app)
 - Branch: https://github.com/GhostInHex/readeasy/tree/hackathon/ml-empowerment

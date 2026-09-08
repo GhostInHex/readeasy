@@ -61,4 +61,4 @@ After completing the Learn AI curriculum, ReadEasy's OpenRouter integration was 
 - Instagram: @mlempowermentfoundation
 - Challenge: https://ml-build-challenge-3.devpost.com
 - Branch: https://github.com/GhostInHex/readeasy/tree/hackathon/ml-empowerment
-- Demo: https://readeasy-git-hackathon-ml-empowerment-ghostinhex.vercel.app
+- Demo: [readeasy-ml.vercel.app](https://readeasy-ml.vercel.app)
