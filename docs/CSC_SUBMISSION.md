@@ -29,7 +29,7 @@ The AI only reshapes text already on the page into strict JSON; it never invents
 
 | Item | Link / Location |
 |---|---|
-| **Live demo (submission branch)** | https://readeasy-git-hackathon-csc-ghostinhex.vercel.app |
+| **Live demo (submission branch)** | [readeasy-csc.vercel.app](https://readeasy-csc.vercel.app) |
 | **Screenshots** | `public/fixtures/*.png` (UT Dallas, IRS EITC, USCIS) + in-app split view |
 | **Demo video** | _upload to YouTube unlisted or Loom (≤5 min) and paste link here + Devpost field_ — suggested arc: problem (UT Dallas wall of text, 30s) → paste URL → Transform → split-screen (45s) → Focus / Dyslexia / Action / Listen karaoke / ADHD (2 min) → Ask this page + Simpler toggle (45s) → readability score + close (30s). Record against cached trio so it never fails; show one live non-trio paste + raw-text fallback. |
 | **Fixtures (offline demo proof)** | `fixtures/` (`cleaned.txt` + `meta.json` + `public/fixtures/*.png`), `fixtures/README.md` |
@@ -65,7 +65,7 @@ One server route owns the pipeline:
 
 - **Repo (public):** https://github.com/GhostInHex/readeasy
 - **Submission branch (public link for judges):** https://github.com/GhostInHex/readeasy/tree/hackathon/csc
-- **Branch deploy:** https://readeasy-git-hackathon-csc-ghostinhex.vercel.app
+- **Branch deploy:** [readeasy-csc.vercel.app](https://readeasy-csc.vercel.app)
 - **Disclosure:** `HACKATHON_DISCLOSURE.md` — pre-existing assets vs. CSC-window work (Sep 4–Oct 4), confirms opt-in 1–6
 
 ## Judging Criteria — Where to Point Judges
@@ -112,7 +112,7 @@ npm run verify:trio    # live-transform the demo trio and schema-check answers
 - [ ] Devpost project created for **CSC Back-to-School** before Oct 5, 2026 @12:00am PDT (12:00 PM PT)
 - [ ] Project connects to back-to-school theme — description names UT Dallas Apply + student accessibility
 - [ ] **GitHub link** set to submission branch: https://github.com/GhostInHex/readeasy/tree/hackathon/csc (repo public, branch pushed)
-- [ ] **Live demo URL** set to https://readeasy-git-hackathon-csc-ghostinhex.vercel.app
+- [ ] **Live demo URL** set to [readeasy-csc.vercel.app](https://readeasy-csc.vercel.app)
 - [ ] **Demo video** (and/or screenshots + demo link) uploaded and linked
 - [ ] **AI disclosure** — link or paste `AI_DISCLOSURE.md`; form field "How did you use AI?" points to it
 - [ ] **Open source / public link** confirmed (CSC opt-in 1–2)

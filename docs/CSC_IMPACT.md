@@ -41,7 +41,7 @@ Crucially, **the original stays visible on the left** (`CONTEXT.md:105` left pan
   - `irs-eitc` (IRS Who Qualifies for EITC, 1,005 words) — benefits/eligibility bureaucracy.
   - `utdallas-first-year-apply` (UT Dallas First-Year Apply, 941 words) — **lead CSC example**.
   - `uscis-students-employment` (USCIS Students and Employment, 560 words) — immigration/employment rules students encounter.
-- **Fallback proof:** `ssa.gov` returns HTTP 403 to non-browser fetches (verified 2026-09-01; `enroll.utdallas.edu` does the same). The ` **Raw text paste** ` path (`{rawText}` to `POST /api/transform`) covers every blocked page — paste the page text, same restructure, no network dependency. `npm run verify:trio` schema-checks the pipeline end-to-end.
+- **Fallback proof:** `ssa.gov` returns HTTP 403 to non-browser fetches (verified 2026-09-01; `enroll.utdallas.edu` does the same). The **Raw text paste** path (`{rawText}` to `POST /api/transform`) covers every blocked page — paste the page text, same restructure, no network dependency. `npm run verify:trio` schema-checks the pipeline end-to-end.
 
 These three pages demonstrate that the same pipeline — Fetch & Clean (no AI) → Restructure (strict JSON, one retry, fallback models `OPENROUTER_FALLBACK_MODELS`) → Render (registry) — handles admissions, financial, and regulatory text without per-page customization.
 
@@ -53,7 +53,7 @@ These three pages demonstrate that the same pipeline — Fetch & Clean (no AI) �
 
 ## How to Verify
 
-1. Open the live demo: https://readeasy-git-hackathon-csc-ghostinhex.vercel.app
+1. Open the live demo: [readeasy-csc.vercel.app](https://readeasy-csc.vercel.app)
 2. Paste `https://enroll.utdallas.edu/freshman/apply/` (or use the pre-cached UT Dallas fixture) → Transform → compare left (original) vs. right (Action checklist + Focus).
 3. Toggle Dyslexia / ADHD / Listen karaoke. Try a non-trio school page. Try the raw-text paste with a few paragraphs copied from any blocked page.
 

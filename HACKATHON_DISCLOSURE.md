@@ -58,5 +58,5 @@ Additional confirmations: CSC may spotlight winning projects using the project n
 
 - Base repo: https://github.com/GhostInHex/readeasy
 - This submission branch: https://github.com/GhostInHex/readeasy/tree/hackathon/csc
-- Live demo (submission branch): https://readeasy-git-hackathon-csc-ghostinhex.vercel.app
+- Live demo (submission branch): [readeasy-csc.vercel.app](https://readeasy-csc.vercel.app)
 - CSC Back-to-School Hackathon: https://csc-back-to-school.devpost.com — Deadline Oct 5, 2026 @12:00am PDT — Eligibility: ages 13–18 — Theme: school-life problem; apps/websites/tools.

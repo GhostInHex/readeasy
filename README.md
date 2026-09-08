@@ -1,7 +1,7 @@
 # ReadEasy
 
 ## CSC Back-to-School Hackathon — Submission Branch
-> This branch is the CSC Back-to-School submission (created during Sep 4-Oct 4 window). School-life problem: bureaucratic admissions pages made readable for students with dyslexia/ADHD/low vision. See `HACKATHON_DISCLOSURE.md`, `AI_DISCLOSURE.md`, `docs/CSC_IMPACT.md`. Demo: https://readeasy-git-hackathon-csc-ghostinhex.vercel.app | Open source, public link: https://github.com/GhostInHex/readeasy/tree/hackathon/csc
+> This branch is the CSC Back-to-School submission (created during Sep 4-Oct 4 window). School-life problem: bureaucratic admissions pages made readable for students with dyslexia/ADHD/low vision. See `HACKATHON_DISCLOSURE.md`, `AI_DISCLOSURE.md`, `docs/CSC_IMPACT.md`. Demo: [readeasy-csc.vercel.app](https://readeasy-csc.vercel.app) (branch deploy: readeasy-git-hackathon-csc-imvrp555s-projects.vercel.app) | Open source, public link: https://github.com/GhostInHex/readeasy/tree/hackathon/csc
 
 **ReadEasy — the web, made readable for every reader.**
 
