@@ -3,7 +3,7 @@
 > **Event:** GatewayHacks 2026 — gatewayhacks-2026.devpost.com  
 > **Deadline:** Oct 2, 2026 @ 12:00am EDT (Sep 1–Oct 1 build window)  
 > **Branch:** `hackathon/gateway` → https://github.com/GhostInHex/readeasy/tree/hackathon/gateway  
-> **Demo:** https://readeasy-git-hackathon-gateway-ghostinhex.vercel.app  
+> **Demo:** [Live Demo](https://readeasy-gateway.vercel.app)  
 > **Primary Track:** Accessibility & Health (Track 1) — secondary: Equity in Education (Track 2)  
 > **Disclosure:** `HACKATHON_DISCLOSURE.md` • **Track rationale:** `docs/GATEWAY_TRACK.md`
 
@@ -94,7 +94,7 @@ Max length: **5 minutes**. Keep to 2:00–3:30. Outline below respects Gateway j
 | 2:15–2:40 | Trust layer | Ask this page (grounded Q&A) + “AI never invents facts — everything is reshaped from the page on the left.” |
 | 2:40–3:00 | Tech (brief) | “One endpoint owns the pipeline: fetch→Readability→OpenRouter JSON→client renderers via modes registry. Stateless: no DB, no auth.” |
 | 3:00–3:20 | Accessibility & tracks | “Primary Track 1: Accessibility & Health — a tool that helps patients understand medical bills. Secondary: Equity in Education — students understand dense syllabus pages.” |
-| 3:20–3:30 | Close + links | “Live at readeasy-git-hackathon-gateway...vercel.app — GitHub branch hackathon/gateway, built Sep 1–Oct 1. Thank you.” |
+| 3:20–3:30 | Close + links | “Live at readeasy-gateway.vercel.app — GitHub branch hackathon/gateway, built Sep 1–Oct 1. Thank you.” |
 
 **Recording checklist:**
 
@@ -109,7 +109,7 @@ Max length: **5 minutes**. Keep to 2:00–3:30. Outline below respects Gateway j
 ## 6. Links (Required: GitHub and/or Live Site — provide both)
 
 - **GitHub branch (this submission):** https://github.com/GhostInHex/readeasy/tree/hackathon/gateway
-- **Live demo (submission branch):** https://readeasy-git-hackathon-gateway-ghostinhex.vercel.app
+- **Live demo (submission branch):** [Live Demo](https://readeasy-gateway.vercel.app)
 - **Base repo:** https://github.com/GhostInHex/readeasy
 - **Disclosure:** `HACKATHON_DISCLOSURE.md` (on this branch)
 - **Track rationale:** `docs/GATEWAY_TRACK.md` (on this branch)

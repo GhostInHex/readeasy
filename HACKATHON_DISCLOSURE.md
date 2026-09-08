@@ -50,6 +50,6 @@ Work created specifically for GatewayHacks 2026 within the allowed window — th
 
 - Base repo: https://github.com/GhostInHex/readeasy
 - This submission branch: https://github.com/GhostInHex/readeasy/tree/hackathon/gateway
-- Live demo (submission branch): https://readeasy-git-hackathon-gateway-ghostinhex.vercel.app
+- Live demo (submission branch): [Live Demo](https://readeasy-gateway.vercel.app)
 - GatewayHacks 2026: https://gatewayhacks-2026.devpost.com
 - Primary track: **Accessibility & Health (Track 1)** — secondary fit: **Equity in Education (Track 2)**
