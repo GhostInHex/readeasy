@@ -203,7 +203,7 @@ No rewrite, no DB, no state migration — the architecture was chosen to defer t
 ## 6. Links
 
 - Repo (this branch): https://github.com/GhostInHex/readeasy/tree/hackathon/next-founders
-- Demo: https://readeasy-git-hackathon-next-founders-ghostinhex.vercel.app
+- Demo: [readeasy-founders.vercel.app](https://readeasy-founders.vercel.app)
 - Business model: `BUSINESS_MODEL.md`
 - Submission checklist: `docs/NEXT_FOUNDERS_SUBMISSION.md`
 - Disclosure: `HACKATHON_DISCLOSURE.md`

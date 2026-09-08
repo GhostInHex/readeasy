@@ -132,7 +132,7 @@ The business does **not** require venture to survive: stateless infra and free-t
 
 ## 9. Links
 
-- Product: https://readeasy-git-hackathon-next-founders-ghostinhex.vercel.app
+- Product: [readeasy-founders.vercel.app](https://readeasy-founders.vercel.app)
 - Repo (this branch): https://github.com/GhostInHex/readeasy/tree/hackathon/next-founders
 - Disclosure: `HACKATHON_DISCLOSURE.md`
 - Architecture & scalability: `docs/ARCHITECTURE.md`

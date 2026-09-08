@@ -1,7 +1,7 @@
 # ReadEasy
 
 ## Next Founders Hackathon — Submission Branch
-> This branch is the Next Founders submission (startup viability). ReadEasy as accessible web SaaS with business model in `BUSINESS_MODEL.md`. See `HACKATHON_DISCLOSURE.md`, `docs/ARCHITECTURE.md`. Demo: https://readeasy-git-hackathon-next-founders-ghostinhex.vercel.app | GitHub: https://github.com/GhostInHex/readeasy/tree/hackathon/next-founders | Video rubric: Problem/Build/Demo/Scalability covered in docs.
+> This branch is the Next Founders submission (startup viability). ReadEasy as accessible web SaaS with business model in `BUSINESS_MODEL.md`. See `HACKATHON_DISCLOSURE.md`, `docs/ARCHITECTURE.md`. Demo: [readeasy-founders.vercel.app](https://readeasy-founders.vercel.app) (branch deploy: https://readeasy-git-hackathon-next-founders-imvrp555s-projects.vercel.app) | GitHub: https://github.com/GhostInHex/readeasy/tree/hackathon/next-founders | Video rubric: Problem/Build/Demo/Scalability covered in docs.
 
 **ReadEasy — the web, made readable for every reader.**
 

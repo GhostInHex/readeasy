@@ -1,6 +1,6 @@
 # Next Founders Hackathon — Submission Checklist
 
-> Branch: `hackathon/next-founders` · Repo: https://github.com/GhostInHex/readeasy/tree/hackathon/next-founders · Demo: https://readeasy-git-hackathon-next-founders-ghostinhex.vercel.app · Disclosure: `HACKATHON_DISCLOSURE.md`
+> Branch: `hackathon/next-founders` · Repo: https://github.com/GhostInHex/readeasy/tree/hackathon/next-founders · Demo: [readeasy-founders.vercel.app](https://readeasy-founders.vercel.app) · Disclosure: `HACKATHON_DISCLOSURE.md`
 
 This file maps the **judging rubric (25% each)** and **5-minute video requirements** to concrete artifacts in this repo so reviewers can verify every criterion without guessing.
 
@@ -14,7 +14,7 @@ This file maps the **judging rubric (25% each)** and **5-minute video requiremen
 |----------------------|-------------|----------|
 | Codebase quality, architecture | `docs/ARCHITECTURE.md` §2–3 | Textual diagram + 5-file walkthrough (`app/api/transform/route.ts`, `lib/clean.ts`, `lib/llm/*`, `components/modes/registry.ts`, `lib/history.ts`) |
 | Stack & implementation | `docs/ARCHITECTURE.md` §4 | Next.js 15 App Router, React 19, TypeScript, Readability+jsdom, OpenRouter, Vercel; project layout table |
-| Working product | Demo: https://readeasy-git-hackathon-next-founders-ghostinhex.vercel.app | Live pipeline: URL/rawText → clean → restructure → Modes; demo trio cached so demo never fails without network |
+| Working product | Demo: [readeasy-founders.vercel.app](https://readeasy-founders.vercel.app) | Live pipeline: URL/rawText → clean → restructure → Modes; demo trio cached so demo never fails without network |
 | Reproducibility | `README.md` Quick start, `package.json` scripts | `npm install && cp .env.example .env.local && npm run dev`; `npm run typecheck`, `npm test`, `npm run build`, `npm run verify:trio` |
 | Error handling & reliability | `docs/ARCHITECTURE.md` §5.3, `lib/llm/fallback.ts`, `lib/restructure.ts` | Fallback model chain (3 models), one retry on malformed JSON, structured `{error:{code,message,hint}}` |
 
@@ -38,7 +38,7 @@ This file maps the **judging rubric (25% each)** and **5-minute video requiremen
 | Problem with market cost | `BUSINESS_MODEL.md` §1 | Health/education outcomes + ADA/508/EAA compliance risk — auditable business pain, not just empathy |
 | Solution as business | `BUSINESS_MODEL.md` §2, §4 | B2B2C: free student wedge + B2B SaaS `POST /api/transform` as compliance service |
 | Market sizing | `BUSINESS_MODEL.md` §3 | TAM ~$2.5–4B, SAM ~$180–350M, SOM ~$2–6M ARR in 3 years; anchored to 4k+ US colleges + 90k gov sites |
-| Revenue streams | `BUSINESS_MODEL.md` §4 | Freemium $0 / Pro $9 / Team $49 / Enterprise API $0.04–0.08 per 1k transforms / White-label $499–2,499 |
+| Revenue streams | `BUSINESS_MODEL.md` §4 | Freemium $0 / Pro $9 / Team $49 / Enterprise API $0.04–0.08 per transform (volume tiers: 1k = $40–80, 100k = $3k–5k) / White-label $499–2,499 |
 | Business model & economics | `BUSINESS_MODEL.md` §5 | SaaS + usage-based API; low COGS (OpenRouter ~$0.002–0.01/transform, Vercel stateless); 75–88% gross margin |
 | Go-to-market | `BUSINESS_MODEL.md` §6 | Phase 1 campus wedge → Phase 2 compliance API → Phase 3 extension/embed; SEO + disability-office + audit-partner channels |
 | Sustainability | `BUSINESS_MODEL.md` §7 | Path to $168k ARR break-even (founder + infra) and $1.1M ARR at 100 API customers; no venture required to survive |
@@ -99,7 +99,7 @@ Use this verbatim or as teleprompter; timings are strict.
 
 | Artifact | URL / Path |
 |----------|------------|
-| Demo (this branch) | https://readeasy-git-hackathon-next-founders-ghostinhex.vercel.app |
+| Demo (this branch) | [readeasy-founders.vercel.app](https://readeasy-founders.vercel.app) |
 | GitHub branch | https://github.com/GhostInHex/readeasy/tree/hackathon/next-founders |
 | Disclosure | `HACKATHON_DISCLOSURE.md` |
 | Business model | `BUSINESS_MODEL.md` |

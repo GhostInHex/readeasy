@@ -33,7 +33,7 @@ No pre-existing code was misrepresented as new. Product code changes (if any) on
 
 - Next Founders permits building on pre-existing projects when disclosed — this file is that disclosure.
 - All new documents in this commit were authored during the Next Founders submission window (Sep–Oct 2026) specifically to address the rubric: Technical Execution 25%, Innovation & UX 25%, Business & Finance 25%, Communication 25%, and the required 5-minute video sections (The Problem / The Build / The Demo / Scalability).
-- Demo and repo for this submission: https://readeasy-git-hackathon-next-founders-ghostinhex.vercel.app · https://github.com/GhostInHex/readeasy/tree/hackathon/next-founders
+- Demo and repo for this submission: [readeasy-founders.vercel.app](https://readeasy-founders.vercel.app) · https://github.com/GhostInHex/readeasy/tree/hackathon/next-founders
 
 ## Verification
 
