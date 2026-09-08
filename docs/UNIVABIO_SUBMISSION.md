@@ -3,7 +3,7 @@
 **Hackathon:** UnivaBio (univabio.devpost.com) — Deadline **Oct 6 @11:45pm EDT** — Theme **AI for Human Health** — 400 participants · $38k  
 **Branch:** `hackathon/univabio` — https://github.com/GhostInHex/readeasy/tree/hackathon/univabio  
 **Base repo:** https://github.com/GhostInHex/readeasy  
-**Live demo (Vercel):** https://readeasy-git-hackathon-univabio-ghostinhex.vercel.app  
+**Live demo (Vercel):** [readeasy-univabio.vercel.app](https://readeasy-univabio.vercel.app)  
 **Disclosure:** `HACKATHON_DISCLOSURE.md` (pre-existing Sep 1–6 disclosed; new health work in this commit, Aug 7–Oct 6 window)
 
 Use this checklist to verify every required artifact before submitting on Devpost. Check off each item; do not submit until all are green.
@@ -11,7 +11,7 @@ Use this checklist to verify every required artifact before submitting on Devpos
 ## Required artifacts (Devpost)
 
 - [ ] **Project (website / app / prototype with user interaction)**
-  - [ ] Live URL works: https://readeasy-git-hackathon-univabio-ghostinhex.vercel.app
+  - [ ] Live URL works: [readeasy-univabio.vercel.app](https://readeasy-univabio.vercel.app)
   - [ ] User can paste a URL **or** raw text and get the split view (cleaned original left, restructured right)
   - [ ] Health demo path tested: paste `fixtures/univabio-health/cleaned.json` → `cleanedText` via Raw text tab → restructures to plain language + Action checklist
   - [ ] No auth, no DB; `READEASY_LLM_MODE=stub` fallback verified (builds without `OPENROUTER_API_KEY`)
@@ -27,7 +27,7 @@ Use this checklist to verify every required artifact before submitting on Devpos
   - [ ] Captions / narration clear; no secrets on screen; screenshot for health fixture captured live per `fixtures/univabio-health/screenshot-placeholder.md`
 
 - [ ] **One Page Project Description PDF**
-  - [ ] Generated from `docs/UNIVABIO_ONE_PAGER.md` (limit: one page when rendered, ~430 words)
+  - [ ] Generated from `docs/UNIVABIO_ONE_PAGER.md` (limit: one page when rendered, ~450 words)
   - [ ] Contains: Title + Tagline, Problem (health literacy + jargon), Solution (restructures health pages → plain language + checklist), Key Features (health-specific: plain language restructure, key takeaway per section, action items for appointments/meds), Tech Stack, Health Impact (who benefits, would it help), Demo link
   - [ ] Export: open `docs/UNIVABIO_ONE_PAGER.md` in VS Code → Print → Save as PDF (margins minimum, scale fit-to-one-page) or `pandoc docs/UNIVABIO_ONE_PAGER.md -o docs/UNIVABIO_ONE_PAGER.pdf`
   - [ ] PDF is one page, readable, includes live demo + GitHub branch links in footer
@@ -58,7 +58,7 @@ Use this checklist to verify every required artifact before submitting on Devpos
 
 ## Links to paste into Devpost
 
-- **Website / App:** https://readeasy-git-hackathon-univabio-ghostinhex.vercel.app
+- **Website / App:** [readeasy-univabio.vercel.app](https://readeasy-univabio.vercel.app)
 - **GitHub branch:** https://github.com/GhostInHex/readeasy/tree/hackathon/univabio
 - **One-pager source:** `docs/UNIVABIO_ONE_PAGER.md` (PDF export of this file)
 - **Code PDF guide:** `docs/CODE_PDF_GUIDE.md`

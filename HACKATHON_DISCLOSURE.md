@@ -47,7 +47,7 @@ For UnivaBio judging, **only the health framing, health fixture, and submission 
 
 - Pre-existing work is disclosed (Section 1). New work is documented (Section 2) and isolated to this commit.
 - No other team's code is included. All fixtures are mock cleaned text (MedlinePlus-inspired, synthetic) or previously captured public government pages disclosed under fair use for accessibility demo.
-- Live demo remains: `https://readeasy-git-hackathon-univabio-ghostinhex.vercel.app`
+- Live demo remains: [readeasy-univabio.vercel.app](https://readeasy-univabio.vercel.app)
 
 ## 5. Contact
 

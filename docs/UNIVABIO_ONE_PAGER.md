@@ -35,6 +35,6 @@ Pipeline: `POST /api/transform` → Fetch → Clean (strip ads/nav/scripts) → 
 
 ## Demo
 
-**Live:** https://readeasy-git-hackathon-univabio-ghostinhex.vercel.app · **Code:** https://github.com/GhostInHex/readeasy/tree/hackathon/univabio · **Fixture:** `fixtures/univabio-health/` (MedlinePlus Diabetes) + trio (IRS, UT Dallas, USCIS).
+**Live:** [readeasy-univabio.vercel.app](https://readeasy-univabio.vercel.app) · **Code:** https://github.com/GhostInHex/readeasy/tree/hackathon/univabio · **Fixture:** `fixtures/univabio-health/` (MedlinePlus Diabetes) + trio (IRS, UT Dallas, USCIS).
 
 *One page · Built on ReadEasy Sep 1–6, extended Aug 7–Oct 6 for UnivaBio: AI for Human Health. Pre-existing disclosed; new health framing + fixture in this branch. See HACKATHON_DISCLOSURE.md.*
