@@ -8,7 +8,7 @@ This document discloses the lineage of this submission branch (`hackathon/gibc-o
 
 - **Base repository:** https://github.com/GhostInHex/readeasy
 - **Submission branch:** `hackathon/gibc-open`
-- **Demo deployment:** https://readeasy-git-hackathon-gibc-open-ghostinhex.vercel.app
+- **Demo deployment:** [Live Demo](https://readeasy-gibc.vercel.app) (branch deploy fallback: [readeasy-git-hackathon-gibc-open-imvrp555s-projects.vercel.app](https://readeasy-git-hackathon-gibc-open-imvrp555s-projects.vercel.app))
 - **GIBC build window:** July 11 – September 21, 2026 (deadline Sep 21 @ 11:45pm CST, Taipei UTC+8)
 - **Original build:** ReadEasy was built for Buildverse (Sep 1–6, 2026) by ACM Dallas / HackCulture.
 

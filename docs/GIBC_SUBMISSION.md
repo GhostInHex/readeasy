@@ -3,7 +3,7 @@
 > **Track:** Global Innovation Build Challenge V2 — Track 03 Open (General Technical Invention)
 > **Project:** ReadEasy — generative AI that restructures any web page for accessibility
 > **Branch:** `hackathon/gibc-open` | **Repo:** https://github.com/GhostInHex/readeasy
-> **Demo (Vercel preview):** https://readeasy-git-hackathon-gibc-open-ghostinhex.vercel.app
+> **Demo:** [Live Demo](https://readeasy-gibc.vercel.app)
 > **Deadline:** Sep 21, 2026 @ 11:45pm CST (Taipei UTC+8) | **Build window:** July 11–Sep 21
 
 This checklist lets judges replicate the build from a clean clone.

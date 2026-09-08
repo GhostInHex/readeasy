@@ -7,7 +7,7 @@ This guide describes exactly what 3 screenshots to capture for the Devpost submi
 - **Source pages:** Use the fixtures trio — IRS Earned Income Tax Credit, UT Dallas First-Year Apply, USCIS Students & Employment (any one is acceptable; IRS EITC photographs well for all three). These are bundled in `fixtures/` and available without a live fetch.
 - **Resolution:** Set browser window to **1280×720** (use DevTools device emulation or a window-resizer extension; macOS: 1280×720, Windows: same). Capture at 1× (no retina 2×) for Devpost.
 - **How to get a clean capture:**
-  1. `npm install` then `npm run dev` (or use the Vercel preview: https://readeasy-git-hackathon-gibc-open-ghostinhex.vercel.app).
+  1. `npm install` then `npm run dev` (or use the live demo: [readeasy-gibc.vercel.app](https://readeasy-gibc.vercel.app)).
   2. Paste the fixture URL or use the demo trio quick-select if present; alternatively paste the fixture's raw cleaned text via the raw-text fallback.
   3. Wait for transform to complete (Focus view by default).
   4. Use browser screenshot (DevTools → Capture screenshot) or OS screenshot cropped to 1280×720; save as PNG.

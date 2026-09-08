@@ -1,7 +1,7 @@
 # ReadEasy
 
 ## GIBC V2 — Track 03 Open Invention Submission Branch
-> This branch is the GIBC V2 Track 03 submission (created during July 11-Sep 21 window). Invention: generative AI that restructures any web page for accessibility. See `HACKATHON_DISCLOSURE.md` and `docs/GIBC_SUBMISSION.md`. Demo: https://readeasy-git-hackathon-gibc-open-ghostinhex.vercel.app
+> This branch is the GIBC V2 Track 03 submission (created during July 11-Sep 21 window). Invention: generative AI that restructures any web page for accessibility. See `HACKATHON_DISCLOSURE.md` and `docs/GIBC_SUBMISSION.md`. Demo: [readeasy-gibc.vercel.app](https://readeasy-gibc.vercel.app) (branch deploy: [readeasy-git-hackathon-gibc-open-imvrp555s-projects.vercel.app](https://readeasy-git-hackathon-gibc-open-imvrp555s-projects.vercel.app))
 
 **ReadEasy — the web, made readable for every reader.**
 
