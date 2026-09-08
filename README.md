@@ -1,5 +1,8 @@
 # ReadEasy
 
+## AI Builders Hackathon — Submission Branch
+> This branch is the AI Builders submission (created during Aug 21-Sep 15 window). Core ReadEasy product + 10-slide deck in `docs/AI_BUILDERS_DECK.md`. See `HACKATHON_DISCLOSURE.md` for provenance. Demo: https://readeasy-git-hackathon-ai-builders-ghostinhex.vercel.app
+
 **ReadEasy — the web, made readable for every reader.**
 
 ReadEasy restructures any web page into clear, accessible formats for readers with dyslexia,
