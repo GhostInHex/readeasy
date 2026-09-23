@@ -115,3 +115,8 @@ Dallas Team — info@dallas.acm.org
 - **Raw-text fallback** — second input path: paste page text directly. Covers blocked sites (proven: ssa.gov returns 403 to our fetch).
 - **Demo trio** — the 3 cached, verified demo pages: IRS Earned Income Tax Credit · UT Dallas First-Year Apply · USCIS Students & Employment. Backup: usa.gov/visas. All verified server-rendered 2026-09-01.
 - **Cached page** — pre-fetched cleaned text + screenshot of a demo trio page, saved before Build Day so the video can never fail live.
+
+## Post-hackathon status (2026-09-23)
+
+- **BUILDVERSE won.** Deadline pressure lifted; Sep 6 Build Day constraints no longer apply.
+- Remaining work is add-ons (e.g. analytics evaluation). Privacy-first posture retained unless explicitly changed.
