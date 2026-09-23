@@ -46,6 +46,24 @@ h4 {
   border: 0;
 }
 
+/* A skip link is the front door past the sticky header: the first thing a keyboard reader
+   meets, and only visible when it has focus. */
+.skip-link {
+  position: absolute;
+  inset-inline-start: var(--space-4);
+  top: -4rem;
+  z-index: 20;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-sm);
+  background: var(--accent);
+  color: var(--accent-ink);
+  text-decoration: none;
+}
+
+.skip-link:focus-visible {
+  top: var(--space-3);
+}
+
 /* --- Shell: masthead, reading bar, page, footer --- */
 
 /* Sticky, because both of its rows are things a reader reaches for mid-page: the theme when their
@@ -301,8 +319,8 @@ h4 {
 }
 
 .hero-affordances li + li {
-  border-left: 1px solid var(--line);
-  padding-left: var(--space-5);
+  border-inline-start: 1px solid var(--line);
+  padding-inline-start: var(--space-5);
 }
 
 /* The proof. Under the heaviest rule on the page, because this is the claim everything else rests on:
@@ -396,9 +414,9 @@ h4 {
   }
 
   .hero-affordances li + li {
-    border-left: 0;
+    border-inline-start: 0;
     border-top: 1px solid var(--line);
-    padding-left: 0;
+    padding-inline-start: 0;
     padding-top: var(--space-3);
   }
 
@@ -641,13 +659,15 @@ button.link:disabled {
 /* The original is short — a screenshot, or a scrolling block of text — and the reading beside it can
    run for thousands of pixels. Left static it leaves a column of empty paper the height of the page.
    Sticking it below the header keeps the "before" in view for exactly as long as there is an "after"
-   to check it against, which is the whole point of the split. The offset clears the sticky header's
-   two measured rows (148px at every width where the split is side by side) plus a step of air. */
+   to check it against, which is the whole point of the split. The offset is the header's own
+   measured height (`--header-h`, kept current by the header itself), so a wrapped masthead or a
+   second-wrapped reading bar can never slide the panel underneath the chrome. 148px is the
+   fallback for the first frame before that measurement lands. */
 @media (min-width: 861px) {
   .panel-original {
     position: sticky;
-    top: calc(148px + var(--space-4));
-    max-height: calc(100vh - 148px - var(--space-6) * 2);
+    top: calc(var(--header-h, 148px) + var(--space-4));
+    max-height: calc(100vh - var(--header-h, 148px) - var(--space-6) * 2);
     overflow-y: auto;
   }
 
@@ -656,7 +676,7 @@ button.link:disabled {
      finds. 14rem is the frame's other furniture — padding, the heading line, the caption. */
   .panel-original .original-shot img,
   .panel-original .original-text {
-    max-height: calc(100vh - 148px - 14rem);
+    max-height: calc(100vh - var(--header-h, 148px) - 14rem);
   }
 }
 
@@ -958,6 +978,12 @@ button.secondary:hover:not(:disabled) {
   transform-origin: left center;
   transform: scaleX(var(--progress, 0));
   transition: transform var(--duration) var(--ease);
+}
+
+/* Reading runs right-to-left here too, so the bar grows from the leading edge rather than
+   always from the left. */
+[dir="rtl"] .progress-fill {
+  transform-origin: right center;
 }
 
 /* The one card on screen in Focus mode carries the reading; it gets the surface and the space. */

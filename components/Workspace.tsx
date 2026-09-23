@@ -48,7 +48,7 @@ export default function Workspace() {
   const [busy, setBusy] = useState(false);
   const [level, setLevel] = useState<ReadingLevel>(DEFAULT_READING_LEVEL);
   const [pending, setPending] = useState<ReadingLevel | null>(null);
-  const [levelError, setLevelError] = useState<string | null>(null);
+  const [levelError, setLevelError] = useState<Failure | null>(null);
   const [results, setResults] = useState<Partial<Record<ReadingLevel, TransformSuccess>>>({});
   const [source, setSource] = useState<TransformRequest | null>(null);
   const [error, setError] = useState<Failure | null>(null);
@@ -122,7 +122,7 @@ export default function Workspace() {
       setLevel(next);
     } else {
       // The level the reader is on stays on screen; only the pills carry the bad news.
-      setLevelError(outcome.message);
+      setLevelError({ message: outcome.message, hint: outcome.hint });
     }
   }
 
@@ -133,6 +133,9 @@ export default function Workspace() {
 
   return (
     <ReadingLevelProvider value={{ level, pending, error: levelError, select: selectLevel }}>
+      <a className="skip-link" href="#reading-main">
+        Skip to the reading
+      </a>
       <SiteHeader>
         {result && (
           <ReadingBar
@@ -147,7 +150,7 @@ export default function Workspace() {
         )}
       </SiteHeader>
 
-      <main className="page" data-stage={reading ? "reading" : "landing"}>
+      <main className="page" id="reading-main" data-stage={reading ? "reading" : "landing"} tabIndex={-1}>
         {!reading && <Hero />}
 
         <InputCard onTransform={transform} busy={busy} folded={reading && !inputOpen} />

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useState } from "react";
 import HistoryList from "@/components/HistoryList";
 import { CACHED_PAGES } from "@/lib/fixtures";
 import { recordVisit } from "@/lib/history";
@@ -27,6 +27,9 @@ export default function InputCard({ onTransform, busy, folded }: InputCardProps)
   const [url, setUrl] = useState("");
   const [rawText, setRawText] = useState("");
   const [visits, setVisits] = useState(0);
+  const [emptyError, setEmptyError] = useState(false);
+  const urlId = useId();
+  const rawId = useId();
 
   function run(request: TransformRequest) {
     // Recorded on the way out, not on the way back: the transformed page belongs to the workspace
@@ -39,10 +42,22 @@ export default function InputCard({ onTransform, busy, folded }: InputCardProps)
   }
 
   function submit() {
-    run(tab === "url" ? { url: url.trim() } : { rawText: rawText.trim() });
+    const value = tab === "url" ? url.trim() : rawText.trim();
+    if (!value) {
+      // The button stays enabled so the empty case can be answered where it broke: the field is
+      // named and focused rather than the reader having to discover why nothing happened.
+      setEmptyError(true);
+      document.getElementById(tab === "url" ? urlId : rawId)?.focus();
+      return;
+    }
+    setEmptyError(false);
+    run(tab === "url" ? { url: value } : { rawText: value });
   }
 
-  const canSubmit = tab === "url" ? url.trim().length > 0 : rawText.trim().length > 0;
+  function chooseTab(next: Tab) {
+    setTab(next);
+    setEmptyError(false);
+  }
 
   return (
     <div className="transform-box" id="transform-box" hidden={folded}>
@@ -51,65 +66,79 @@ export default function InputCard({ onTransform, busy, folded }: InputCardProps)
           Give ReadEasy a page
         </h2>
 
-        <div className="tabs" role="tablist" aria-label="Input type">
+        <div className="tabs" role="group" aria-label="Input type">
           <button
             type="button"
-            role="tab"
-            id="tab-url"
-            aria-selected={tab === "url"}
-            aria-controls="panel-url"
+            aria-pressed={tab === "url"}
             className={tab === "url" ? "tab tab-active" : "tab"}
-            onClick={() => setTab("url")}
+            onClick={() => chooseTab("url")}
           >
             A page link
           </button>
           <button
             type="button"
-            role="tab"
-            id="tab-raw"
-            aria-selected={tab === "raw"}
-            aria-controls="panel-raw"
+            aria-pressed={tab === "raw"}
             className={tab === "raw" ? "tab tab-active" : "tab"}
-            onClick={() => setTab("raw")}
+            onClick={() => chooseTab("raw")}
           >
             Raw text
           </button>
         </div>
 
         {tab === "url" ? (
-          <div className="input-field" role="tabpanel" id="panel-url" aria-labelledby="tab-url">
-            <label htmlFor="url-input">Page URL</label>
+          <div className="input-field">
+            <label htmlFor={urlId}>Page URL</label>
             <input
-              id="url-input"
+              id={urlId}
               type="url"
               inputMode="url"
               value={url}
-              onChange={(event) => setUrl(event.target.value)}
+              aria-invalid={emptyError || undefined}
+              aria-describedby={emptyError ? "url-input-error" : undefined}
+              onChange={(event) => {
+                setUrl(event.target.value);
+                setEmptyError(false);
+              }}
               placeholder="https://www.irs.gov/credits-deductions/individuals/earned-income-tax-credit-eitc"
               onKeyDown={(event) => {
-                if (event.key === "Enter" && canSubmit && !busy) submit();
+                if (event.key === "Enter" && !busy) submit();
               }}
             />
             <p className="hint">
               Some sites block automated fetching. If a page will not load, switch to Raw text and paste it.
             </p>
+            {emptyError && (
+              <p className="hint" id="url-input-error" role="alert">
+                Paste a page link above, or choose Raw text to paste the page itself.
+              </p>
+            )}
           </div>
         ) : (
-          <div className="input-field" role="tabpanel" id="panel-raw" aria-labelledby="tab-raw">
-            <label htmlFor="raw-input">Page text</label>
+          <div className="input-field">
+            <label htmlFor={rawId}>Page text</label>
             <textarea
-              id="raw-input"
+              id={rawId}
               rows={8}
               value={rawText}
-              onChange={(event) => setRawText(event.target.value)}
+              aria-invalid={emptyError || undefined}
+              aria-describedby={emptyError ? "raw-input-error" : undefined}
+              onChange={(event) => {
+                setRawText(event.target.value);
+                setEmptyError(false);
+              }}
               placeholder="Paste the text of the page here."
             />
             <p className="hint">Pasted text skips fetching and goes straight to ReadEasy.</p>
+            {emptyError && (
+              <p className="hint" id="raw-input-error" role="alert">
+                Paste the page text above, or choose A page link to fetch it by address.
+              </p>
+            )}
           </div>
         )}
 
         <div className="input-actions">
-          <button type="button" className="primary" onClick={submit} disabled={busy || !canSubmit}>
+          <button type="button" className="primary" onClick={submit} disabled={busy}>
             {busy ? "Transforming…" : "Transform this page"}
           </button>
 

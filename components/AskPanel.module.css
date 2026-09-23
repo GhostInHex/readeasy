@@ -117,7 +117,7 @@
   display: grid;
   gap: var(--space-1, 0.25rem);
   margin: 0;
-  padding-left: 1.3rem;
+  padding-inline-start: 1.3rem;
 }
 
 .note {

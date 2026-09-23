@@ -41,7 +41,7 @@ export default function ReadingView({ restructured, source, cleanedOriginal, mod
         <ReadingLevelPills />
       </div>
 
-      <div className="mode-body" role="tabpanel" aria-label={`${mode.label} mode`}>
+      <div className="mode-body">
         <p className="mode-description">{mode.description}</p>
         <Renderer restructured={restructured} source={source} />
       </div>

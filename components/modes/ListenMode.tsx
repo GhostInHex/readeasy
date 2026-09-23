@@ -84,7 +84,12 @@ export default function ListenMode({ restructured }: ModeProps) {
 
   // Keep the moving word on screen. `nearest` scrolls as little as it can, and does nothing at all
   // while the word is already in view, so the page only moves when the reader would lose the mark.
+  // The mark follows the voice — but only where the reader can follow the movement. Under
+  // reduced motion the page holds still and the words keep being marked where they already are.
   useEffect(() => {
+    if (typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
     highlight.current?.scrollIntoView?.({ block: "nearest", inline: "nearest" });
   }, [passageIndex, charIndex]);
 

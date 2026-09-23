@@ -16,14 +16,13 @@ interface ModeBarProps {
  */
 export default function ModeBar({ activeId, onSelect }: ModeBarProps) {
   return (
-    <div className="mode-switch" role="tablist" aria-label="Reading modes">
+    <div className="mode-switch" role="group" aria-label="Reading modes">
       {MODES.map((mode) => (
         <button
           key={mode.id}
           type="button"
-          role="tab"
           title={mode.description}
-          aria-selected={mode.id === activeId}
+          aria-pressed={mode.id === activeId}
           className={mode.id === activeId ? "mode-option mode-option-active" : "mode-option"}
           onClick={() => onSelect(mode.id)}
         >

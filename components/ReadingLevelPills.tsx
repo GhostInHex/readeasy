@@ -62,7 +62,7 @@ export default function ReadingLevelPills() {
 
       {!readingLevel.pending && readingLevel.error && (
         <p className={styles.status} role="status">
-          {readingLevel.error}
+          {readingLevel.error.message} {readingLevel.error.hint}
         </p>
       )}
     </div>

@@ -80,9 +80,10 @@
 
   /* --- What does not print --- */
 
-  /* The shell, the landing argument, and the machinery for starting a transform. */
+  /* The shell, the landing argument, the skip link, and the machinery for starting a transform. */
   .site-header,
   .site-footer,
+  .skip-link,
   .hero,
   .input-card,
   .notice,

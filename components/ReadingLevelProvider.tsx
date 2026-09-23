@@ -3,13 +3,18 @@
 import { createContext, useContext } from "react";
 import type { ReadingLevel } from "@/lib/types";
 
+export interface ReadingLevelFailure {
+  message: string;
+  hint: string;
+}
+
 export interface ReadingLevelControl {
   /** The level currently on screen. */
   level: ReadingLevel;
   /** The level being fetched, if any. The version already on screen stays until it arrives. */
   pending: ReadingLevel | null;
   /** Why the last switch could not be finished, in words a reader can act on. */
-  error: string | null;
+  error: ReadingLevelFailure | null;
   select: (level: ReadingLevel) => void;
 }
 
