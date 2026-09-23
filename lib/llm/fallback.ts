@@ -18,11 +18,12 @@ export function parseModelList(value: string | undefined): string[] {
 
 /**
  * Splits one overall timeout budget across attempts, so N models cost no more wall-clock
- * than the single-model call did. A floor keeps even the last attempt usable.
+ * than the single-model call did. A floor keeps even the last attempt usable on a full
+ * page, where small free models need well over ten seconds to answer.
  */
 export function attemptTimeoutMs(totalMs: number, attemptCount: number): number {
   if (attemptCount <= 1) return totalMs;
-  return Math.max(10_000, Math.floor(totalMs / attemptCount));
+  return Math.max(15_000, Math.floor(totalMs / attemptCount));
 }
 
 /**

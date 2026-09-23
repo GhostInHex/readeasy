@@ -3,21 +3,44 @@ import { attemptTimeoutMs, runWithFallbacks } from "@/lib/llm/fallback";
 import { RETRY_NUDGE, SYSTEM_PROMPT, buildUserPrompt } from "@/lib/llm/prompt";
 import type { LlmClient, RestructureInput } from "@/lib/llm/types";
 
-export const DEFAULT_MODEL = "minimax/minimax-m3:free";
+export const DEFAULT_MODEL = "liquid/lfm-2.5-2.6b:free";
 
 /**
  * Tried, in order, when the primary model fails in a way another model could fix —
- * rate limit, outage, timeout, unusable answer. Both are JSON-capable free models.
- * `openrouter/free` last: it is a router, so it lands wherever there is capacity.
+ * rate limit, outage, timeout, unusable answer. Verified live against the Restructure
+ * schema at short + long inputs (2026-09-23). Kept to two fallbacks on purpose: the
+ * 55s route budget is split across attempts, so every extra model shortens the time
+ * each one gets on a full page.
  */
-export const FALLBACK_MODELS = ["z-ai/glm-5.2:free", "openrouter/free"];
+export const FALLBACK_MODELS = ["cohere/north-mini-code:free", "nex-agi/nex-n2.5-mini:free"];
 
 const ENDPOINT = "https://openrouter.ai/api/v1/chat/completions";
 const REQUEST_TIMEOUT_MS = 55_000;
 
 interface ChatCompletion {
-  choices?: { message?: { content?: string } }[];
-  error?: { message?: string };
+  choices?: { message?: { content?: string | null }; finish_reason?: string }[];
+  error?: { message?: string; code?: number };
+}
+
+/**
+ * A 200 with no usable content is provider noise — a safety-filter stub
+ * ("User Safety: safe"), a truncated stub that is not JSON, or a genuinely
+ * empty field. Anything that cannot parse as the Restructure schema moves the
+ * chain to the next model instead of failing the page.
+ */
+function contentIsUsable(content: string): boolean {
+  const trimmed = content.trim();
+  if (trimmed.length < 50) return false;
+  if (/^user safety\s*:\s*safe$/i.test(trimmed)) return false;
+  const start = trimmed.indexOf("{");
+  const end = trimmed.lastIndexOf("}");
+  if (start === -1 || end <= start) return false;
+  try {
+    const parsed = JSON.parse(trimmed.slice(start, end + 1)) as Record<string, unknown>;
+    return typeof parsed.title === "string" && Array.isArray(parsed.sections);
+  } catch {
+    return false;
+  }
 }
 
 /**
@@ -142,13 +165,21 @@ async function completeWithModel(request: {
   }
 
   const content = payload.choices?.[0]?.message?.content;
-  if (!content) {
+  if (typeof content !== "string" || !content.trim()) {
     throw new TransformFailure({
       code: "restructure_empty",
       message: payload.error?.message
         ? `The rewriting service reported: ${payload.error.message}`
         : "The rewriting step came back empty for this page.",
       hint: "Try Transform again, or paste a shorter section of the page."
+    });
+  }
+
+  if (!contentIsUsable(content)) {
+    throw new TransformFailure({
+      code: "restructure_unusable",
+      message: "That model returned an answer ReadEasy could not use for this page.",
+      hint: "Try Transform again — ReadEasy moves to the next model automatically."
     });
   }
 

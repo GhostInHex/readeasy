@@ -89,3 +89,8 @@ test("over-long pages are truncated before they reach the model", () => {
   assert.equal(truncateForModel(long).length, MAX_RESTRUCTURE_CHARS + 1);
   assert.equal(truncateForModel("short page"), "short page");
 });
+
+test("the model ceiling fits the output window: an 8k-char page plus the schema prompt stays small", () => {
+  const prompt = buildUserPrompt({ text: "x".repeat(MAX_RESTRUCTURE_CHARS), title: "t", variant: "default" });
+  assert.ok(prompt.length < 12_000, `prompt is ${prompt.length} chars`);
+});

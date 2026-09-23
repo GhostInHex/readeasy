@@ -120,5 +120,5 @@ test("attemptTimeoutMs keeps the total budget across attempts, with a usable flo
   assert.equal(attemptTimeoutMs(55_000, 1), 55_000);
   assert.equal(attemptTimeoutMs(55_000, 2), 27_500);
   assert.equal(attemptTimeoutMs(55_000, 3), 18_333);
-  assert.equal(attemptTimeoutMs(30_000, 5), 10_000); // floor, not 6_000
+  assert.equal(attemptTimeoutMs(30_000, 5), 15_000); // floor, not 6_000
 });

@@ -3,8 +3,8 @@ import type { LlmClient, RestructureInput } from "@/lib/llm/types";
 import { parseRestructureJson, validateRestructured } from "@/lib/schema";
 import { DEFAULT_READING_LEVEL, type ReadingLevel, type Restructured } from "@/lib/types";
 
-/** Ceiling on the text handed to the model, so long publications stay inside the context window. */
-export const MAX_RESTRUCTURE_CHARS = 24_000;
+/** Ceiling on the text handed to the model, so answers stay inside the output window. */
+export const MAX_RESTRUCTURE_CHARS = 8_000;
 
 export function truncateForModel(text: string): string {
   return text.length > MAX_RESTRUCTURE_CHARS ? `${text.slice(0, MAX_RESTRUCTURE_CHARS)}…` : text;
