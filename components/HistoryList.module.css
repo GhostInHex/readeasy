@@ -107,10 +107,15 @@
   font: inherit;
   font-size: var(--text-small);
   cursor: pointer;
-  transition: color var(--duration) var(--ease), border-color var(--duration) var(--ease);
+  transition: color var(--duration) var(--ease), border-color var(--duration) var(--ease),
+    transform 160ms var(--ease);
 }
 
 .remove:hover {
   color: var(--accent);
   border-color: var(--line-strong);
+}
+
+.remove:active:not(:disabled) {
+  transform: scale(0.97);
 }

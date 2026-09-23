@@ -30,12 +30,17 @@
   cursor: pointer;
   transition: background var(--duration, 220ms) var(--ease, cubic-bezier(0.16, 1, 0.3, 1)),
     color var(--duration, 220ms) var(--ease, cubic-bezier(0.16, 1, 0.3, 1)),
-    border-color var(--duration, 220ms) var(--ease, cubic-bezier(0.16, 1, 0.3, 1));
+    border-color var(--duration, 220ms) var(--ease, cubic-bezier(0.16, 1, 0.3, 1)),
+    transform 160ms var(--ease, cubic-bezier(0.16, 1, 0.3, 1));
 }
 
 .pill:hover:not(.pillActive) {
   border-color: var(--accent, #22406a);
   color: var(--accent, #22406a);
+}
+
+.pill:active:not(:disabled) {
+  transform: scale(0.97);
 }
 
 /* Stated here as well as globally: this module should not depend on another ticket's stylesheet for

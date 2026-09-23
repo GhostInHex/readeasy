@@ -1,6 +1,6 @@
 # 001 — Add press feedback to every flat control
 
-- **Status**: TODO
+- **Status**: DONE
 - **Commit**: f1b6c3a
 - **Severity**: MEDIUM
 - **Category**: Physicality & origin (press feedback)

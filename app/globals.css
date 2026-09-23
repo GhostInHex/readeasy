@@ -128,7 +128,12 @@ h4 {
   font: inherit;
   font-size: var(--text-small);
   cursor: pointer;
-  transition: background var(--duration) var(--ease), color var(--duration) var(--ease);
+  transition: background var(--duration) var(--ease), color var(--duration) var(--ease),
+    transform 160ms var(--ease);
+}
+
+.theme-option:active:not(:disabled) {
+  transform: scale(0.97);
 }
 
 .theme-option-active {
@@ -218,12 +223,17 @@ h4 {
   font-size: var(--text-small);
   padding: 0.4rem 0.85rem;
   cursor: pointer;
-  transition: background var(--duration) var(--ease), color var(--duration) var(--ease);
+  transition: background var(--duration) var(--ease), color var(--duration) var(--ease),
+    transform 160ms var(--ease);
 }
 
 .mode-option:hover:not(.mode-option-active) {
   color: var(--accent);
   background: var(--accent-soft);
+}
+
+.mode-option:active:not(:disabled) {
+  transform: scale(0.97);
 }
 
 .mode-option-active {
@@ -242,12 +252,17 @@ h4 {
   font-size: var(--text-small);
   padding: 0.4rem 0.9rem;
   cursor: pointer;
-  transition: color var(--duration) var(--ease), border-color var(--duration) var(--ease);
+  transition: color var(--duration) var(--ease), border-color var(--duration) var(--ease),
+    transform 160ms var(--ease);
 }
 
 .readingbar-change:hover:not(:disabled) {
   color: var(--accent);
   border-color: var(--accent);
+}
+
+.readingbar-change:active:not(:disabled) {
+  transform: scale(0.97);
 }
 
 .page {
@@ -487,11 +502,16 @@ h4 {
   font: inherit;
   font-weight: 600;
   cursor: pointer;
-  transition: color var(--duration) var(--ease), border-color var(--duration) var(--ease);
+  transition: color var(--duration) var(--ease), border-color var(--duration) var(--ease),
+    transform 160ms var(--ease);
 }
 
 .tab:hover:not(.tab-active) {
   color: var(--accent);
+}
+
+.tab:active:not(:disabled) {
+  transform: scale(0.97);
 }
 
 .tab-active {
@@ -937,11 +957,15 @@ button.secondary {
   font: inherit;
   font-weight: 600;
   cursor: pointer;
-  transition: background var(--duration) var(--ease);
+  transition: background var(--duration) var(--ease), transform 160ms var(--ease);
 }
 
 button.secondary:hover:not(:disabled) {
   background: var(--accent-soft);
+}
+
+button.secondary:active:not(:disabled) {
+  transform: scale(0.97);
 }
 
 .coming-soon {
@@ -1224,12 +1248,16 @@ button.secondary:hover:not(:disabled) {
   cursor: pointer;
   min-width: 2.2rem;
   transition: background var(--duration) var(--ease), color var(--duration) var(--ease),
-    border-color var(--duration) var(--ease);
+    border-color var(--duration) var(--ease), transform 160ms var(--ease);
 }
 
 .chip:hover:not(.chip-active) {
   border-color: var(--accent);
   color: var(--accent);
+}
+
+.chip:active:not(:disabled) {
+  transform: scale(0.97);
 }
 
 .chip-active {

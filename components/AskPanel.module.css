@@ -50,13 +50,18 @@
   cursor: pointer;
   transition: background var(--duration, 220ms) var(--ease, ease-out),
     color var(--duration, 220ms) var(--ease, ease-out),
-    border-color var(--duration, 220ms) var(--ease, ease-out);
+    border-color var(--duration, 220ms) var(--ease, ease-out),
+    transform 160ms var(--ease, ease-out);
 }
 
 .suggestion:hover:not(:disabled) {
   border-color: var(--accent, #22406a);
   background: var(--accent-soft, #e3e9f0);
   color: var(--accent, #22406a);
+}
+
+.suggestion:active:not(:disabled) {
+  transform: scale(0.97);
 }
 
 .form {
