@@ -38,6 +38,22 @@ adjacency to execute sequentially (or expect trivial merges if parallelized):
 - Feel checks need the dev server (`npm run dev`) — as of writing, running on
   http://localhost:3001 (port 3000 occupied).
 
+## Verification
+
+All four plans were executed at commit f1b6c3a and verified against the running app with a
+disposable Puppeteer check (28/28 checks passed):
+
+- **001** — `:active` on a starter chip computes `matrix(0.97, 0, 0, 0.97, 0, 0)` while held and
+  returns to `none` on release; all nine controls declare the `transform 160ms` step.
+- **002** — two `@starting-style` blocks present; the error notice transitions `opacity, transform`,
+  keeps `role="alert"`, and settles at `opacity: 1` (captured mid-fade at `0` on insert).
+- **003** — `.action-item` declares a `background` transition and `.action-item label` a `color`
+  transition (both directions covered by the base rules).
+- **004** — `animation-name` resolves to `rise` at 220ms with fill `both` (see plan 004's execution
+  note: the entrance had to be applied through a global class).
+- **Reduced motion** — emulated `prefers-reduced-motion: reduce` collapses the chip transition and
+  the history animation to `0.00001s`, with the history list still fully visible.
+
 ## Conventions every plan inherits (do not re-litigate)
 
 - Tokens: `--duration: 220ms`, `--ease: cubic-bezier(0.16, 1, 0.3, 1)` (`app/tokens.css`).

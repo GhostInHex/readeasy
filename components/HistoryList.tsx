@@ -48,7 +48,7 @@ export default function HistoryList({ onOpen, busy, changeCount }: HistoryListPr
   }
 
   return (
-    <section className={styles.history} aria-labelledby="history-heading">
+    <section className={`${styles.history} history-enter`} aria-labelledby="history-heading">
       <h2 id="history-heading" className={styles.heading}>
         Your recent pages
       </h2>

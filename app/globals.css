@@ -1318,6 +1318,14 @@ button.secondary:active:not(:disabled) {
   animation: rise 400ms var(--ease) 60ms both;
 }
 
+/* The history list mounts after hydration and would otherwise pop in, shoving the split view
+   down. It rides the authored keyframe above at the standard duration — once per mount, and
+   collapsed by the global reduced-motion block like every other animation here. Global on
+   purpose: a CSS module would rename the `rise` reference to a keyframe that does not exist. */
+.history-enter {
+  animation: rise var(--duration) var(--ease) both;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

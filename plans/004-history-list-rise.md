@@ -2,6 +2,7 @@
 
 - **Status**: DONE
 - **Commit**: f1b6c3a
+- **Execution note** (deviation, verified): the module-scoped `animation: rise …` did **not** work — CSS Modules renamed the reference to `HistoryList_rise__…`, a keyframe that does not exist, so the entrance never played. The plan's fallback `:global(rise)` was tried and **rejected by PostCSS** ("Syntax error … Double colon"). Shipped instead as a global class: `.history-enter` in `app/globals.css` (reusing the same `rise` keyframe — still one authored vocabulary, no duplicate) applied alongside `styles.history` in `components/HistoryList.tsx`. Verified live: `animation-name` computes to `rise`, 220ms, fill `both`.
 - **Severity**: LOW
 - **Category**: Missed opportunities (additive entrance, reusing the authored moment)
 - **Estimated scope**: 1 file (components/HistoryList.module.css), 1 declaration
