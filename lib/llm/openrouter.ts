@@ -3,16 +3,20 @@ import { attemptTimeoutMs, runWithFallbacks } from "@/lib/llm/fallback";
 import { RETRY_NUDGE, SYSTEM_PROMPT, buildUserPrompt } from "@/lib/llm/prompt";
 import type { LlmClient, RestructureInput } from "@/lib/llm/types";
 
-export const DEFAULT_MODEL = "liquid/lfm-2.5-2.6b:free";
+export const DEFAULT_MODEL = "nvidia/nemotron-3-super-120b-a12b:free";
 
 /**
  * Tried, in order, when the primary model fails in a way another model could fix —
- * rate limit, outage, timeout, unusable answer. Verified live against the Restructure
- * schema at short + long inputs (2026-09-23). Kept to two fallbacks on purpose: the
- * 55s route budget is split across attempts, so every extra model shortens the time
- * each one gets on a full page.
+ * rate limit, outage, timeout, unusable answer. All three advertise JSON mode
+ * (`response_format` + structured outputs); Nemotron Super is the large generalist,
+ * Gemma 31b the instruction-tuned second, Dots3-Note the extraction-tuned third.
+ * Kept to two fallbacks on purpose: the 55s route budget is split across attempts,
+ * so every extra model shortens the time each one gets on a full page.
  */
-export const FALLBACK_MODELS = ["cohere/north-mini-code:free", "nex-agi/nex-n2.5-mini:free"];
+export const FALLBACK_MODELS = [
+  "google/gemma-4-31b-it:free",
+  "dots-studio/dots-3-note-preview:free"
+];
 
 const ENDPOINT = "https://openrouter.ai/api/v1/chat/completions";
 const REQUEST_TIMEOUT_MS = 55_000;
