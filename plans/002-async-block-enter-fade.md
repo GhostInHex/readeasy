@@ -1,6 +1,6 @@
 # 002 — Fade async blocks up instead of teleporting them in
 
-- **Status**: TODO
+- **Status**: DONE
 - **Commit**: f1b6c3a
 - **Severity**: MEDIUM
 - **Category**: Interruptibility (enter-only via `@starting-style`)

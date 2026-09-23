@@ -647,6 +647,16 @@ button.link:disabled {
   border-radius: var(--radius);
   padding: var(--space-4) var(--space-5);
   border: 1px solid var(--line);
+  transition: opacity var(--duration) var(--ease), transform var(--duration) var(--ease);
+}
+
+/* Notices rise rather than teleporting into the page. Enter-only; without @starting-style
+   support they appear instantly. */
+@starting-style {
+  .notice {
+    opacity: 0;
+    transform: translateY(var(--space-3));
+  }
 }
 
 .notice-error {

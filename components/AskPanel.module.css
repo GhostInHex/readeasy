@@ -102,6 +102,17 @@
   border-radius: var(--radius-sm, 0.5rem);
   padding: var(--space-4, 1rem);
   background: var(--surface, #fffcf5);
+  transition: opacity var(--duration, 220ms) var(--ease, ease-out),
+    transform var(--duration, 220ms) var(--ease, ease-out);
+}
+
+/* The answer rises rather than teleporting into the reading column. Enter-only; without
+   @starting-style support it appears instantly, which is the behavior before this plan. */
+@starting-style {
+  .answer {
+    opacity: 0;
+    transform: translateY(var(--space-3, 0.75rem));
+  }
 }
 
 .asked {
