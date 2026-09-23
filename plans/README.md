@@ -10,7 +10,7 @@ has been applied — plans are read-only output until executed.
 | --- | --- | --- | --- |
 | [001](001-press-feedback-flat-controls.md) | Add press feedback to every flat control | MEDIUM | DONE |
 | [002](002-async-block-enter-fade.md) | Fade async blocks up instead of teleporting them in | MEDIUM | DONE |
-| [003](003-action-done-state-ease.md) | Ease the Action checklist into its done state | LOW | TODO |
+| [003](003-action-done-state-ease.md) | Ease the Action checklist into its done state | LOW | DONE |
 | [004](004-history-list-rise.md) | Ride the app's rise keyframe for the history list | LOW | TODO |
 
 ## Recommended execution order

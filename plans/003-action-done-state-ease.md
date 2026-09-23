@@ -1,6 +1,6 @@
 # 003 — Ease the Action checklist into its done state
 
-- **Status**: TODO
+- **Status**: DONE
 - **Commit**: f1b6c3a
 - **Severity**: LOW
 - **Category**: Cohesion & tokens (state change outside the repo's own transition idiom)

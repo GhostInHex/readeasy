@@ -1131,6 +1131,7 @@ button.secondary:active:not(:disabled) {
   border-radius: var(--radius);
   padding: 0.85rem var(--space-4);
   background: var(--surface);
+  transition: background var(--duration) var(--ease);
 }
 
 .action-item input[type="checkbox"] {
@@ -1152,6 +1153,7 @@ button.secondary:active:not(:disabled) {
   font-weight: 500;
   font-size: 1.05em;
   cursor: pointer;
+  transition: color var(--duration) var(--ease);
 }
 
 .action-meta {
