@@ -1,6 +1,6 @@
 # 004 — Ride the app's rise keyframe for the history list's hydration pop-in
 
-- **Status**: TODO
+- **Status**: DONE
 - **Commit**: f1b6c3a
 - **Severity**: LOW
 - **Category**: Missed opportunities (additive entrance, reusing the authored moment)
