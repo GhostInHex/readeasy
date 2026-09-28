@@ -3,20 +3,15 @@ import { attemptTimeoutMs, runWithFallbacks } from "@/lib/llm/fallback";
 import { RETRY_NUDGE, SYSTEM_PROMPT, buildUserPrompt } from "@/lib/llm/prompt";
 import type { LlmClient, RestructureInput } from "@/lib/llm/types";
 
-export const DEFAULT_MODEL = "nvidia/nemotron-3-super-120b-a12b:free";
+export const DEFAULT_MODEL = "openrouter/free";
 
 /**
- * Tried, in order, when the primary model fails in a way another model could fix —
- * rate limit, outage, timeout, unusable answer. All three advertise JSON mode
- * (`response_format` + structured outputs); Nemotron Super is the large generalist,
- * Gemma 31b the instruction-tuned second, Dots3-Note the extraction-tuned third.
- * Kept to two fallbacks on purpose: the 55s route budget is split across attempts,
- * so every extra model shortens the time each one gets on a full page.
+ * No hardcoded fallbacks: the `openrouter/free` router already fails over across free
+ * providers server-side. Pinning specific `:free` models reintroduces the exact breakage
+ * this replaced (a model goes stale/overloaded and every transform fails). Callers can
+ * still pass explicit models via OPENROUTER_MODEL / OPENROUTER_FALLBACK_MODELS.
  */
-export const FALLBACK_MODELS = [
-  "google/gemma-4-31b-it:free",
-  "dots-studio/dots-3-note-preview:free"
-];
+export const FALLBACK_MODELS: string[] = [];
 
 const ENDPOINT = "https://openrouter.ai/api/v1/chat/completions";
 const REQUEST_TIMEOUT_MS = 55_000;
