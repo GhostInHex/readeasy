@@ -38,6 +38,47 @@ Plus:
 Every page renders side by side with its original, so you can verify nothing was dropped or
 invented.
 
+## Product tour
+
+### Start from a link, or a saved demo page
+
+Paste any page URL — or open one of the three pre-saved demo pages (IRS, UT Dallas, USCIS),
+which load instantly with no network or API key.
+
+[![ReadEasy landing page](docs/screenshots/landing.png)](docs/screenshots/landing.png)
+
+### Focus: one card at a time
+
+The default view walks through the page step by step with a progress indicator, next to the
+original page as published.
+
+[![ReadEasy Focus mode](docs/screenshots/focus.png)](docs/screenshots/focus.png)
+
+### Dyslexia: friendlier type
+
+OpenDyslexic font, a warm background tint, and bolded word starts anchor the eye in every
+word.
+
+[![ReadEasy Dyslexia mode](docs/screenshots/dyslexia.png)](docs/screenshots/dyslexia.png)
+
+### Action: the page as a checklist
+
+Deadlines and required steps are pulled out of the prose into a simple to-do list.
+
+[![ReadEasy Action mode](docs/screenshots/action.png)](docs/screenshots/action.png)
+
+### ADHD: one idea per screen
+
+Micro-cards hold at most two sentences each, with key words bolded.
+
+[![ReadEasy ADHD mode](docs/screenshots/adhd.png)](docs/screenshots/adhd.png)
+
+### Night theme
+
+A manual dark toggle re-themes every token — no reader gets a dark page they did not choose.
+
+[![ReadEasy dark theme](docs/screenshots/dark.png)](docs/screenshots/dark.png)
+
 ## Quick start
 
 Requires Node.js 22.x.
