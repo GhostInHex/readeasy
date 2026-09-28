@@ -1,0 +1,47 @@
+{
+  "title": "Students and Employment",
+  "summary": "This page explains student visa requirements and employment options for studying in the United States. It is for students applying for or maintaining F or M visas.",
+  "readingTimeMinutes": 3,
+  "actionItems": [
+    {
+      "task": "Submit photos that are unmounted and unretouched.",
+      "urgency": "high"
+    },
+    {
+      "task": "If interested in changing to F or M student status, see the Changing to a Nonimmigrant F or M Student Status page.",
+      "urgency": "low"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Photo Submission Alert",
+      "simplifiedText": "USCIS requires that photos submitted with applications must be unmounted and unretouched. Unretouched means the photos must not be edited or digitally enhanced. If you submit mounted or retouched photos, it will delay your application processing. You might also need to appear at an Applicant Support Center to verify your identity.",
+      "keyTakeaway": "Submit photos that are not mounted or edited to avoid delays."
+    },
+    {
+      "heading": "Student Visa Overview",
+      "simplifiedText": "To study as a full-time student in the United States, you generally need a student visa. There are two types: F and M visas. To qualify for an F-1 or M-1 visa, you must meet these criteria: You must be enrolled in an academic, language-training, or vocational program. Your school must be approved by the Student and Exchange Visitors Program (SEVP). You must be a full-time student. You must be proficient in English or taking courses to improve your English. You must have enough money to support yourself during your studies. You must plan to keep a home in your country.",
+      "keyTakeaway": "You need a student visa and must meet specific requirements to study in the US."
+    },
+    {
+      "heading": "F-1 Student Visa",
+      "simplifiedText": "The F-1 visa is for academic students. It allows you to study full-time at a college, university, or other academic institution that is approved by the U.S. government. Your program must lead to a degree, diploma, or certificate. This visa is also for language training programs.",
+      "keyTakeaway": "The F-1 visa is for students in academic programs at approved schools."
+    },
+    {
+      "heading": "M-1 Student Visa",
+      "simplifiedText": "The M-1 visa is for students in vocational or nonacademic programs. It does not include language training. This visa is for programs that teach skills for a trade or profession.",
+      "keyTakeaway": "The M-1 visa is for vocational students, not for language training."
+    },
+    {
+      "heading": "Employment Rules",
+      "simplifiedText": "F-1 students cannot work off-campus during the first year. They can work on-campus with some conditions. After the first year, F-1 students can work off-campus through Curricular Practical Training (CPT), Optional Practical Training (OPT), or a STEM extension. They might also work off-campus for special reasons like economic hardship. M-1 students can do practical training only after finishing their studies. Any off-campus work must be related to your study and approved by your school and USCIS.",
+      "keyTakeaway": "Work rules depend on your visa type and requires approval."
+    },
+    {
+      "heading": "Additional Information",
+      "simplifiedText": "Only people with permission from the Department of Homeland Security to work can apply for a Social Security number. If you want to change to a student visa, see the Changing to a Nonimmigrant F or M Student Status page. For more details, see the USCIS Policy Manual or other resources listed.",
+      "keyTakeaway": "Check other pages for changing status and more information."
+    }
+  ]
+}

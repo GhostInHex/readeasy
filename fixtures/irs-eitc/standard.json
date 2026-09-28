@@ -1,0 +1,62 @@
+{
+  "title": "Who Qualifies for the Earned Income Tax Credit (EITC) | Internal Revenue Service",
+  "summary": "This page explains who can claim the Earned Income Tax Credit (EITC) and the rules they must meet. It is for workers who want to know if they qualify for the credit.",
+  "readingTimeMinutes": 5,
+  "actionItems": [
+    {
+      "task": "Use the EITC Assistant if you are unsure whether you qualify.",
+      "urgency": "medium"
+    },
+    {
+      "task": "Ask the Social Security Administration for a new Social Security card without the 'Not valid for employment' legend if yours has that note.",
+      "urgency": "high"
+    },
+    {
+      "task": "Use Worksheet 1 to determine if you paid more than half the cost of keeping up your home.",
+      "urgency": "high"
+    },
+    {
+      "task": "Find out what documents you need to bring to your tax preparer.",
+      "urgency": "medium"
+    },
+    {
+      "task": "Choose a tax professional to help with your return.",
+      "urgency": "low"
+    },
+    {
+      "task": "Get free tax preparation help from IRS‑certified volunteers.",
+      "urgency": "low"
+    },
+    {
+      "task": "Use free electronic tax filing for self‑prepared returns.",
+      "urgency": "low"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Basic Rules to Qualify for EITC",
+      "simplifiedText": "You must have earned income. Your investment income must be below the limit set by the IRS. You, your spouse (if filing jointly), and any child you claim must have a valid Social Security number (SSN) by the tax return due date (including extensions). You must be a U.S. citizen or a resident alien for the whole year. You cannot file Form 2555, Foreign Earned Income. If you are separated from your spouse and not filing jointly, you must meet extra separation rules.",
+      "keyTakeaway": "You need earned income, low investment income, a valid SSN, U.S. citizenship or resident alien status, and must not file Form 2555."
+    },
+    {
+      "heading": "Special Rules for Certain Groups",
+      "simplifiedText": "The EITC has extra rules for military members, clergy members, and taxpayers or their relatives with disabilities. If you are unsure whether you meet the rules, you can use the EITC Assistant to check your eligibility.",
+      "keyTakeaway": "Military members, clergy, and people with disabilities have additional qualifying rules for the EITC."
+    },
+    {
+      "heading": "Filing Status and Special Cases",
+      "simplifiedText": "You can claim the EITC with several filing statuses: married filing jointly, head of household, qualifying surviving spouse, single, or married filing separate. For married filing separate, you must have a qualifying child who lived with you more than half the year and either lived apart from your spouse for the last six months or were legally separated. Head of household requires you to be unmarried, have a qualifying child living with you more than half the year, and pay more than half the home costs. Costs include rent, mortgage interest, taxes, insurance, repairs, utilities, and food eaten at home. Costs do not include clothing, education, vacation, medical treatment, life insurance, or transportation. Qualifying surviving spouse must have been able to file jointly the year the spouse died, the spouse died less than two years before the claim year, not remarried, paid more than half home costs, and have a child or stepchild living in the home all year.",
+      "keyTakeaway": "Different filing statuses have specific rules about living arrangements and household costs that affect EITC eligibility."
+    },
+    {
+      "heading": "Claiming EITC Without a Qualifying Child",
+      "simplifiedText": "You can claim the EITC without a child if you meet the basic qualifying rules and also live in the United States (including the 50 states, D.C., and military bases) for more than half the tax year. You cannot be claimed as a qualifying child or dependent of another taxpayer. You must be at least 25 but under 65 at the end of the year. If married and filing jointly, at least one spouse must meet the age rule.",
+      "keyTakeaway": "If you have no qualifying child, you can still get the EITC by living in the U.S. most of the year, meeting age limits, and not being claimed as a dependent."
+    },
+    {
+      "heading": "Other Credits and Help Resources",
+      "simplifiedText": "If you qualify for the EITC, you may also qualify for other tax credits such as the Child Tax Credit, the Credit for Other Dependents, the Child and Dependent Care Credit, Education Credits, and the Adoption Credit. Resources are available for free tax preparation help from IRS‑certified volunteers, free electronic tax filing for self‑prepared returns, choosing a tax professional, and learning what to bring to your preparer. Publications 501 and 519 provide more details.",
+      "keyTakeaway": "You may also be eligible for additional tax credits, and free assistance is available for filing your return."
+    }
+  ]
+}

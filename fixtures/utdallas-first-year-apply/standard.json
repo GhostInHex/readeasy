@@ -1,0 +1,50 @@
+{
+  "title": "Apply To UT Dallas",
+  "summary": "This page explains how to apply to UT Dallas and lists eligible applicant types. It provides step-by-step instructions for submitting applications and meeting program requirements.",
+  "readingTimeMinutes": 4,
+  "actionItems": [
+    {
+      "task": "Pay the $75 application fee",
+      "urgency": "medium"
+    },
+    {
+      "task": "Submit official college transcripts",
+      "urgency": "medium"
+    },
+    {
+      "task": "Complete the application form for your chosen program",
+      "urgency": "medium"
+    },
+    {
+      "task": "Reapply if you have been away from UT Dallas for more than three long semesters",
+      "urgency": "high",
+      "deadline": "within the last three long semesters (excluding summer)"
+    },
+    {
+      "task": "Contact the appropriate department (advising, academic, or admissions)",
+      "urgency": "medium"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Who Can Apply",
+      "simplifiedText": "This page explains how to apply to UT Dallas. It describes different applicant types such as freshmen, graduate students, and other groups like current undergraduates, international students, non-degree seekers, and those returning after a break. Each type has specific eligibility rules and application paths.",
+      "keyTakeaway": "This page explains how to apply to UT Dallas based on your applicant type."
+    },
+    {
+      "heading": "Other Applicant Types and Eligibility",
+      "simplifiedText": "Current undergraduate UTD students can apply for academic certificates through their Student Center. International students attending another four-year institution may apply as visitors for one semester. Non-degree seekers can take undergraduate courses or certificates without earning a degree. Those with prior degrees may apply for graduate studies. Students who have completed at least one semester at UT Dallas but not within the last three long semesters should apply for readmission. A second bachelor's degree requires completing an undergraduate program first.",
+      "keyTakeaway": "Various groups can apply to UT Dallas depending on their education status and goals."
+    },
+    {
+      "heading": "How to Apply",
+      "simplifiedText": "To apply, go to your UTD Student Center and select the appropriate tile for your program. Complete the application for your chosen certificate or degree path. For international and non-degree students, pay the $75 application fee and submit an official college transcript. Some applicants must contact specific offices such as the Office of Admission and Enrollment or the academic department before submitting.",
+      "keyTakeaway": "Applications require completing forms, paying a $75 fee, and providing official transcripts."
+    },
+    {
+      "heading": "Requirements and Deadlines",
+      "simplifiedText": "If you are admitted, you must enroll in coursework for the term you applied for or your admission will be canceled. International students must be in good academic standing at their home institution. Students seeking a second bachelor's degree must first complete an undergraduate program. All applicants must pay the $75 application fee. Some programs require an essay describing desired coursework. Coursework in natural sciences and mathematics should be directed to the Office of Admission and Enrollment.",
+      "keyTakeaway": "Meeting admission conditions and deadlines is essential to maintain program status."
+    }
+  ]
+}

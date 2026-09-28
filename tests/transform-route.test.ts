@@ -13,8 +13,12 @@ import type { LlmClient, RestructureInput } from "@/lib/llm/types";
 import type { TransformResponse } from "@/lib/types";
 
 const IRS_FIXTURE_HTML = readFileSync("fixtures/irs-eitc/page.html", "utf8");
-const IRS_URL =
-  "https://www.irs.gov/credits-deductions/individuals/earned-income-tax-credit/who-qualifies-for-the-earned-income-tax-credit-eitc";
+
+/**
+ * A URL no Cached page claims, so these tests exercise the live pipeline (Cleaning +
+ * injected LLM) instead of the bundled Demo trio variants in `fixtures/<slug>/*.json`.
+ */
+const LIVE_URL = "https://example.com/tax-credit-guide";
 
 const realFetch = globalThis.fetch;
 
@@ -60,7 +64,7 @@ test("URL input cleans real page HTML and returns the {cleanedOriginal, restruct
   const stub = createStubLlmClient();
   setTransformDepsForTests({ fetchHtml: async () => IRS_FIXTURE_HTML, llm: stub });
 
-  const { status, payload } = await postTransform({ url: IRS_URL });
+  const { status, payload } = await postTransform({ url: LIVE_URL });
 
   assert.equal(status, 200);
   assert.ok(!("error" in payload), `unexpected error: ${JSON.stringify(payload)}`);
@@ -70,7 +74,7 @@ test("URL input cleans real page HTML and returns the {cleanedOriginal, restruct
   assert.match(payload.cleanedOriginal, /Have earned income/);
   assert.doesNotMatch(payload.cleanedOriginal, /<script|<\/div>|function\s*\(/);
   assert.ok(payload.cleanedOriginal.length > 2000, "cleaned text should carry the page's prose");
-  assert.equal(payload.sourceUrl, IRS_URL);
+  assert.equal(payload.sourceUrl, LIVE_URL);
 
   // Schema: every field a Mode renders from.
   const { restructured } = payload;
@@ -94,7 +98,7 @@ test("URL input cleans real page HTML and returns the {cleanedOriginal, restruct
 test("the IRS page's deadline language survives Cleaning into the action items", async () => {
   setTransformDepsForTests({ fetchHtml: async () => IRS_FIXTURE_HTML, llm: createStubLlmClient() });
 
-  const { payload } = await postTransform({ url: IRS_URL });
+  const { payload } = await postTransform({ url: LIVE_URL });
   assert.ok(!("error" in payload));
 
   const tasks = payload.restructured.actionItems.map((item) => item.task.toLowerCase());
@@ -168,7 +172,7 @@ test("malformed Restructure output follows the error contract", async () => {
   const { client } = recordingLlm(() => "I'm afraid I can't do that.");
   setTransformDepsForTests({ fetchHtml: async () => IRS_FIXTURE_HTML, llm: client });
 
-  const { status, payload } = await postTransform({ url: IRS_URL });
+  const { status, payload } = await postTransform({ url: LIVE_URL });
 
   assert.equal(status, 422);
   assert.ok("error" in payload);
@@ -187,7 +191,7 @@ test("malformed JSON triggers exactly one retry, and the retry's answer is used"
   const { client, calls } = recordingLlm((input) => (input.previousAttempt ? good : "```not json```"));
   setTransformDepsForTests({ fetchHtml: async () => IRS_FIXTURE_HTML, llm: client });
 
-  const { status, payload } = await postTransform({ url: IRS_URL });
+  const { status, payload } = await postTransform({ url: LIVE_URL });
 
   assert.equal(status, 200);
   assert.ok(!("error" in payload));
@@ -201,7 +205,7 @@ test("malformed JSON twice stops after the single retry and returns the error co
   const { client, calls } = recordingLlm(() => "still not json");
   setTransformDepsForTests({ fetchHtml: async () => IRS_FIXTURE_HTML, llm: client });
 
-  const { status, payload } = await postTransform({ url: IRS_URL });
+  const { status, payload } = await postTransform({ url: LIVE_URL });
 
   assert.equal(status, 422);
   assert.ok("error" in payload);
@@ -226,7 +230,7 @@ test("a failing Restructure service is not retried and reports its own error", a
     }
   });
 
-  const { status, payload } = await postTransform({ url: IRS_URL });
+  const { status, payload } = await postTransform({ url: LIVE_URL });
 
   assert.notEqual(status, 500);
   assert.ok("error" in payload);
@@ -238,7 +242,7 @@ test("schema-violating Restructure output follows the error contract", async () 
   const { client } = recordingLlm(() => JSON.stringify({ title: "No sections here", summary: "Hmm." }));
   setTransformDepsForTests({ fetchHtml: async () => IRS_FIXTURE_HTML, llm: client });
 
-  const { payload } = await postTransform({ url: IRS_URL });
+  const { payload } = await postTransform({ url: LIVE_URL });
 
   assert.ok("error" in payload);
   assert.equal(payload.error.code, "invalid_restructure");
