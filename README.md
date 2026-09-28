@@ -2,6 +2,8 @@
 
 **ReadEasy — the web, made readable for every reader.**
 
+🌐 **Live demo:** https://readeasy-eight.vercel.app
+
 ReadEasy restructures any web page into clear, accessible formats for readers with dyslexia,
 ADHD, or low vision — rewritten in plain language, with deadlines extracted into simple
 checklists. Unlike a browser reader mode, which only strips styling, ReadEasy performs
@@ -63,8 +65,8 @@ See `.env.example`.
 | Variable | Required | Purpose |
 |---|---|---|
 | `OPENROUTER_API_KEY` | for real transforms | OpenRouter key used by the Restructure step ([get one](https://openrouter.ai/keys)) |
-| `OPENROUTER_MODEL` | no | Overrides the default restructure model |
-| `OPENROUTER_FALLBACK_MODELS` | no | Comma-separated fallback models, tried in order on rate limits/outages |
+| `OPENROUTER_MODEL` | no | Overrides the default model (`openrouter/free`, the free-model router) |
+| `OPENROUTER_FALLBACK_MODELS` | no | Comma-separated fallback models, tried in order on rate limits/outages (empty by default — `openrouter/free` already fails over server-side) |
 | `READEASY_LLM_MODE` | no | `stub` forces the canned Restructure stub (used by tests) |
 
 ## How it works
@@ -75,11 +77,11 @@ when a page cannot be fetched or transformed.
 
 1. **Fetch & Clean** (server-side, no AI) — the page HTML is fetched and stripped of ads,
    nav, and scripts with Mozilla Readability.
-2. **Restructure** (LLM via OpenRouter) — the cleaned text is reshaped into strict JSON:
+2. **Restructure** (LLM via OpenRouter's free-model router) — the cleaned text is reshaped
+   into strict JSON:
    `{title, summary, readingTimeMinutes, actionItems[{task, urgency, deadline?}],
    sections[{heading, simplifiedText, keyTakeaway}]}`. One automatic retry on malformed
-   JSON, then a structured error — never a crash. Fallback models are tried in order if the
-   primary fails.
+   JSON, then a structured error — never a crash.
 3. **Render** — every Mode is a client-side renderer of that same JSON (see
    `components/modes/registry.ts`), so no Mode needs defensive parsing. Adding a Mode is one
    registry line plus one renderer file.
@@ -87,10 +89,11 @@ when a page cannot be fetched or transformed.
 `POST /api/ask` answers questions grounded in the cleaned page text, with cached answers for
 the bundled demo pages.
 
-The repo bundles **cached fixtures** (cleaned text + screenshots) for the demo trio —
+The repo bundles **cached fixtures** (cleaned text + screenshots + pre-generated Standard
+and Simpler restructures) for the demo trio —
 IRS Earned Income Tax Credit, UT Dallas First-Year Apply, and USCIS Students & Employment —
-so the demo path has no live-network dependency. Sites that block fetching (e.g. ssa.gov
-returns 403) are covered by the raw-text paste path.
+so the demo path opens instantly with no live-network dependency. Sites that block fetching
+(e.g. ssa.gov returns 403) are covered by the raw-text paste path.
 
 ## Project layout
 
