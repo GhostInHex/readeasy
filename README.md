@@ -4,6 +4,8 @@
 
 🌐 **Live demo:** https://readeasy-eight.vercel.app
 
+[![ReadEasy landing page](docs/screenshots/landing.png)](docs/screenshots/landing.png)
+
 ReadEasy restructures any web page into clear, accessible formats for readers with dyslexia,
 ADHD, or low vision — rewritten in plain language, with deadlines extracted into simple
 checklists. Unlike a browser reader mode, which only strips styling, ReadEasy performs
